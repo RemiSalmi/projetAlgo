@@ -45,4 +45,5 @@ mutating func occuper(p : Position)-> Position
 //Passe la valeur de occuper de la position passé en paramètre à false
 mutating func liberer(p : Position)-> Position
 
+
 }
