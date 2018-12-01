@@ -28,12 +28,12 @@ func get_CoordY(p : Position)-> Int
 func est_Occupe(p : Position)->Int
 
 //changeX : Position  x Int -> position
-//Retourne Change la valeur de coord_x de la positon passé en paramètre
+// Change la valeur de coord_x de la positon passé en paramètre
 //Pré : La valeur du int passé en paramètre doit correspondre a une coord_x valide
 mutating func changeX(p : Position, x : Int)-> Position
 
 //changeY : Position  x Int -> position
-//Retourne Change la valeur de coord_y de la positon passé en paramètre
+// Change la valeur de coord_y de la positon passé en paramètre
 //Pré : La valeur du int passé en paramètre doit correspondre a une coord_y valide
 mutating func changeY(p : Position, y : Int)-> Position
 
@@ -45,5 +45,8 @@ mutating func occuper(p : Position)-> Position
 //Passe la valeur de occuper de la position passé en paramètre à false
 mutating func liberer(p : Position)-> Position
 
+//setPosition : Position x Position -> Position
+//change les valeurs coord_x et coord_y de la premiere position passe en parametre par celles de la seconde
+mutating func setPosition(p1 : Position , p2 : Position)-> Position 
 
 }

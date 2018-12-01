@@ -27,9 +27,13 @@ protocol yokaiProtocol {
 
   //deplacer : Yokai x Position -> Yokai
   //Change la position du Yokai passé en parametre par la position passé en paramètre
-  //Pré : La position passé en paramètre est une position valide
+  //Pré : La position passé en paramètre est une position valide (le yokai peut se deplacer sur cette position)
+  //Post libere la position precedement occupé et occupe la nouvelle
   mutating func deplacer(y : Yokai, p : Position)-> Yokai
 
+  //peutAller : Yokai x Position ->bool
+  // Renvoie true si le Yokai peut aller sur la position passe en parametre en fonction de ses déplacement
+  //
 
 
 }

@@ -4,11 +4,15 @@ protocol joueurProtocol{
   associatedtype yokaisIterator : IteratorProtocol
   associatedtype reserveIterator : IteratorProtocol
 
+  var num : Int
+  var sensDuJoueur : String
+
   //init : Int -> joueur
   //#Création d'un joueur
   //#Pré un joueur commence avec 4 Yokais dans sa main (1 Koropokkuru, 1 Kitsune, 1 Tanuki, 1Kodama) et sa réserve est vide
   //#données NumJoueur est un int qui prend seulement les valeurs 0 ou 1
-  init(NumJoueur : Int)->joueur
+  //sensDuJoueur defini si le joueur se situe en haut ou en bas donc sensDuJoueur = "Bas" ou "Haut"
+  init(NumJoueur : Int , sensDuJoueur : String)->joueur
 
   //estGagnant : joueur -> Bool
   //#Vérfie si un joueur viens de gagner la parti pendant le tour en cours
