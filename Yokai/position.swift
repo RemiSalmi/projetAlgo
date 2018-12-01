@@ -17,13 +17,32 @@ init(coord_x : Int, coord_y : Int)
 
 //get_CoordX : position -> Int
 //Retourne la coord_x de la positon donnée paramètre
+func get_CoordX(p : Position)-> Int
 
 //get_CoordY : position -> Int
 //Retourne la coord_y de la positon donnée paramètre
+func get_CoordY(p : Position)-> Int
 
 //est_Occupe : positon -> Bool
-//Retourne true si l'attribut occuper = true, false sinon.
+//Retourne True si la position donnée est occupé
+func est_Occupe(p : Position)->Int
 
+//changeX : Position  x Int -> position
+//Retourne Change la valeur de coord_x de la positon passé en paramètre
+//Pré : La valeur du int passé en paramètre doit correspondre a une coord_x valide
+mutating func changeX(p : Position, x : Int)-> Position
 
+//changeY : Position  x Int -> position
+//Retourne Change la valeur de coord_y de la positon passé en paramètre
+//Pré : La valeur du int passé en paramètre doit correspondre a une coord_y valide
+mutating func changeY(p : Position, y : Int)-> Position
+
+//occuper : Position -> Position
+//Passe la valeur de occuper de la position passé en paramètre à true
+mutating func occuper(p : Position)-> Position
+
+//liberer : Position -> Position
+//Passe la valeur de occuper de la position passé en paramètre à false
+mutating func liberer(p : Position)-> Position
 
 }
