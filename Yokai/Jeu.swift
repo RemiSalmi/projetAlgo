@@ -1,6 +1,6 @@
 //Un jeu possède un terrain (12 cases) et deux joueurs.
 protocol jeuProtocol{
-
+  associatedtype PositionPlateauIterator: IteratorProtocol
   //Le terrain est un tableau d'exactement 12 positions correspondant aux 12 cases d'un plateau de jeu Yokai.
   var terrain : [Position]
   var joueur1 : joueur
@@ -16,7 +16,6 @@ protocol jeuProtocol{
   //      Le joueur2 correspond au joueur de haut de plateau.
   init()->Jeu
 
-
   //getJoueur: Jeu x Int -> Joueur
   //Renvoie un joueur, l'entier en paramètre est une valeur 1 ou 2.
   //Post :
@@ -24,13 +23,12 @@ protocol jeuProtocol{
   //    Renvoie le joueur 2 ssi : getJoueur(jeu: Jeu, idjoueur: 2)
   func getJoueur(jeu: Jeu, idjoueur: Int)->Joueur
 
-
   //getJoueurSuivant: Jeu x Joueur -> Joueur
   //Renvoie le joueur 1, si le joueur 2 est passé en paramètre
   //Renvoie le joueur 2, si le joueur 1 est passé en paramètre
   func getJoueurSuivant(jeu: Jeu, joueur: Joueur)->Joueur
 
-  //Get terrain
+  func makeItPlateau(plateau: Plateau)->PositionPlateauIterator
 
 
 }
