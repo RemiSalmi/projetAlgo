@@ -28,6 +28,7 @@ protocol jeuProtocol{
   //Renvoie le joueur 2, si le joueur 1 est passé en paramètre
   func getJoueurSuivant(jeu: Jeu, joueur: Joueur)->Joueur
 
+  //Iterator sur les positions de l'attribut plateau
   func makeItPlateau(plateau: Plateau)->PositionPlateauIterator
 
 
