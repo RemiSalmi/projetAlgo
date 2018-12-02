@@ -24,6 +24,12 @@ protocol jeuProtocol{
   //    Renvoie le joueur 2 ssi : getJoueur(jeu: Jeu, idjoueur: 2)
   func getJoueur(jeu: Jeu, idjoueur: Int)->Joueur
 
+
+  //getJoueurSuivant: Jeu x Joueur -> Joueur
+  //Renvoie le joueur 1, si le joueur 2 est passé en paramètre
+  //Renvoie le joueur 2, si le joueur 1 est passé en paramètre
+  func getJoueurSuivant(jeu: Jeu, joueur: Joueur)->Joueur
+
   //Get terrain
 
 

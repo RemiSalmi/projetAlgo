@@ -23,9 +23,19 @@ protocol joueurProtocol{
   //Iterator sur les Yokais sur le plateau du joueur (exemple Kodama1;Tanuki1;...)
   func getMain(joueur : joueur)->yokaisIterator
 
+  //mainEstVide : joueur -> Bool
+  //Verifie si la main du joueur est vide ou pas
+  //Renvoie true si la main est vide, false sinon
+  func mainEstVide(joueur; joueur)->Bool
+
   //getReserve : joueur -> String
   //Renvoie les noms et les numéros de tous les Yokais en réserve du joueur
   func getReserve(joueur : joueur)->reserveIterator
+
+  //reserveEstVide : joueur -> Bool
+  //Verifie si la réserve du joueur est vide ou pas
+  //Renvoie true si la réserve est vide, false sinon
+  func reserveEstVide(joueur; joueur)->Bool
 
   //ajoutReserve : joueur x Yokais -> joueur
   //ajoute le Yokai passé en paramètre dans la reserve du joueur passé en paramètre
@@ -51,10 +61,12 @@ protocol joueurProtocol{
 ***/
 
   //Parachuter : joueur x Yokai x Position-> joueur
-  //Prend un Yokai de la résevre d joueur et le met dans sa main avec la positon passé en paramètre
+  //Prend un Yokai de la résevre du joueur et le met dans sa main avec la positon passé en paramètre
   //Pré : Le Yokai doit etre présent dans la réserve
   // L'emplacement de la position doit être valide
   //Post : enleve le Yokai de la reserve du joueur et le met dans sa main
+  //Si le Yokai donnée en paramètre est un Kodama :
+  //  Si le parachutage à lieu dans la zone de l'adversaire, le Yokai Kodama se transforme en Kodama Locked
   mutating func parachuter(j : joueur, y : Yokai, p : Position)-> joueur
 
   //manger : joueur x Yokai -> joueur
