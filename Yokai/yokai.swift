@@ -6,6 +6,7 @@
 //Un yokai est en réserve lorsqu’il n’a pas de position , c’est à dire quand position == nil
 
 protocol yokaiProtocol {
+  associatedtype DeplacementIterator: IteratorProtocol
 
   var position : Position?
 
@@ -40,5 +41,8 @@ protocol yokaiProtocol {
   //Pré :Vérifie que le déplacement laisse le Yokai à l'intérieur du plateau
   func peutAller(y : Yokai, coord_x: Int, coord_y: Int)->Bool
 
+  //makeItDeplacement: Yokai -> IteratorProtocol
+  //Iterator sur les déplacement du Yokai passé en paramètre
+  func makeItDeplacement(y: Yokai)->DeplacementIterator
 
 }

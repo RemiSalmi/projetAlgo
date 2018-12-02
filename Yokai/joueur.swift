@@ -19,7 +19,7 @@ protocol joueurProtocol{
   //#Pré Le joueur doit avoir été créé
   func estGagnant(joueur : joueur)->Bool
 
-  //getYokais : joueur -> String
+  //getYokais : joueur -> IteratorProtocol
   //Iterator sur les Yokais sur le plateau du joueur (exemple Kodama1;Tanuki1;...)
   func getMain(joueur : joueur)->yokaisIterator
 
@@ -28,8 +28,8 @@ protocol joueurProtocol{
   //Renvoie true si la main est vide, false sinon
   func mainEstVide(joueur; joueur)->Bool
 
-  //getReserve : joueur -> String
-  //Renvoie les noms et les numéros de tous les Yokais en réserve du joueur
+  //getReserve : joueur -> IteratorProtocol
+  //Iterator sur les Yokais de la réserve du joueur
   func getReserve(joueur : joueur)->reserveIterator
 
   //reserveEstVide : joueur -> Bool

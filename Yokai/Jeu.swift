@@ -31,5 +31,4 @@ protocol jeuProtocol{
   //Iterator sur les positions de l'attribut plateau
   func makeItPlateau(plateau: Plateau)->PositionPlateauIterator
 
-
 }

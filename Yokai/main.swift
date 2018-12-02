@@ -34,12 +34,38 @@ while !Jeu.getJoueur(jeu: Jeu, idjoueur: 1).estGagnant() and !Jeu.getJoueur(jeu:
       //On recupère la case souhaitée
       //On verifie que la case choisie est libre
       //On réalise le parachutage
+      
+  //FinSi
+  joueur = Jeu.getJoueurSuivant(jeu: Jeu, joueur:joueur)
+}
+
+//Idéee main n°2 : *********************************
 
 
 
+Jeu = Jeu()
+let pile_face = Int.random(in : 1..<3) //Random d'un nombre entre 1 et 2 pourdéfinir lequel des deux joueurs doit commencer.
 
+joueur = Jeu.getJoueur(jeu: Jeu, idjoueur: pile_face)
 
+while !Jeu.getJoueur(jeu: Jeu, idjoueur: 1).estGagnant() and !Jeu.getJoueur(jeu: Jeu, idjoueur: 2){
 
+  if(!joueur.mainEstVide(joueur: joueur)){
+    print("Pour déplacer un yokai taper: 1")
+  }
 
+  if(!joueur.reserveEstVide(joueur: joueur)){
+    print("Pour parachuter un yokai taper: 2")
+  }
 
+  //Tester avec readLine()
+
+  //Si choix 1 :
+      //joueur.deplacement(j: joueur)
+
+  //Si choix 2 :
+      //joueur.parachutage(j: joueur)
+
+  //FinSi
+  joueur = Jeu.getJoueurSuivant(jeu: Jeu, joueur:joueur)
 }
