@@ -1,4 +1,4 @@
-//Une position possède deux attributs de coordonnées x,y et un attribut occupé de type boo
+//Une position possède deux attributs de coordonnées x,y et un attribut occupé de type bool
 protocol positonProtocol{
 
 var coord_x : Int
@@ -47,6 +47,6 @@ mutating func liberer(p : Position)-> Position
 
 //setPosition : Position x Position -> Position
 //change les valeurs coord_x et coord_y de la premiere position passe en parametre par celles de la seconde
-mutating func setPosition(p1 : Position , p2 : Position)-> Position 
+mutating func setPosition(p1 : Position , p2 : Position)-> Position
 
 }
