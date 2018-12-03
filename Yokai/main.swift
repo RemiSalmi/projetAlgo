@@ -5,7 +5,7 @@ let pile_face = Int.random(in : 1..<3) //Random d'un nombre entre 1 et 2 pourdé
 
 joueur = Jeu.getJoueur(jeu: Jeu, idjoueur: pile_face)
 
-while !Jeu.getJoueur(jeu: Jeu, idjoueur: 1).estGagnant() and !Jeu.getJoueur(jeu: Jeu, idjoueur: 2){
+while !Jeu.getJoueur(jeu: Jeu, idjoueur: 1).estGagnant() and !Jeu.getJoueur(jeu: Jeu, idjoueur: 2).estGagnant{
 
   if(!joueur.mainEstVide(joueur: joueur)){
     print("Pour déplacer un yokai taper: 1")
@@ -34,7 +34,7 @@ while !Jeu.getJoueur(jeu: Jeu, idjoueur: 1).estGagnant() and !Jeu.getJoueur(jeu:
       //On recupère la case souhaitée
       //On verifie que la case choisie est libre
       //On réalise le parachutage
-      
+
   //FinSi
   joueur = Jeu.getJoueurSuivant(jeu: Jeu, joueur:joueur)
 }
