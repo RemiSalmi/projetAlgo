@@ -92,9 +92,28 @@ return res
 
   func TestinitYokai()->Bool
 
-  func TestgetPosition()->Bool?
+  func TestgetPosition()->Bool{
+    res : Bool = true
+    p : Position = Position(2,2)
+    y : Yokai = Yokai("Kodoma",p,1)
+    if y.getPosition() != p{
+      res = false
+    }
+    return res
+  }
 
- func Testest_KodamaLocked()->Bool
+
+ func Testest_KodamaLocked()->Bool{
+   res : Bool = true
+   p : Position = Position(2,2)
+   y : Yokai = Yokai("KodomaLocked",p,1)
+   if y.est_KodamaLocked !=true{
+     res = false
+   }
+   return res
+
+ }
+
 
  func TestsetSamourai()->Bool
 
