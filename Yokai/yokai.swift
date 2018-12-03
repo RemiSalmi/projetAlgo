@@ -9,11 +9,11 @@ protocol YokaiProtocol {
   associatedtype DeplacementIterator: IteratorProtocol
 
   var position : Positon?
-
+  var id : Int
   //init : String x Position x Int x Bool-> Yokai
   //Créer un Yokai
-  //Pré : La position doit être une position valide
-  init(p : Positon)->Yokai
+  //Pré : La position doit être une position valide et chaque Yokai a un id unique
+  init(p : Positon , id : Int)->Yokai
 
 
   //getPosition: Yokai -> (Position | Vide)
