@@ -1,5 +1,5 @@
 //Une position possède deux attributs de coordonnées x,y et un attribut occupé de type bool
-protocol PositonProtocol{
+protocol PositionProtocol{
 
 var coord_x : Int
 var coord_y : Int
