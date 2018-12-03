@@ -2,9 +2,9 @@
 protocol JeuProtocol{
   associatedtype PositionPlateauIterator: IteratorProtocol
   //Le terrain est un tableau d'exactement 12 positions correspondant aux 12 cases d'un plateau de jeu Yokai.
-  var terrain : [PositonProtocol]
-  var joueur1 : JoueurProtocol
-  var joueur2 : JoueurProtocol
+  var terrain : [Positon]
+  var joueur1 : Joueur
+  var joueur2 : Joueur
 
   //init : -> Jeu
   //Post :
@@ -14,21 +14,21 @@ protocol JeuProtocol{
   //      L'attribut joueur2 a été initialisé de la même manière que le joueur1.
   //      Le joueur1 correspond au joueur de bas de plateau.
   //      Le joueur2 correspond au joueur de haut de plateau.
-  init()->JeuProtocol
+  init()->Jeu
 
   //getJoueur: Jeu x Int -> Joueur
   //Renvoie un joueur, l'entier en paramètre est une valeur 1 ou 2.
   //Post :
   //    Renvoie le joueur 1 ssi : getJoueur(jeu: Jeu, idjoueur: 1)
   //    Renvoie le joueur 2 ssi : getJoueur(jeu: Jeu, idjoueur: 2)
-  func getJoueur(jeu: JeuProtocol, idjoueur: Int)->JoueurProtocol
+  func getJoueur(jeu: , idjoueur: Int)->Joueur
 
   //getJoueurSuivant: Jeu x Joueur -> Joueur
   //Renvoie le joueur 1, si le joueur 2 est passé en paramètre
   //Renvoie le joueur 2, si le joueur 1 est passé en paramètre
-  func getJoueurSuivant(jeu: JeuProtocol, joueur: JoueurProtocol)->JoueurProtocol
+  func getJoueurSuivant(jeu: Jeu, joueur: Joueur)->Joueur
 
   //Iterator sur les positions de l'attribut plateau
-  func makeItPlateau(jeu: JeuProtocol)->PositionPlateauIterator
+  func makeItPlateau(jeu: Jeu)->PositionPlateauIterator
 
 }
