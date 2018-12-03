@@ -14,36 +14,38 @@ init(coord_x : Int, coord_y : Int)
 
 //get_CoordX : Position -> Int
 //Retourne la coord_x de la Position donnée paramètre
-func get_CoordX(p : Position)-> Int
+func get_CoordX()-> Int
 
 //get_CoordY : Position -> Int
 //Retourne la coord_y de la Position donnée paramètre
-func get_CoordY(p : Position)-> Int
+func get_CoordY()-> Int
 
 //est_Occupe : Position -> Bool
 //Retourne True si la position donnée est occupé
-func est_Occupe(p : Position)->Int
+func est_Occupe()->Int
 
 //changeX : Position  x Int -> Position
 // Change la valeur de coord_x de la Position passé en paramètre
 //Pré : La valeur du int passé en paramètre doit correspondre a une coord_x valide
-mutating func changeX(p : Position, x : Int)-> Self
+mutating func changeX(x : Int)-> Self
 
 //changeY : Position  x Int -> Position
 // Change la valeur de coord_y de la Position passé en paramètre
 //Pré : La valeur du int passé en paramètre doit correspondre a une coord_y valide
-mutating func changeY(p : Position, y : Int)-> Self
+mutating func changeY(y : Int)-> Self
 
 //occuper : Position -> Position
 //Passe la valeur de occuper de la position passé en paramètre à true
-mutating func occuper(p : Position)-> Self
+mutating func occuper()-> Self
 
 //liberer : Position -> Position
 //Passe la valeur de occuper de la position passé en paramètre à false
-mutating func liberer(p : Position)-> Self
+mutating func liberer()-> Self
 
 //setPosition : Position x Position -> Position
 //change les valeurs coord_x et coord_y de la premiere position passe en parametre par celles de la seconde
-mutating func setPosition(p1 : Position, p2 : Position)-> Self
+mutating func setPosition(newPos : Position)-> Self
+
+
 
 }

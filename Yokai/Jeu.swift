@@ -31,4 +31,8 @@ protocol JeuProtocol{
   //Iterator sur les positions de l'attribut plateau
   func makeItPlateau()->PositionPlateauIterator
 
+  //getPositionJeu : Jeu x Int x Int ->Position?
+  //Renvoie la position qui corresopnd au x et y passé en parametre renvoie Vide si le jeu ne comporte pas cette case 
+  func getPositionJeu(coord_x : Int, coord_y: Int)->Position?
+
 }

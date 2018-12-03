@@ -3,7 +3,7 @@
 
   func TestinitJoueur()->Bool
 
-  func TestgetMain()->Bool
+  func TestmakeItMain()->Bool
 
   func TestmainEstVide()->Bool{
     res : Bool = true
@@ -14,7 +14,7 @@
     return res
   }
 
-  func TestgetReserve()->Bool
+  func TestmakeItReserve()->Bool
 
 
   func TestreserveEstVide()->Bool{
@@ -53,7 +53,9 @@
    }
 
 
-  func TestestEnReserve()->Bool
+  func TestestEnReserve()->Bool{
+    
+  }
 
   func TestestEnMain()->Bool
 

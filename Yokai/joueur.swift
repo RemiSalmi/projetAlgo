@@ -1,7 +1,7 @@
 //Un joueur contient un numéro, des Yokais dans sa main  et une réserve de Yokais vide
 
 protocol JoueurProtocol{
-  associatedtype yokaisIterator : IteratorProtocol
+  associatedtype mainIterator : IteratorProtocol
   associatedtype reserveIterator : IteratorProtocol
 
   var num : Int
@@ -22,7 +22,7 @@ protocol JoueurProtocol{
 
   //getYokais : joueur -> IteratorProtocol
   //Iterator sur les Yokais sur le plateau du joueur (exemple Kodama1;Tanuki1;...)
-  func getMain()->yokaisIterator
+  func makeItMain()->mainIterator
 
   //mainEstVide : joueur -> Bool
   //Verifie si la main du joueur est vide ou pas
@@ -31,7 +31,7 @@ protocol JoueurProtocol{
 
   //getReserve : joueur -> IteratorProtocol
   //Iterator sur les Yokais de la réserve du joueur
-  func getReserve()->reserveIterator
+  func makeItReserve()->reserveIterator
 
   //reserveEstVide : joueur -> Bool
   //Verifie si la réserve du joueur est vide ou pas
@@ -40,54 +40,58 @@ protocol JoueurProtocol{
 
   //ajoutReserve : joueur x Yokais -> joueur
   //ajoute le Yokai passé en paramètre dans la reserve du joueur passé en paramètre
-  mutating func ajoutReserve(j: Joueur, y :Yokai)->Self
+  mutating func ajoutReserve(y :Yokai)->Self
 
   //enleverReserve : joueur x Yokai -> Joueur
   //enleve le yokai passe en parametre de la reserve du joueur passe en parametre
   //Pré: le yokai doit être present dans la reserve du joueur
-  mutating func enleverReserve(j: Joueur, y: Yokai)->Self
+  mutating func enleverReserve(y: Yokai)->Self
 
   //estEnReserve : joueur x Yokai -> Bool
   //renvoie true si le Yokai passe en parametre est dans la reserve du joueur
-  func estEnReserve(j: Joueur, y : Yokai)->Bool
+  func estEnReserve(y : Yokai)->Bool
 
   //estEnMain :  joueur x Yokai -> Bool
   //renvoie true si le yokai passe en parametre est dans la main du Joueur
-  func estEnMain(j: Joueur, y: Yokai)->Bool
+  func estEnMain(y: Yokai)->Bool
 
-/***
+
   //monAdversaire : joueur -> joueur
   //Renvoie l'adversaire (un joueur) du joueur passe en parametre
-  func monAdversaire(j : joueur)-> joueur
-***/
+  func monAdversaire()-> joueur
+
 
   //Parachuter : joueur x Yokai x Position-> joueur
-  //Prend un Yokai de la résevre du joueur et le met dans sa main avec la positon passé en paramètre
+  //Prend un Yokai de la résevre du joueur et le met dans sa main avec la position passé en paramètre
   //Pré : Le Yokai doit etre présent dans la réserve
   // L'emplacement de la position doit être valide
   //Post : enleve le Yokai de la reserve du joueur et le met dans sa main
   //Si le Yokai donnée en paramètre est un Kodama :
   //  Si le parachutage à lieu dans la zone de l'adversaire, le Yokai Kodama se transforme en Kodama Locked
-  mutating func parachuter(j: Joueur, y: Yokai, p: PositonProtocol)-> Self
+  mutating func parachuter(y: Yokai, p: Position)-> Self
 
   //manger : joueur x Yokai -> joueur
   //rajoute au joueur passé en parametre le Yokai passé en paramètre dans sa rserve
   //Post si le Yokai était samourai il ne l'ai plus
   //Supprime le Yokai de la main de l'autre joueur
   // Pré : Le yokai devait être dans la main du joueur adverse
-  mutating func manger(j: Joueur, y :Yokai)->Self
+  mutating func manger(y :Yokai)->Self
 
   //ajouterMain joueur x Yokai -> joueur
   //Ajouter le yokai passé en parametre à la main du joueur passé en paramètre
-  mutating func ajoutMain(j: Joueur, y : Yokai)->Self
+  mutating func ajoutMain(y : Yokai)->Self
 
   //enleverMain joueur x Yokai -> joueur
   //Enleve le yokai passe en parametre de la main du joueur
   //Pré : le yokai doit être dans la main du joueur
-  mutating func enleverMain(j: Joueur, y: Yokai)->Self
+  mutating func enleverMain(y: Yokai)->Self
 
   //tailleMain : Joueur -> Int
   //Renvoie le nombre de Yokai dans la Main du joueur passé en parametre
-  func tailleMain(j : Joueur)->Int
+  func tailleMain()->Int
+
+  //getYokaiById : Joueur x Int -> Yokai?
+  //Renvoie le Yokai qui à l'id correspondant à l'int passé en parametre si le yokai n'est pas trouvé cela renvoie Vide
+  func getYokaiById(id : Int)->Yokai?
 
 }
