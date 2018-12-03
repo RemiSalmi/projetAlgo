@@ -1,80 +1,124 @@
 // Tests pour Joueur.swift
 
 
-  func TestinitJoueur(NumJoueur: Int)->Joueur
+  func TestinitJoueur()->Bool
 
-  func TestgetMain(joueur: Joueur)->yokaisIterator
+  func TestgetMain()->Bool
 
-  func TestmainEstVide(joueur: Joueur)->Bool
+  func TestmainEstVide()->Bool{
+    res : Bool = true
+    j : Joueur = Joueur(2)
+    if j.mainEstVide != False{
+      res = false
+    }
+    return res
+  }
 
-  func TestgetReserve(joueur: Joueur)->reserveIterator
+  func TestgetReserve()->Bool
 
 
-  func TestreserveEstVide(joueur: Joueur)->Bool
+  func TestreserveEstVide()->Bool{
+    res : Bool = true
+    j : Joueur = Joueur(2)
+    if j.reserveEstVide() == False{
+      res = false
+    }
+    return res
+  }
 
 
-  mutating func TestajoutReserve(j: Joueur, y :Yokai)->Joueur
+   func TestajoutReserve()->Bool{
+     res : Bool = true
+     j : Joueur = Joueur(2)
+     p : Position = Position(2,1)
+     y : Yokai = Yokai("Kodoma",p,1)
+     j.ajoutReserve(y)
+     if !j.estEnReserve(y) {
+         res = false
+     }
+     return res
+   }
 
-  mutating func TestenleverReserve(j: Joueur, y: Yokai)->Joueur
+   func TestenleverReserve()->Bool{
+     res : Bool = true
+     j : Joueur = Joueur(2)
+     p : Position = Position(2,1)
+     y : Yokai = Yokai("Kodoma",p,1)
+     j.ajoutReserve(y)
+     j.enleverReserve(y)
+     if j.estEnReserve(y) {
+         res = false
+     }
+     return res
+   }
 
-  func TestestEnReserve(j: Joueur, y : Yokai)->Bool
 
-  func TestestEnMain(j: Joueur, y: Yokai)->Bool
+  func TestestEnReserve()->Bool
 
-  mutating func Testparachuter(j: Joueur, y: Yokai, p: PositonProtocol)-> Joueur
+  func TestestEnMain()->Bool
 
-  mutating func Testmanger(j: Joueur, y :Yokai)->Joueur
+ func Testparachuter()-> Bool
 
-  mutating func TestajoutMain(j: Joueur, y : Yokai)->Joueur
+ func Testmanger()->Bool
 
-  mutating func TestenleverMain(j: Joueur, y: Yokai)->Joueur
+func TestajoutMain()->Bool
+
+   func TestenleverMain()->Bool
 
 //Tests jeu.swift
 
-  func TestinitJeu()->Jeu
+  func TestinitJeu()->Bool
 
-  func TestgetJoueur(jeu: , idjoueur: Int)->Joueur
+  func TestgetJoueur()->Bool
 
-  func TestgetJoueurSuivant(jeu: Jeu, joueur: Joueur)->Joueur
+  func TestgetJoueurSuivant()->Bool
 
-  func TestmakeItPlateau(jeu: Jeu)->PositionPlateauIterator
+  func TestmakeItPlateau()->Bool
 
 
 
 //Tests Yokai.swift
 
-  func TestinitYokai(p : Positon , id : Int)->Yokai
+  func TestinitYokai()->Bool
 
-  func TestgetPosition(y: Yokai)->Positon?
+  func TestgetPosition()->Bool?
 
-  mutating func Testest_KodamaLocked(y: Yokai)->Bool
+ func Testest_KodamaLocked()->Bool
 
-  mutating func TestsetSamourai(y: Yokai)->Yokai
+ func TestsetSamourai()->Bool
 
-  mutating func Testdeplacer(y: Yokai, p: Positon)->Yokai
+ func Testdeplacer()->Bool
 
-  mutating func TestdeplacerReserve(y: Yokai)->Yokai
+ func TestdeplacerReserve()->Bool
 
-  func TestpeutAller(y: Yokai, coord_x: Int, coord_y: Int)->Bool
+  func TestpeutAller()->Bool
 
-  func TestmakeItDeplacement(y: Yokai)->DeplacementIterator
+  func TestmakeItDeplacement()->Bool
 
 //Tests Position.swift
 
-func TestinitPosition(coord_x : Int, coord_y : Int)
+func TestinitPosition()
 
-func Testget_CoordX(p : Positon)-> Int
+func Testget_CoordX()-> Bool{
+  p = Position (1,2)
+  return get_CoordX(p) == 1
+}
 
-func Testget_CoordY(p : Positon)-> Int
+func Testget_CoordY()-> Bool{
+  p = Position (1,2)
+  return get_CoordX(p) == 2
+}
 
-func Testest_Occupe(p : Positon)->Int
+func Testest_Occupe()->Bool{
 
-mutating func TestchangeX(p : Positon, x : Int)-> Positon
+}
 
-mutating func TestchangeY(p : Positon, y : Int)-> Positon
+func TestchangeX()-> Bool
 
-mutating func Testoccuper(p : Positon)-> Positon
+func TestchangeY()-> Bool
 
-mutating func Testliberer(p : Positon)-> Positon
+func Testoccuper()-> Bool
 
-mutating func TestsetPosition(p1 : Positon, p2 : Positon)-> Positon
+func Testliberer()-> Bool
+
+func TestsetPosition()-> Bool

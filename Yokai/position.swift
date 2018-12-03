@@ -6,44 +6,44 @@ var coord_y : Int
 //Attribut booleen, true si la position est occupé par un Yokai, false sinon
 var occuper : Bool
 
-//init: Int x Int -> Positon
+//init: Int x Int -> Position
 //Creation d'une position à partir deux entiers
 //Pre :  0 <= x <= 2 , 0 <= y <= 3
 //Post : occuper = false
 init(coord_x : Int, coord_y : Int)
 
-//get_CoordX : Positon -> Int
-//Retourne la coord_x de la positon donnée paramètre
-func get_CoordX(p : Positon)-> Int
+//get_CoordX : Position -> Int
+//Retourne la coord_x de la Position donnée paramètre
+func get_CoordX(p : Position)-> Int
 
-//get_CoordY : Positon -> Int
-//Retourne la coord_y de la positon donnée paramètre
-func get_CoordY(p : Positon)-> Int
+//get_CoordY : Position -> Int
+//Retourne la coord_y de la Position donnée paramètre
+func get_CoordY(p : Position)-> Int
 
-//est_Occupe : Positon -> Bool
+//est_Occupe : Position -> Bool
 //Retourne True si la position donnée est occupé
-func est_Occupe(p : Positon)->Int
+func est_Occupe(p : Position)->Int
 
-//changeX : Positon  x Int -> Positon
-// Change la valeur de coord_x de la positon passé en paramètre
+//changeX : Position  x Int -> Position
+// Change la valeur de coord_x de la Position passé en paramètre
 //Pré : La valeur du int passé en paramètre doit correspondre a une coord_x valide
-mutating func changeX(p : Positon, x : Int)-> Self
+mutating func changeX(p : Position, x : Int)-> Self
 
-//changeY : Positon  x Int -> Positon
-// Change la valeur de coord_y de la positon passé en paramètre
+//changeY : Position  x Int -> Position
+// Change la valeur de coord_y de la Position passé en paramètre
 //Pré : La valeur du int passé en paramètre doit correspondre a une coord_y valide
-mutating func changeY(p : Positon, y : Int)-> Self
+mutating func changeY(p : Position, y : Int)-> Self
 
-//occuper : Positon -> Positon
+//occuper : Position -> Position
 //Passe la valeur de occuper de la position passé en paramètre à true
-mutating func occuper(p : Positon)-> Self
+mutating func occuper(p : Position)-> Self
 
-//liberer : Positon -> Positon
+//liberer : Position -> Position
 //Passe la valeur de occuper de la position passé en paramètre à false
-mutating func liberer(p : Positon)-> Self
+mutating func liberer(p : Position)-> Self
 
-//setPosition : Positon x Positon -> Positon
+//setPosition : Position x Position -> Position
 //change les valeurs coord_x et coord_y de la premiere position passe en parametre par celles de la seconde
-mutating func setPosition(p1 : Positon, p2 : Positon)-> Self
+mutating func setPosition(p1 : Position, p2 : Position)-> Self
 
 }

@@ -11,30 +11,32 @@ protocol JoueurProtocol{
   //#Création d'un joueur
   //#Pré un joueur commence avec 4 Yokais dans sa main (1 Koropokkuru, 1 Kitsune, 1 Tanuki, 1Kodama) et sa réserve est vide
   //#données NumJoueur est un int qui prend seulement les valeurs 1 ou 2
+  //Le placement des Yokais lors du début de la partie se font conformément au regles du jeu voir les regle de Yokai No Morï
   init(NumJoueur: Int)->Joueur
 
   //estGagnant : joueur -> Bool
   //#Vérfie si un joueur viens de gagner la partie pendant le tour en cours
   //#Pré Le joueur doit avoir été créé
-  func estGagnant(joueur: Joueur)->Bool
+  //Le joueur est gagner quand le roi du joueur se situe sur la prmeier ligne du joueur adversaire ou quand on mange le roi de l'adversaire (le Koropokkuru)
+  func estGagnant()->Bool
 
   //getYokais : joueur -> IteratorProtocol
   //Iterator sur les Yokais sur le plateau du joueur (exemple Kodama1;Tanuki1;...)
-  func getMain(joueur: Joueur)->yokaisIterator
+  func getMain()->yokaisIterator
 
   //mainEstVide : joueur -> Bool
   //Verifie si la main du joueur est vide ou pas
   //Renvoie true si la main est vide, false sinon
-  func mainEstVide(joueur: Joueur)->Bool
+  func mainEstVide()->Bool
 
   //getReserve : joueur -> IteratorProtocol
   //Iterator sur les Yokais de la réserve du joueur
-  func getReserve(joueur: Joueur)->reserveIterator
+  func getReserve()->reserveIterator
 
   //reserveEstVide : joueur -> Bool
   //Verifie si la réserve du joueur est vide ou pas
   //Renvoie true si la réserve est vide, false sinon
-  func reserveEstVide(joueur: Joueur)->Bool
+  func reserveEstVide()->Bool
 
   //ajoutReserve : joueur x Yokais -> joueur
   //ajoute le Yokai passé en paramètre dans la reserve du joueur passé en paramètre

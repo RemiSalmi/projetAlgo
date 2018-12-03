@@ -21,14 +21,14 @@ protocol JeuProtocol{
   //Post :
   //    Renvoie le joueur 1 ssi : getJoueur(jeu: Jeu, idjoueur: 1)
   //    Renvoie le joueur 2 ssi : getJoueur(jeu: Jeu, idjoueur: 2)
-  func getJoueur(jeu: , idjoueur: Int)->Joueur
+  func getJoueur(idjoueur: Int)->Joueur
 
   //getJoueurSuivant: Jeu x Joueur -> Joueur
   //Renvoie le joueur 1, si le joueur 2 est passé en paramètre
   //Renvoie le joueur 2, si le joueur 1 est passé en paramètre
-  func getJoueurSuivant(jeu: Jeu, joueur: Joueur)->Joueur
+  func getJoueurSuivant(joueur: Joueur)->Joueur
 
   //Iterator sur les positions de l'attribut plateau
-  func makeItPlateau(jeu: Jeu)->PositionPlateauIterator
+  func makeItPlateau()->PositionPlateauIterator
 
 }
