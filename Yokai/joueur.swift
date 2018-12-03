@@ -84,4 +84,8 @@ protocol JoueurProtocol{
   //Pré : le yokai doit être dans la main du joueur
   mutating func enleverMain(j: Joueur, y: Yokai)->Joueur
 
+  //tailleMain : Joueur -> Int
+  //Renvoie le nombre de Yokai dans la Main du joueur passé en parametre
+  func tailleMain(j : Joueur)->Int
+
 }
