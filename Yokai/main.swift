@@ -57,4 +57,5 @@ while !Jeu.getJoueur(jeu: Jeu, idjoueur: 1).estGagnant() and !Jeu.getJoueur(jeu:
 
   //FinSi
   joueur = Jeu.getJoueurSuivant(jeu: Jeu, joueur:joueur)
+  
 }
