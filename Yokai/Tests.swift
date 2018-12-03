@@ -3,8 +3,6 @@
 
   func TestinitJoueur()->Bool
 
-  func TestmakeItMain()->Bool
-
   func TestmainEstVide()->Bool{
     res : Bool = true
     j : Joueur = Joueur(2)
@@ -13,8 +11,6 @@
     }
     return res
   }
-
-  func TestmakeItReserve()->Bool
 
 
   func TestreserveEstVide()->Bool{
@@ -54,7 +50,7 @@
 
 
   func TestestEnReserve()->Bool{
-    
+
   }
 
   func TestestEnMain()->Bool
@@ -63,7 +59,20 @@
 
  func Testmanger()->Bool
 
-func TestajoutMain()->Bool
+func TestajoutMain()->Bool{
+  res : Bool = false
+  j : Joueur = Joueur(2)
+  p : Position = Position(2,2)
+  y : Yokai("Kodoma",p,2)
+
+  if j.estEnMain(y) == false{
+    j.ajoutMain(y)
+    if j.estEnMain(y) {
+        res = true
+    }
+  }
+return res
+}
 
    func TestenleverMain()->Bool
 
@@ -102,25 +111,66 @@ func TestajoutMain()->Bool
 func TestinitPosition()
 
 func Testget_CoordX()-> Bool{
-  p = Position (1,2)
-  return get_CoordX(p) == 1
+  p : Position= Position (1,2)
+  return p.get_CoordX() == 1
 }
 
 func Testget_CoordY()-> Bool{
-  p = Position (1,2)
-  return get_CoordX(p) == 2
+  p : Position = Position (1,2)
+  return p.get_CoordX() == 2
 }
 
 func Testest_Occupe()->Bool{
+  res  : Bool= true
+  p: Position  = Position(1,2)
+  if p.est_Occupe() != false{
+    res = false
+  }
+  return res
 
 }
 
-func TestchangeX()-> Bool
+func TestchangeX()-> Bool{
+  res : Bool = true
+  p : Position = Position(1,2)
+  p.changeX(3)
+  if p.get_CoordX() != 3 {
+      res = false
+  }
+  return res
 
-func TestchangeY()-> Bool
+}
 
-func Testoccuper()-> Bool
 
-func Testliberer()-> Bool
+func TestchangeY()-> Bool{
+  res : Bool = true
+  p : Position = Position(1,2)
+  p.changeY(3)
+  if p.get_CoordY() != 3 {
+      res = false
+  }
+  return res
+}
+
+func Testoccuper()-> Bool{
+  res : Bool = true
+  p : Position = Position(1,2)
+  p.occuper()
+  if p.est_Occupe == false {
+      res = false
+  }
+  return res
+}
+
+func Testliberer()-> Bool{
+  res : Bool = true
+  p : Position = Position(1,2)
+  p.occuper()
+  p.liberer()
+  if p.est_Occupe == true {
+      res = false
+  }
+  return res
+}
 
 func TestsetPosition()-> Bool

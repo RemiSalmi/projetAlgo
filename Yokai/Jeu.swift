@@ -35,4 +35,6 @@ protocol JeuProtocol{
   //Renvoie la position qui corresopnd au x et y passé en parametre renvoie Vide si le jeu ne comporte pas cette case
   func getPositionJeu(coord_x : Int, coord_y: Int)->Position?
 
+  
+
 }

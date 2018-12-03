@@ -48,4 +48,6 @@ mutating func setPosition(newPos : Position)-> Self
 
 
 
+
+
 }

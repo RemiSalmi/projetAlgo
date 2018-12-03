@@ -51,4 +51,7 @@ protocol YokaiProtocol {
   //Iterator sur les déplacement du Yokai passé en paramètre
   func makeItDeplacement()->DeplacementIterator
 
+  //futurPosition : Yokai x String -> Position
+  //Pré le string correspond au deplacmeent que le yokai va devoir efectuer il va devoir donc faire parti des deplacement possible par le Yokai (exemple : droite gauche ...)
+  func futurPosition(deplacement : String)->Position
 }
