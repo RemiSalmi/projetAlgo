@@ -8,6 +8,7 @@
 protocol YokaiProtocol {
   associatedtype DeplacementIterator: IteratorProtocol
 
+  var nom
   var position : Positon?
   var id : Int
   //init : String x Position x Int x Bool-> Yokai
