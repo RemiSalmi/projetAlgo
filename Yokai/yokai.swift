@@ -24,23 +24,23 @@ protocol YokaiProtocol {
   //est_KodamaLocked : Yokai -> Bool
   //Renvoie false si le yokai n'est pas un kodama Locked
   //Renvoie true si le yokai est un kodama locked
-  mutating func est_KodamaLocked(y: Yokai)->Bool
+  func est_KodamaLocked(y: Yokai)->Bool
 
   //setSamourai : Yokai -> Yokai
   //Pre : Le yokai passé en paramètre est un Kodama
   //Post : Le yokai retourné est un Kodama Samourai
-  mutating func setSamourai(y: Yokai)->Yokai
+  mutating func setSamourai(y: Yokai)->Self
 
   //deplacer : Yokai x Position -> Yokai
   //Change la position du Yokai passé en parametre par la position passé en paramètre
   //Pré : La position passé en paramètre est une position valide (le yokai peut se deplacer sur cette position)
   //Post: libere la position precedement occupé et occupe la nouvelle
-  mutating func deplacer(y: Yokai, p: Positon)->Yokai
+  mutating func deplacer(y: Yokai, p: Positon)->Self
 
   //deplacerReserve : Yokai -> Yokai
   //Deplace le yokai du joueur dans la réserve
   //Post : L'attribut positon du yokai == nil
-  mutating func deplacerReserve(y: Yokai)->Yokai
+  mutating func deplacerReserve(y: Yokai)->Self
 
   //peutAller : Yokai x Int x Int -> bool
   //Renvoie true si le Yokai peut aller sur la position passé en parametre (int x, int y) en fonction de ses déplacement

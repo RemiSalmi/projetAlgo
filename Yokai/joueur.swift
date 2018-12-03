@@ -38,12 +38,12 @@ protocol JoueurProtocol{
 
   //ajoutReserve : joueur x Yokais -> joueur
   //ajoute le Yokai passé en paramètre dans la reserve du joueur passé en paramètre
-  mutating func ajoutReserve(j: Joueur, y :Yokai)->Joueur
+  mutating func ajoutReserve(j: Joueur, y :Yokai)->Self
 
   //enleverReserve : joueur x Yokai -> Joueur
   //enleve le yokai passe en parametre de la reserve du joueur passe en parametre
   //Pré: le yokai doit être present dans la reserve du joueur
-  mutating func enleverReserve(j: Joueur, y: Yokai)->Joueur
+  mutating func enleverReserve(j: Joueur, y: Yokai)->Self
 
   //estEnReserve : joueur x Yokai -> Bool
   //renvoie true si le Yokai passe en parametre est dans la reserve du joueur
@@ -66,23 +66,23 @@ protocol JoueurProtocol{
   //Post : enleve le Yokai de la reserve du joueur et le met dans sa main
   //Si le Yokai donnée en paramètre est un Kodama :
   //  Si le parachutage à lieu dans la zone de l'adversaire, le Yokai Kodama se transforme en Kodama Locked
-  mutating func parachuter(j: Joueur, y: Yokai, p: PositonProtocol)-> Joueur
+  mutating func parachuter(j: Joueur, y: Yokai, p: PositonProtocol)-> Self
 
   //manger : joueur x Yokai -> joueur
   //rajoute au joueur passé en parametre le Yokai passé en paramètre dans sa rserve
   //Post si le Yokai était samourai il ne l'ai plus
   //Supprime le Yokai de la main de l'autre joueur
   // Pré : Le yokai devait être dans la main du joueur adverse
-  mutating func manger(j: Joueur, y :Yokai)->Joueur
+  mutating func manger(j: Joueur, y :Yokai)->Self
 
   //ajouterMain joueur x Yokai -> joueur
   //Ajouter le yokai passé en parametre à la main du joueur passé en paramètre
-  mutating func ajoutMain(j: Joueur, y : Yokai)->Joueur
+  mutating func ajoutMain(j: Joueur, y : Yokai)->Self
 
   //enleverMain joueur x Yokai -> joueur
   //Enleve le yokai passe en parametre de la main du joueur
   //Pré : le yokai doit être dans la main du joueur
-  mutating func enleverMain(j: Joueur, y: Yokai)->Joueur
+  mutating func enleverMain(j: Joueur, y: Yokai)->Self
 
   //tailleMain : Joueur -> Int
   //Renvoie le nombre de Yokai dans la Main du joueur passé en parametre

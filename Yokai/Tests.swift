@@ -1,97 +1,80 @@
 // Tests pour Joueur.swift
 
 
-  init(NumJoueur: Int)->Joueur
+  func TestinitJoueur(NumJoueur: Int)->Joueur
 
-  func estGagnant(joueur: Joueur)->Bool
+  func TestgetMain(joueur: Joueur)->yokaisIterator
 
-  func getMain(joueur: Joueur)->yokaisIterator
+  func TestmainEstVide(joueur: Joueur)->Bool
 
-  func mainEstVide(joueur: Joueur)->Bool
-
-  func getReserve(joueur: Joueur)->reserveIterator
+  func TestgetReserve(joueur: Joueur)->reserveIterator
 
 
-  func reserveEstVide(joueur: Joueur)->Bool
+  func TestreserveEstVide(joueur: Joueur)->Bool
 
 
-  mutating func ajoutReserve(j: Joueur, y :Yokai)->Joueur
+  mutating func TestajoutReserve(j: Joueur, y :Yokai)->Joueur
 
-  mutating func enleverReserve(j: Joueur, y: Yokai)->Joueur
+  mutating func TestenleverReserve(j: Joueur, y: Yokai)->Joueur
 
-  func estEnReserve(j: Joueur, y : Yokai)->Bool
+  func TestestEnReserve(j: Joueur, y : Yokai)->Bool
 
-  func estEnMain(j: Joueur, y: Yokai)->Bool
+  func TestestEnMain(j: Joueur, y: Yokai)->Bool
 
-  mutating func parachuter(j: Joueur, y: Yokai, p: PositonProtocol)-> Joueur
+  mutating func Testparachuter(j: Joueur, y: Yokai, p: PositonProtocol)-> Joueur
 
-  mutating func manger(j: Joueur, y :Yokai)->Joueur
+  mutating func Testmanger(j: Joueur, y :Yokai)->Joueur
 
-  mutating func ajoutMain(j: Joueur, y : Yokai)->Joueur
+  mutating func TestajoutMain(j: Joueur, y : Yokai)->Joueur
 
-  mutating func enleverMain(j: Joueur, y: Yokai)->Joueur
+  mutating func TestenleverMain(j: Joueur, y: Yokai)->Joueur
 
 //Tests jeu.swift
 
-  init()->Jeu
+  func TestinitJeu()->Jeu
 
-  func getJoueur(jeu: , idjoueur: Int)->Joueur
+  func TestgetJoueur(jeu: , idjoueur: Int)->Joueur
 
-  func getJoueurSuivant(jeu: Jeu, joueur: Joueur)->Joueur
+  func TestgetJoueurSuivant(jeu: Jeu, joueur: Joueur)->Joueur
 
-  func makeItPlateau(jeu: Jeu)->PositionPlateauIterator
+  func TestmakeItPlateau(jeu: Jeu)->PositionPlateauIterator
 
-  init(p : Positon , id : Int)->Yokai
-
-  func getPosition(y: Yokai)->Positon?
-
-  mutating func est_KodamaLocked(y: Yokai)->Bool
-
-  mutating func setSamourai(y: Yokai)->Yokai
-
-  mutating func deplacer(y: Yokai, p: Positon)->Yokai
-
-  mutating func deplacerReserve(y: Yokai)->Yokai
-
-  func peutAller(y: Yokai, coord_x: Int, coord_y: Int)->Bool
-
-  func makeItDeplacement(y: Yokai)->DeplacementIterator
 
 
 //Tests Yokai.swift
 
-  init(p : Positon , id : Int)->Yokai
+  func TestinitYokai(p : Positon , id : Int)->Yokai
 
-  func getPosition(y: Yokai)->Positon?
+  func TestgetPosition(y: Yokai)->Positon?
 
-  mutating func est_KodamaLocked(y: Yokai)->Bool
+  mutating func Testest_KodamaLocked(y: Yokai)->Bool
 
-  mutating func setSamourai(y: Yokai)->Yokai
+  mutating func TestsetSamourai(y: Yokai)->Yokai
 
-  mutating func deplacer(y: Yokai, p: Positon)->Yokai
+  mutating func Testdeplacer(y: Yokai, p: Positon)->Yokai
 
-  mutating func deplacerReserve(y: Yokai)->Yokai
+  mutating func TestdeplacerReserve(y: Yokai)->Yokai
 
-  func peutAller(y: Yokai, coord_x: Int, coord_y: Int)->Bool
+  func TestpeutAller(y: Yokai, coord_x: Int, coord_y: Int)->Bool
 
-  func makeItDeplacement(y: Yokai)->DeplacementIterator
+  func TestmakeItDeplacement(y: Yokai)->DeplacementIterator
 
 //Tests Position.swift
 
-init(coord_x : Int, coord_y : Int)
+func TestinitPosition(coord_x : Int, coord_y : Int)
 
-func get_CoordX(p : Positon)-> Int
+func Testget_CoordX(p : Positon)-> Int
 
-func get_CoordY(p : Positon)-> Int
+func Testget_CoordY(p : Positon)-> Int
 
-func est_Occupe(p : Positon)->Int
+func Testest_Occupe(p : Positon)->Int
 
-mutating func changeX(p : Positon, x : Int)-> Positon
+mutating func TestchangeX(p : Positon, x : Int)-> Positon
 
-mutating func changeY(p : Positon, y : Int)-> Positon
+mutating func TestchangeY(p : Positon, y : Int)-> Positon
 
-mutating func occuper(p : Positon)-> Positon
+mutating func Testoccuper(p : Positon)-> Positon
 
-mutating func liberer(p : Positon)-> Positon
+mutating func Testliberer(p : Positon)-> Positon
 
-mutating func setPosition(p1 : Positon, p2 : Positon)-> Positon
+mutating func TestsetPosition(p1 : Positon, p2 : Positon)-> Positon
