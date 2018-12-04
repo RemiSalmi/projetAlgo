@@ -2,6 +2,13 @@
 
 
   func TestinitJoueur()->Bool
+    res : Bool = true
+     j : Joueur = Joueur(2)
+     if j.id != 2 or j.tailleMain() !=4 ou !j.estEnReserve() {
+         res = false
+       }
+       return res
+     }
 
   func TestmainEstVide()->Bool{
     res : Bool = true
@@ -50,14 +57,17 @@
 
 
   func TestestEnReserve()->Bool{
-
+    res : Bool =true
+    j : Joueur = Joueur(2)
+    p : Position = Position(2,1)
+    y : Yokai = Yokai("Kodoma",p,1)
+    j.ajoutReserve(y)
+    if !j.estEnReserve(y) {
+        res = false
+    }
+    return res
   }
 
-  func TestestEnMain()->Bool
-
- func Testparachuter()-> Bool
-
- func Testmanger()->Bool
 
 func TestajoutMain()->Bool{
   res : Bool = false
@@ -74,23 +84,22 @@ func TestajoutMain()->Bool{
 return res
 }
 
-   func TestenleverMain()->Bool
-
-//Tests jeu.swift
-
-  func TestinitJeu()->Bool
-
-  func TestgetJoueur()->Bool
-
-  func TestgetJoueurSuivant()->Bool
-
-  func TestmakeItPlateau()->Bool
-
+   func TestenleverMain()->Bool{
+     res : Bool = true
+     j : Joueur = Joueur(2)
+     p : Position = Position(2,2)
+     y : Yokai("Kodoma",p,1)
+     j.ajoutMain(y)
+     j.enleverMain(y)
+     if j.estEnMain(y) {
+         res = false
+     }
+     return res
+   }
 
 
 //Tests Yokai.swift
 
-  func TestinitYokai()->Bool
 
   func TestgetPosition()->Bool{
     res : Bool = true
@@ -114,20 +123,9 @@ return res
 
  }
 
-
- func TestsetSamourai()->Bool
-
- func Testdeplacer()->Bool
-
- func TestdeplacerReserve()->Bool
-
-  func TestpeutAller()->Bool
-
-  func TestmakeItDeplacement()->Bool
-
 //Tests Position.swift
 
-func TestinitPosition()
+
 
 func Testget_CoordX()-> Bool{
   p : Position= Position (1,2)
@@ -191,5 +189,3 @@ func Testliberer()-> Bool{
   }
   return res
 }
-
-func TestsetPosition()-> Bool
