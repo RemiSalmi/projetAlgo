@@ -6,17 +6,22 @@ let pile_face = Int.random(in : 1..<3) //Random d'un nombre entre 1 et 2 pour d�
 print("Le joueur",pile_face,"commence la partie.")
 joueur = Jeu.getJoueur(idjoueur: pile_face) //Retourne un entier, 1 oou 2, pour déterminer lequel des deux joueurs va commencer.
 
-while !Jeu.getJoueur(idjoueur: 1).estGagnant() and !Jeu.getJoueur(jeu: Jeu, idjoueur: 2).estGagnant(){
+var autoriseDeplacer : Bool
+var autoriseParachuter : Bool
 
-  var autoriseDeplacer : Bool = false
-  var autoriseParachuter : Bool = false
+while !Jeu.getJoueur(idjoueur: 1).estGagnant() or !Jeu.getJoueur(jeu: Jeu, idjoueur: 2).estGagnant(){
+
+  autoriseDeplacer = false
+  autoriseParachuter = false
 
   if(!joueur.mainEstVide()){
     print("Pour déplacer un yokai taper: 1")
+    autoriseDeplacer = true
   }
 
   if(!joueur.reserveEstVide()){
     print("Pour parachuter un yokai taper: 2")
+    autoriseParachuter = true
   }
 
   //Récupération du choix du joueur
@@ -31,7 +36,7 @@ while !Jeu.getJoueur(idjoueur: 1).estGagnant() and !Jeu.getJoueur(jeu: Jeu, idjo
           IteratorMain = adversaire.makeItMain()
           while let yokai = IteratorMain.next() {
               print("Nom du Yokai:",yokai.nom,"Id du Yokai:",yokai.id)
-              print("Position du Yokai: x=",position.get_CoordX(),"y=",position.get_CoordY(),"\n")
+              print("Position du Yokai: x=",yokai.position.get_CoordX(),"y=",yokai.position.get_CoordY(),"\n")
           }
 
 
@@ -40,7 +45,7 @@ while !Jeu.getJoueur(idjoueur: 1).estGagnant() and !Jeu.getJoueur(jeu: Jeu, idjo
           IteratorMain = joueur.makeItMain()
           while let yokai = IteratorMain.next() {
               print("Nom du Yokai:",yokai.nom,"Id du Yokai:",yokai.id)
-              print("Position du Yokai: x=",position.get_CoordX(),"y=",position.get_CoordY(),"\n")
+              print("Position du Yokai: x=",yokai.position.get_CoordX(),"y=",yokai.position.get_CoordY(),"\n")
           }
 
           //On recupère le yokai choisit par le joueur
@@ -69,7 +74,7 @@ while !Jeu.getJoueur(idjoueur: 1).estGagnant() and !Jeu.getJoueur(jeu: Jeu, idjo
           print("Deplacement disponibles:")
           IteratorDeplacement = yokai.makeItDeplacement()
           while let deplacement = IteratorDeplacement.next(){
-            print("Deplacement:",deplacement.nom)
+            print("Deplacement:",deplacement)
           }
 
           var deplacementAutorise : Bool = false
@@ -85,7 +90,7 @@ while !Jeu.getJoueur(idjoueur: 1).estGagnant() and !Jeu.getJoueur(jeu: Jeu, idjo
             }
             deplacementAutorise = yokai.peutAller(d: deplacement) //On vérifie que le déplacement est autorisée (voir les specs)
           }
-          position = yokai.futurPosition(d: deplacement) //On récupère la future position du Yokai
+          var position : Position = yokai.futurPosition(d: deplacement) //On récupère la future position du Yokai
           yokai.deplacer(p: positon) //On déplace le yokai à sa nouvelle positon
 
 
@@ -110,7 +115,7 @@ while !Jeu.getJoueur(idjoueur: 1).estGagnant() and !Jeu.getJoueur(jeu: Jeu, idjo
                   print("Attention votre choix n'est pas conforme.")
                 }
             }
-            yokai = joueur.getYokaiById(id: idyokai)
+            var yokai : Yokai = joueur.getYokaiById(id: idyokai)
             if yokai != nil{
               yokaiEnReserve = joueur.estEnReserve(y : yokai)//On verifie que le Yokai choisit appartient à la réserve du joueur
               if !yokaiEnReserve{
@@ -163,7 +168,7 @@ while !Jeu.getJoueur(idjoueur: 1).estGagnant() and !Jeu.getJoueur(jeu: Jeu, idjo
               }
             }
 
-            position = Jeu.getPositionJeu(coord_x: x, coord_y: y) //A partir des coordonnées saisies par l'utilisateur, on retourne la position correspondante.
+            var position : Position = Jeu.getPositionJeu(coord_x: x, coord_y: y) //A partir des coordonnées saisies par l'utilisateur, on retourne la position correspondante.
             if position != nil{
               if !est_Occupe(p: positon){ //On vérifie que la case choisie est bien libre pour éviter la triche
                 joueur.parachuter(y: Yokai, p: position)
