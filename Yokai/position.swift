@@ -1,5 +1,8 @@
+import Foundation
+
 //Une position possède deux attributs de coordonnées x,y et un attribut occupé de type bool
 public protocol PositionProtocol{
+associatedtype Position : PositionProtocol
 
 var coord_x : Int { get set }
 var coord_y : Int { get set }
@@ -35,7 +38,7 @@ mutating func changeY(y : Int)-> Self
 
 //occuper : Position -> Position
 //Passe la valeur de occuper de la position passé en paramètre à true
-mutating func occuper()-> Self
+mutating func est_Occupe()-> Self
 
 //liberer : Position -> Position
 //Passe la valeur de occuper de la position passé en paramètre à false

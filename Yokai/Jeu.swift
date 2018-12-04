@@ -1,6 +1,10 @@
+import Foundation
+
 //Un jeu possède un terrain (12 cases) et deux joueurs.
 public protocol JeuProtocol{
   associatedtype PositionPlateauIterator: IteratorProtocol
+  associatedtype Joueur : JoueurProtocol
+  associatedtype Position : PositionProtocol
 
   //Le terrain est un tableau d'exactement 12 positions correspondant aux 12 cases d'un plateau de jeu Yokai.
   var terrain : [Positon] { get set }

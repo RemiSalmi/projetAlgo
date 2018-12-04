@@ -1,3 +1,5 @@
+import Foundation
+
 //Un yokai possède un type, des directions et une position.
 //Il existe 5 types de yokais (Koropokkuru, Kitsune, Tanuki, Kodama, Kodama Locked, Kodoma Samurai)
 //Le Kodama Locked est un Kodama qui ne peut pas se transformer (cela arrive si le joueur parachute son kodama dans la zone du joueur adverse)
@@ -7,6 +9,7 @@
 
 public protocol YokaiProtocol {
   associatedtype DeplacementIterator: IteratorProtocol
+  associatedtype Position : PositionProtocol
 
   var nom : String { get set }//Correspond au nom du Yokai
   var position : Positon? { get set }//Un attribut de type (Position | Vide)
