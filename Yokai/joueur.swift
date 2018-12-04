@@ -17,7 +17,7 @@ protocol JoueurProtocol{
   //estGagnant : joueur -> Bool
   //#Vérfie si un joueur viens de gagner la partie pendant le tour en cours
   //#Pré Le joueur doit avoir été créé
-  //Le joueur est gagner quand son roi atteint la dernière ligne ou quand on mange le roi de l'adversaire (le Koropokkuru)
+  //Le joueur est gagner quand son roi atteint la dernière ligne et reste dessu 1 tour sans se faire manger ou quand on mange le roi de l'adversaire (le Koropokkuru)
   func estGagnant()->Bool
 
   //makeItMain : joueur -> IteratorProtocol
