@@ -26,12 +26,12 @@ func est_Occupe()->Int
 
 //changeX : Position  x Int -> Position
 // Change la valeur de coord_x de la Position passé en paramètre
-//Pré : La valeur du int passé en paramètre doit correspondre a une coord_x valide
+//Pré : La valeur du int passé en paramètre doit correspondre a une coord_x valide  0 <= x <= 2
 mutating func changeX(x : Int)-> Self
 
 //changeY : Position  x Int -> Position
 // Change la valeur de coord_y de la Position passé en paramètre
-//Pré : La valeur du int passé en paramètre doit correspondre a une coord_y valide
+//Pré : La valeur du int passé en paramètre doit correspondre a une coord_y valide 0 <= y <= 3
 mutating func changeY(y : Int)-> Self
 
 //occuper : Position -> Position
@@ -43,7 +43,7 @@ mutating func occuper()-> Self
 mutating func liberer()-> Self
 
 //setPosition : Position x Position -> Position
-//change les valeurs coord_x et coord_y de la premiere position passe en parametre par celles de la seconde
+//change les valeurs coord_x et coord_y de la position par celles de la position passé en parametre
 mutating func setPosition(newPos : Position)-> Self
 
 

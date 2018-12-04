@@ -5,23 +5,23 @@ protocol JoueurProtocol{
   associatedtype reserveIterator : IteratorProtocol
 
   var num : Int
-  //var sensDuJoueur : String
+
 
   //init : Int -> joueur
   //#Création d'un joueur
   //#Pré un joueur commence avec 4 Yokais dans sa main (1 Koropokkuru, 1 Kitsune, 1 Tanuki, 1Kodama) et sa réserve est vide
   //#données NumJoueur est un int qui prend seulement les valeurs 1 ou 2
-  //Le placement des Yokais lors du début de la partie se font conformément au regles du jeu voir les regle de Yokai No Morï
+  //Le placement des Yokais lors du début de la partie se font conformément aux regles du jeu voir les regle de Yokai No Morï
   init(NumJoueur: Int)->Joueur
 
   //estGagnant : joueur -> Bool
   //#Vérfie si un joueur viens de gagner la partie pendant le tour en cours
   //#Pré Le joueur doit avoir été créé
-  //Le joueur est gagner quand le roi du joueur se situe sur la prmeier ligne du joueur adversaire ou quand on mange le roi de l'adversaire (le Koropokkuru)
+  //Le joueur est gagner quand son roi atteint la dernière ligne et reste dessu 1 tour sans se faire manger ou quand on mange le roi de l'adversaire (le Koropokkuru)
   func estGagnant()->Bool
 
-  //getYokais : joueur -> IteratorProtocol
-  //Iterator sur les Yokais sur le plateau du joueur (exemple Kodama1;Tanuki1;...)
+  //makeItMain : joueur -> IteratorProtocol
+  //Iterator sur les Yokais de la main du joueur
   func makeItMain()->mainIterator
 
   //mainEstVide : joueur -> Bool
@@ -29,7 +29,7 @@ protocol JoueurProtocol{
   //Renvoie true si la main est vide, false sinon
   func mainEstVide()->Bool
 
-  //getReserve : joueur -> IteratorProtocol
+  //makeItReserve : joueur -> IteratorProtocol
   //Iterator sur les Yokais de la réserve du joueur
   func makeItReserve()->reserveIterator
 
@@ -39,7 +39,7 @@ protocol JoueurProtocol{
   func reserveEstVide()->Bool
 
   //ajoutReserve : joueur x Yokais -> joueur
-  //ajoute le Yokai passé en paramètre dans la reserve du joueur passé en paramètre le Yokai ne dois pas deja etre dans la reserve 
+  //ajoute le Yokai passé en paramètre dans la reserve du joueur passé en paramètre le Yokai ne dois pas deja etre dans la reserve
   mutating func ajoutReserve(y :Yokai)->Self
 
   //enleverReserve : joueur x Yokai -> Joueur
@@ -56,10 +56,6 @@ protocol JoueurProtocol{
   func estEnMain(y: Yokai)->Bool
 
 
-  //monAdversaire : joueur -> joueur
-  //Renvoie l'adversaire (un joueur) du joueur passe en parametre
-  func monAdversaire()-> joueur
-
 
   //Parachuter : joueur x Yokai x Position-> joueur
   //Prend un Yokai de la résevre du joueur et le met dans sa main avec la position passé en paramètre
@@ -71,7 +67,7 @@ protocol JoueurProtocol{
   mutating func parachuter(y: Yokai, p: Position)-> Self
 
   //manger : joueur x Yokai -> joueur
-  //rajoute au joueur passé en parametre le Yokai passé en paramètre dans sa rserve
+  //rajoute au joueur le Yokai passé en paramètre dans sa reserve
   //Post si le Yokai était samourai il ne l'ai plus
   //Supprime le Yokai de la main de l'autre joueur
   // Pré : Le yokai devait être dans la main du joueur adverse
@@ -89,6 +85,10 @@ protocol JoueurProtocol{
   //tailleMain : Joueur -> Int
   //Renvoie le nombre de Yokai dans la Main du joueur passé en parametre
   func tailleMain()->Int
+
+  //tailleReserve : Joueur -> Int
+  //Renvoie le nombre de Yokai dans la reserve du joueur
+  func tailleReserve()->Int
 
   //getYokaiById : Joueur x Int -> Yokai?
   //Renvoie le Yokai qui à l'id correspondant à l'int passé en parametre si le yokai n'est pas trouvé cela renvoie Vide
