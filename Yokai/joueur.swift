@@ -39,7 +39,7 @@ protocol JoueurProtocol{
   func reserveEstVide()->Bool
 
   //ajoutReserve : joueur x Yokais -> joueur
-  //ajoute le Yokai passé en paramètre dans la reserve du joueur passé en paramètre le Yokai ne dois pas deja etre dans la reserve 
+  //ajoute le Yokai passé en paramètre dans la reserve du joueur passé en paramètre le Yokai ne dois pas deja etre dans la reserve
   mutating func ajoutReserve(y :Yokai)->Self
 
   //enleverReserve : joueur x Yokai -> Joueur
@@ -55,10 +55,6 @@ protocol JoueurProtocol{
   //renvoie true si le yokai passe en parametre est dans la main du Joueur
   func estEnMain(y: Yokai)->Bool
 
-
-  //monAdversaire : joueur -> joueur
-  //Renvoie l'adversaire (un joueur) du joueur passe en parametre
-  func monAdversaire()-> joueur
 
 
   //Parachuter : joueur x Yokai x Position-> joueur
