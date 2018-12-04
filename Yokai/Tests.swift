@@ -173,7 +173,7 @@ func Testoccuper()-> Bool{
   res : Bool = true
   p : Position = Position(1,2)
   p.occuper()
-  if p.est_Occupe == false {
+  if p.est_Occupe() == false {
       res = false
   }
   return res
@@ -184,7 +184,7 @@ func Testliberer()-> Bool{
   p : Position = Position(1,2)
   p.occuper()
   p.liberer()
-  if p.est_Occupe == true {
+  if p.est_Occupe() == true {
       res = false
   }
   return res
