@@ -8,14 +8,14 @@
 protocol YokaiProtocol {
   associatedtype DeplacementIterator: IteratorProtocol
 
-  var nom //Correspond au nom du Yokai
-  var position : Positon? //Un attribut de type (Position | Vide)
-  var id : Int //Chaque Yokai à un id unique
+  var nom : String { get set }//Correspond au nom du Yokai
+  var position : Positon? { get set }//Un attribut de type (Position | Vide)
+  var id : Int { get set }//Chaque Yokai à un id unique
 
   //init : String x Position x Int -> Yokai
   //Créer un Yokai
   //Pré : La position doit être une position valide et chaque Yokai a un id unique
-  init(nom : String, p : Positon , id : Int)->Yokai
+  init(nom : String, p : Positon , id : Int)
 
 
   //getPosition: Yokai -> (Position | Vide)
@@ -66,7 +66,7 @@ protocol YokaiProtocol {
   func peutAller(deplacement: String)->Bool
 
   //makeItDeplacement: Yokai -> IteratorProtocol
-  //Iterator sur les déplacement du Yokai passé en paramètre
+  //Crée un Iterator sur les déplacement du Yokai passé en paramètre
   func makeItDeplacement()->DeplacementIterator
 
   //futurPosition : Yokai x String -> Position

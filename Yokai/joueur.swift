@@ -4,7 +4,7 @@ protocol JoueurProtocol{
   associatedtype mainIterator : IteratorProtocol
   associatedtype reserveIterator : IteratorProtocol
 
-  var num : Int
+  var num : Int { get set }
 
 
   //init : Int -> joueur
@@ -12,7 +12,7 @@ protocol JoueurProtocol{
   //#Pré un joueur commence avec 4 Yokais dans sa main (1 Koropokkuru, 1 Kitsune, 1 Tanuki, 1Kodama) et sa réserve est vide
   //#données NumJoueur est un int qui prend seulement les valeurs 1 ou 2
   //Le placement des Yokais lors du début de la partie se font conformément aux regles du jeu voir les regle de Yokai No Morï
-  init(NumJoueur: Int)->Joueur
+  init(NumJoueur: Int)
 
   //estGagnant : joueur -> Bool
   //#Vérfie si un joueur viens de gagner la partie pendant le tour en cours
@@ -21,7 +21,7 @@ protocol JoueurProtocol{
   func estGagnant()->Bool
 
   //makeItMain : joueur -> IteratorProtocol
-  //Iterator sur les Yokais de la main du joueur
+  //Crée un Iterator sur les Yokais de la main du joueur
   func makeItMain()->mainIterator
 
   //mainEstVide : joueur -> Bool
@@ -30,7 +30,7 @@ protocol JoueurProtocol{
   func mainEstVide()->Bool
 
   //makeItReserve : joueur -> IteratorProtocol
-  //Iterator sur les Yokais de la réserve du joueur
+  //Crée un Iterator sur les Yokais de la réserve du joueur
   func makeItReserve()->reserveIterator
 
   //reserveEstVide : joueur -> Bool

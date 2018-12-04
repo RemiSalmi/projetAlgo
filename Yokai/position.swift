@@ -1,10 +1,9 @@
 //Une position possède deux attributs de coordonnées x,y et un attribut occupé de type bool
 protocol PositionProtocol{
 
-var coord_x : Int
-var coord_y : Int
-//Attribut booleen, true si la position est occupé par un Yokai, false sinon
-var occuper : Bool
+var coord_x : Int { get set }
+var coord_y : Int { get set }
+var occuper : Bool { get set } //Attribut booleen, true si la position est occupé par un Yokai, false sinon
 
 //init: Int x Int -> Position
 //Creation d'une position à partir deux entiers
