@@ -8,9 +8,10 @@
 protocol YokaiProtocol {
   associatedtype DeplacementIterator: IteratorProtocol
 
-  var nom
-  var position : Positon?
-  var id : Int
+  var nom //Correspond au nom du Yokai
+  var position : Positon? //Un attribut de type (Position | Vide)
+  var id : Int //Chaque Yokai à un id unique
+
   //init : String x Position x Int -> Yokai
   //Créer un Yokai
   //Pré : La position doit être une position valide et chaque Yokai a un id unique
@@ -49,6 +50,7 @@ protocol YokaiProtocol {
   //deplacer : Yokai x Position -> Yokai
   //Change la position du Yokai par la position passé en paramètre
   //Pré : La position passé en paramètre est une position valide (le yokai peut se deplacer sur cette position)
+  //      La position passé en paramètre est une des positions de l'attribut terrain du type Jeu
   //Post: Libère la position précedement occupé.La position passé en paramètre devient occupé
   mutating func deplacer(p: Positon)->Self
 
@@ -70,5 +72,6 @@ protocol YokaiProtocol {
   //futurPosition : Yokai x String -> Position
   //Pre: peutAller(d: deplacement) -> retourne true
   //Post: Retourne la future position du yokai correspondant au déplacement souhaitée
+  //Post: La position retourné est une des positions de l'attribut terrain du type Jeu
   func futurPosition(deplacement: String)->Position
 }
