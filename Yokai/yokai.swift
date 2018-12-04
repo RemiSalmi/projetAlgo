@@ -11,7 +11,7 @@ protocol YokaiProtocol {
   var nom
   var position : Positon?
   var id : Int
-  //init : String x Position x Int x Bool-> Yokai
+  //init : String x Position x Int -> Yokai
   //Créer un Yokai
   //Pré : La position doit être une position valide et chaque Yokai a un id unique
   init(nom : String, p : Positon , id : Int)->Yokai
@@ -19,6 +19,8 @@ protocol YokaiProtocol {
 
   //getPosition: Yokai -> (Position | Vide)
   //Renvoie la position du Yokai passé en paramètre
+  //Pré: Le yokai peut-être dans la réserve ou sur le plateau
+  //Post: Renvoie Vide si le yokai est en réserve. Renvoie une position si le yokai est sur le plateau.
   func getPosition()->Positon?
 
   //est_KodamaLocked : Yokai -> Bool
@@ -26,32 +28,47 @@ protocol YokaiProtocol {
   //Renvoie true si le yokai est un kodama locked
   func est_KodamaLocked()->Bool
 
+  //setKodamaLocked : Yokai -> Yokai
+  //Pre: Le yokai passé en paramètre est un Kodama (qui a été parachuter dans la zone de l'adversaire)
+  //Post: Modifie le yokai courant et renvoie un KodamaLocked qui ne peut pas se transformer en Kodama Samourai
+  //La fonction modifie le nom et les déplacements du yokai, pour qu'il corresponde à un KodamaLocked
+  mutating func setKodamaLocked()->Self
+
   //setSamourai : Yokai -> Yokai
   //Pre : Le yokai passé en paramètre est un Kodama
-  //Post : Le yokai retourné est un Kodama Samourai
+  //Post : Modifie le yokai courant et renvoie un Kodama Samourai
+  //La fonction modifie le nom et les déplacements du yokai, pour qu'il corresponde à un Kodama Samourai
   mutating func setSamourai()->Self
 
+  //setKodama : Yokai -> Yokai
+  //Pre: Le yokai passé en paramètre est soit un Kodama Samourai, soit un KodamaLocked
+  //Post: Modifie le yokai courant et renvoie un Kodama
+  //La fonction modifie le nom et les déplacements du yokai, pour qu'il corresponde à un Kodama
+  mutating func setKodama()->Self
+
   //deplacer : Yokai x Position -> Yokai
-  //Change la position du Yokai passé en parametre par la position passé en paramètre
+  //Change la position du Yokai par la position passé en paramètre
   //Pré : La position passé en paramètre est une position valide (le yokai peut se deplacer sur cette position)
-  //Post: libere la position precedement occupé et occupe la nouvelle
+  //Post: Libère la position précedement occupé.La position passé en paramètre devient occupé
   mutating func deplacer(p: Positon)->Self
 
   //deplacerReserve : Yokai -> Yokai
-  //Deplace le yokai du joueur dans la réserve
+  //Deplace le yokai qui était dans la main du joueur dans la réserve
   //Post : L'attribut positon du yokai == nil
   mutating func deplacerReserve()->Self
 
-  //peutAller : Yokai x Int x Int -> bool
-  //Renvoie true si le Yokai peut aller sur la position passé en parametre (int x, int y) en fonction de ses déplacement
-  //Pré :Vérifie que le déplacement laisse le Yokai à l'intérieur du plateau
-  func peutAller(coord_x: Int, coord_y: Int)->Bool
+  //peutAller : Yokai x String -> Bool
+  //Vérifie que le déplacement passé en paramètre appartient bien aux déplacements du Yokai.
+  //Verifie que le déplcament laisse le Yokai à l'intérieur du plateau
+  //Post: Renvoie true si les deux conditions précédentes sont respectée
+  func peutAller(deplacement: String)->Bool
 
   //makeItDeplacement: Yokai -> IteratorProtocol
   //Iterator sur les déplacement du Yokai passé en paramètre
   func makeItDeplacement()->DeplacementIterator
 
   //futurPosition : Yokai x String -> Position
-  //Pré le string correspond au deplacmeent que le yokai va devoir efectuer il va devoir donc faire parti des deplacement possible par le Yokai (exemple : droite gauche ...)
-  func futurPosition(deplacement : String)->Position
+  //Pre: peutAller(d: deplacement) -> retourne true
+  //Post: Retourne la future position du yokai correspondant au déplacement souhaitée
+  func futurPosition(deplacement: String)->Position
 }
