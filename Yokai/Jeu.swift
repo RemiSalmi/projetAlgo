@@ -1,5 +1,5 @@
 //Un jeu possède un terrain (12 cases) et deux joueurs.
-protocol JeuProtocol{
+public protocol JeuProtocol{
   associatedtype PositionPlateauIterator: IteratorProtocol
 
   //Le terrain est un tableau d'exactement 12 positions correspondant aux 12 cases d'un plateau de jeu Yokai.
