@@ -38,7 +38,7 @@ mutating func changeY(y : Int)-> Self
 
 //occuper : Position -> Position
 //Passe la valeur de occuper de la position passé en paramètre à true
-mutating func est_Occupe()-> Self
+mutating func occuper()-> Self
 
 //liberer : Position -> Position
 //Passe la valeur de occuper de la position passé en paramètre à false
