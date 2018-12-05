@@ -1,6 +1,6 @@
 //Un joueur contient un numéro, des Yokais dans sa main  et une réserve de Yokais vide
 
-public protocol JoueurProtocol{
+public protocol JoueurProtocol : Sequence{
   associatedtype mainIterator : IteratorProtocol
   associatedtype reserveIterator : IteratorProtocol
   associatedtype Yokai : YokaiProtocol

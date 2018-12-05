@@ -5,7 +5,7 @@
 // 1 :Haut, 2:Haut-Droite, 3:Droite, 4:Bas-Droite, 5:Bas, 6:Bas-Gauche, 7: Gauche, 8:Haut-Gauche
 //Un yokai est en réserve lorsqu’il n’a pas de position , c’est à dire quand position == nil
 
-public protocol YokaiProtocol {
+public protocol YokaiProtocol : Sequence{
   associatedtype DeplacementIterator: IteratorProtocol
   associatedtype Position : PositionProtocol
 

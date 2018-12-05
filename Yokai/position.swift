@@ -1,5 +1,5 @@
 //Une position possède deux attributs de coordonnées x,y et un attribut occupé de type bool
-public protocol PositionProtocol{
+public protocol PositionProtocol : Sequence{
 associatedtype Position : PositionProtocol
 
 var coord_x : Int { get set }

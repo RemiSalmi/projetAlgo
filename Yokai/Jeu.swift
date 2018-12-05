@@ -1,5 +1,5 @@
 //Un jeu possède un terrain (12 cases) et deux joueurs.
-public protocol JeuProtocol{
+public protocol JeuProtocol : Sequence{
   associatedtype PositionPlateauIterator: IteratorProtocol
   associatedtype Joueur : JoueurProtocol
   associatedtype Position : PositionProtocol

@@ -33,7 +33,7 @@ while !Jeu.getJoueur(idjoueur: 1).estGagnant() or !Jeu.getJoueur(jeu: Jeu, idjou
           //Affichage des Yokais de l'adversaire
           adversaire = Jeu.getJoueurSuivant(joueur: joueur)
           print("Les Yokais de mon adversaire :")
-          IteratorMain = adversaire.makeItMain()
+          var IteratorMain = adversaire.makeItMain()
           while let yokai = IteratorMain.next() {
               print("Nom du Yokai:",yokai.nom,"Id du Yokai:",yokai.id)
               print("Position du Yokai: x=",yokai.position.get_CoordX(),"y=",yokai.position.get_CoordY(),"\n")
@@ -42,7 +42,7 @@ while !Jeu.getJoueur(idjoueur: 1).estGagnant() or !Jeu.getJoueur(jeu: Jeu, idjou
 
           //Affichage de mes Yokais disponibles
           print("Mes Yokais :")
-          IteratorMain = joueur.makeItMain()
+          var IteratorMain = joueur.makeItMain()
           while let yokai = IteratorMain.next() {
               print("Nom du Yokai:",yokai.nom,"Id du Yokai:",yokai.id)
               print("Position du Yokai: x=",yokai.position.get_CoordX(),"y=",yokai.position.get_CoordY(),"\n")
@@ -72,7 +72,7 @@ while !Jeu.getJoueur(idjoueur: 1).estGagnant() or !Jeu.getJoueur(jeu: Jeu, idjou
 
           //On affiche les déplacement disponibles pour le Yokai.
           print("Deplacement disponibles:")
-          IteratorDeplacement = yokai.makeItDeplacement()
+          var IteratorDeplacement = yokai.makeItDeplacement()
           while let deplacement = IteratorDeplacement.next(){
             print("Deplacement:",deplacement)
           }
@@ -98,7 +98,7 @@ while !Jeu.getJoueur(idjoueur: 1).estGagnant() or !Jeu.getJoueur(jeu: Jeu, idjou
         else if num==2 and autoriseParachuter{ //Si le joueur choisit de parachuter un Yokai
 
           //On affiche les Yokais disponibles dans la réserve du joueur
-          IteratorReserve = joueur.makeItReserve()
+          var IteratorReserve = joueur.makeItReserve()
           while let reserveYokai =  IteratorReserve.next() {
             print("Nom du Yokai:",reserveYokai.nom,"Id du Yokai:",reserveYokai.id)
           }
@@ -125,7 +125,7 @@ while !Jeu.getJoueur(idjoueur: 1).estGagnant() or !Jeu.getJoueur(jeu: Jeu, idjou
           }
 
           //On affiche les cases libre du jeu
-          IteratorPlateau = Jeu.makeItPlateau()
+          var IteratorPlateau = Jeu.makeItPlateau()
           while let position = IteratorPlateau.next(){
             if !position.est_Occupe(){
               print("Position: x=",position.get_CoordX(),"y=",position.get_CoordY())
@@ -188,7 +188,7 @@ while !Jeu.getJoueur(idjoueur: 1).estGagnant() or !Jeu.getJoueur(jeu: Jeu, idjou
     }
   }
 
-  joueur = Jeu.getJoueurSuivant(joueur:joueur)
+  joueur = Jeu.getJoueurSuivant(joueur: joueur)
 }
 
 if Jeu.getJoueur(idjoueur: 1).estGagnant(){
