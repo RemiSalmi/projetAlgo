@@ -1,12 +1,10 @@
-import Foundation
-
 //Une position possède deux attributs de coordonnées x,y et un attribut occupé de type bool
 public protocol PositionProtocol{
 associatedtype Position : PositionProtocol
 
-var coord_x : Int { get set }
-var coord_y : Int { get set }
-var occuper : Bool { get set } //Attribut booleen, true si la position est occupé par un Yokai, false sinon
+var coord_x : Int
+var coord_y : Int
+var occuper : Bool //Attribut booleen, true si la position est occupé par un Yokai, false sinon
 
 //init: Int x Int -> Position
 //Creation d'une position à partir deux entiers

@@ -1,5 +1,3 @@
-import Foundation
-
 //Un joueur contient un numéro, des Yokais dans sa main  et une réserve de Yokais vide
 
 public protocol JoueurProtocol{
@@ -8,7 +6,7 @@ public protocol JoueurProtocol{
   associatedtype Yokai : YokaiProtocol
   associatedtype Position : PositionProtocol
 
-  var num : Int { get set }
+  var num : Int 
 
 
   //init : Int -> joueur
