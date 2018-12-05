@@ -6,7 +6,7 @@ public protocol JoueurProtocol{
   associatedtype Yokai : YokaiProtocol
   associatedtype Position : PositionProtocol
 
-  var num : Int 
+  var num : Int { get set }
 
 
   //init : Int -> joueur

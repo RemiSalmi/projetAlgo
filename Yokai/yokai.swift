@@ -9,21 +9,21 @@ public protocol YokaiProtocol {
   associatedtype DeplacementIterator: IteratorProtocol
   associatedtype Position : PositionProtocol
 
-  var nom : String //Correspond au nom du Yokai
-  var position : Positon? //Un attribut de type (Position | Vide)
-  var id : Int //Chaque Yokai à un id unique
+  var nom : String { get set }//Correspond au nom du Yokai
+  var position : Position? { get set }//Un attribut de type (Position | Vide)
+  var id : Int { get set }//Chaque Yokai à un id unique
 
   //init : String x Position x Int -> Yokai
   //Créer un Yokai
   //Pré : La position doit être une position valide et chaque Yokai a un id unique
-  init(nom : String, p : Positon , id : Int)
+  init(nom : String, p : Position , id : Int)
 
 
   //getPosition: Yokai -> (Position | Vide)
   //Renvoie la position du Yokai passé en paramètre
   //Pré: Le yokai peut-être dans la réserve ou sur le plateau
   //Post: Renvoie Vide si le yokai est en réserve. Renvoie une position si le yokai est sur le plateau.
-  func getPosition()->Positon?
+  func getPosition()->Position?
 
   //est_KodamaLocked : Yokai -> Bool
   //Renvoie false si le yokai n'est pas un kodama Locked
@@ -53,7 +53,7 @@ public protocol YokaiProtocol {
   //Pré : La position passé en paramètre est une position valide (le yokai peut se deplacer sur cette position)
   //      La position passé en paramètre est une des positions de l'attribut terrain du type Jeu
   //Post: Libère la position précedement occupé.La position passé en paramètre devient occupé
-  mutating func deplacer(p: Positon)->Self
+  mutating func deplacer(p: Position)->Self
 
   //deplacerReserve : Yokai -> Yokai
   //Deplace le yokai qui était dans la main du joueur dans la réserve

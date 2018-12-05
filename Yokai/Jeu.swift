@@ -5,9 +5,9 @@ public protocol JeuProtocol{
   associatedtype Position : PositionProtocol
 
   //Le terrain est un tableau d'exactement 12 positions correspondant aux 12 cases d'un plateau de jeu Yokai.
-  var terrain : [Positon]
-  var joueur1 : Joueur
-  var joueur2 : Joueur 
+  var terrain : [Position] { get set }
+  var joueur1 : Joueur { get set }
+  var joueur2 : Joueur { get set }
 
   //init : -> Jeu
   //Post :

@@ -172,7 +172,7 @@ func TestchangeY()-> Bool{
 func Testoccuper()-> Bool{
   res : Bool = true
   p : Position = Position(1,2)
-  p.occuper()
+  p.occupe()
   if p.est_Occupe() == false {
       res = false
   }
@@ -182,7 +182,7 @@ func Testoccuper()-> Bool{
 func Testliberer()-> Bool{
   res : Bool = true
   p : Position = Position(1,2)
-  p.occuper()
+  p.occupe()
   p.liberer()
   if p.est_Occupe() == true {
       res = false
