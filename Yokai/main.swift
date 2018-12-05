@@ -1,6 +1,6 @@
 
 //Main du jeu Yokai
-Jeu = Jeu()
+var Jeu = Jeu()
 let pile_face = Int.random(in : 1..<3) //Random d'un nombre entre 1 et 2 pour définir lequel des deux joueurs doit commencer.
 
 print("Le joueur",pile_face,"commence la partie.")
