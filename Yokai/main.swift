@@ -1,18 +1,18 @@
 
 //Main du jeu Yokai
-var Jeu = Jeu()
+var Jeu : JeuProtocol = JeuProtocol()
 let pile_face = Int.random(in : 1..<3) //Random d'un nombre entre 1 et 2 pour définir lequel des deux joueurs doit commencer.
 
 print("Le joueur",pile_face,"commence la partie.")
-joueur = Jeu.getJoueur(idjoueur: pile_face) //Retourne un entier, 1 oou 2, pour déterminer lequel des deux joueurs va commencer.
+var joueur : JoueurProtocol = Jeu.getJoueur(idjoueur: pile_face) //Retourne un entier, 1 oou 2, pour déterminer lequel des deux joueurs va commencer.
 
 var autoriseDeplacer : Bool
 var autoriseParachuter : Bool
 
 while !Jeu.getJoueur(idjoueur: 1).estGagnant() or !Jeu.getJoueur(jeu: Jeu, idjoueur: 2).estGagnant(){
 
-  autoriseDeplacer = false
-  autoriseParachuter = false
+  var autoriseDeplacer : Bool = false
+  var autoriseParachuter : Bool = false
 
   if(!joueur.mainEstVide()){
     print("Pour déplacer un yokai taper: 1")
@@ -31,7 +31,7 @@ while !Jeu.getJoueur(idjoueur: 1).estGagnant() or !Jeu.getJoueur(jeu: Jeu, idjou
         if num==1 and autoriseDeplacer{ //Si le joueur choisit de déplacer un Yokai
 
           //Affichage des Yokais de l'adversaire
-          adversaire = Jeu.getJoueurSuivant(joueur: joueur)
+          var adversaire : JoueurProtocol = Jeu.getJoueurSuivant(joueur: joueur)
           print("Les Yokais de mon adversaire :")
           var IteratorMain = adversaire.makeItMain()
           while let yokai = IteratorMain.next() {
@@ -49,7 +49,7 @@ while !Jeu.getJoueur(idjoueur: 1).estGagnant() or !Jeu.getJoueur(jeu: Jeu, idjou
           }
 
           //On recupère le yokai choisit par le joueur
-          var yokai : Yokai? = nil
+          var yokai : YokaiProtocol? = nil
           var yokaiEnMain : Bool = false
           while yokai == nil or !yokaiEnMain{
             print("Entrer l'id du Yokai de votre choix:")
@@ -85,12 +85,12 @@ while !Jeu.getJoueur(idjoueur: 1).estGagnant() or !Jeu.getJoueur(jeu: Jeu, idjou
                     print("Votre choix :",deplacement)
                 }
                 else{
-                  print("Attention votre choix n'est pas une chaîne de caractère.")
+                  print("Attention votre choix n'est pas une chaîne de caractères.")
                 }
             }
             deplacementAutorise = yokai.peutAller(d: deplacement) //On vérifie que le déplacement est autorisée (voir les specs)
           }
-          var position : Position = yokai.futurPosition(d: deplacement) //On récupère la future position du Yokai
+          var position : PositionProtocol = yokai.futurPosition(d: deplacement) //On récupère la future position du Yokai
           yokai.deplacer(p: positon) //On déplace le yokai à sa nouvelle positon
 
 
@@ -103,7 +103,7 @@ while !Jeu.getJoueur(idjoueur: 1).estGagnant() or !Jeu.getJoueur(jeu: Jeu, idjou
             print("Nom du Yokai:",reserveYokai.nom,"Id du Yokai:",reserveYokai.id)
           }
 
-          var yokai : Yokai? = nil
+          var yokai : YokaiProtocol? = nil
           var yokaiEnReserve : Bool = false
           while yokai == nil or !yokaiEnReserve{
             print("Entrer l'id du Yokai de votre choix:")//On recupère le choix du joueur
@@ -115,7 +115,7 @@ while !Jeu.getJoueur(idjoueur: 1).estGagnant() or !Jeu.getJoueur(jeu: Jeu, idjou
                   print("Attention votre choix n'est pas conforme.")
                 }
             }
-            var yokai : Yokai = joueur.getYokaiById(id: idyokai)
+            yokai = joueur.getYokaiById(id: idyokai)
             if yokai != nil{
               yokaiEnReserve = joueur.estEnReserve(y : yokai)//On verifie que le Yokai choisit appartient à la réserve du joueur
               if !yokaiEnReserve{
@@ -133,7 +133,7 @@ while !Jeu.getJoueur(idjoueur: 1).estGagnant() or !Jeu.getJoueur(jeu: Jeu, idjou
           }
 
           //On récupère la case souhaitée par le joueur
-          var position : Positon? = nil
+          var position : PositionProtocol? = nil
           var positionLibre : Bool = false
 
           while position == nil or !positionLibre{ //Tant que qu'aucune positon n'a été trouvé ou que la position est occupé, on demande à l'utilisateur de choisir une position conforme.
@@ -168,10 +168,10 @@ while !Jeu.getJoueur(idjoueur: 1).estGagnant() or !Jeu.getJoueur(jeu: Jeu, idjou
               }
             }
 
-            var position : Position = Jeu.getPositionJeu(coord_x: x, coord_y: y) //A partir des coordonnées saisies par l'utilisateur, on retourne la position correspondante.
+            var position : PositionProtocol = Jeu.getPositionJeu(coord_x: x, coord_y: y) //A partir des coordonnées saisies par l'utilisateur, on retourne la position correspondante.
             if position != nil{
               if !est_Occupe(p: positon){ //On vérifie que la case choisie est bien libre pour éviter la triche
-                joueur.parachuter(y: Yokai, p: position)
+                joueur.parachuter(y: yokai, p: position)
                 positionLibre = true //La position choisie est libre, on peut sortir du while
               }
               else{
