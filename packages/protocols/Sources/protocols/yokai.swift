@@ -73,7 +73,7 @@ public protocol YokaiProtocol : Sequence{
 
   //makeItDeplacement: Yokai -> IteratorProtocol
   //Crée un Iterator sur les déplacement du Yokai passé en paramètre
-  func makeItDeplacement()->DeplacementIterator
+  func makeIterator()->DeplacementIterator
 
   //futurPosition : Yokai x Int -> Position
   //Pre: peutAller(d: deplacement) -> retourne true

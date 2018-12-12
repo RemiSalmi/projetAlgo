@@ -24,7 +24,7 @@ public protocol JoueurProtocol : Sequence{
 
   //makeItMain : joueur -> IteratorProtocol
   //Crée un Iterator sur les Yokais de la main du joueur
-  func makeItMain()->mainIterator
+  func makeIterator()->mainIterator
 
   //mainEstVide : joueur -> Bool
   //Verifie si la main du joueur est vide ou pas

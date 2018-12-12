@@ -33,7 +33,7 @@ while !Jeu.getJoueur(idjoueur: 1).estGagnant() && !Jeu.getJoueur(jeu: Jeu, idjou
           //Affichage des Yokais de l'adversaire
           var adversaire : JoueurProtocol = Jeu.getJoueurSuivant(joueur: joueur)
           print("Les Yokais de mon adversaire :")
-          var IteratorMain = adversaire.makeItMain()
+          var IteratorMain = adversaire.makeIterator()
           while let yokai = IteratorMain.next() {
               print("Nom du Yokai:",yokai.nom,"Id du Yokai:",yokai.id)
               print("Position du Yokai: x=",yokai.position.get_CoordX(),"y=",yokai.position.get_CoordY(),"\n")
@@ -42,7 +42,7 @@ while !Jeu.getJoueur(idjoueur: 1).estGagnant() && !Jeu.getJoueur(jeu: Jeu, idjou
 
           //Affichage de mes Yokais disponibles
           print("Mes Yokais :")
-          var IteratorMain = joueur.makeItMain()
+          var IteratorMain = joueur.makeIterator()
           while let yokai = IteratorMain.next() {
               print("Nom du Yokai:",yokai.nom,"Id du Yokai:",yokai.id)
               print("Position du Yokai: x=",yokai.position.get_CoordX(),"y=",yokai.position.get_CoordY(),"\n")
@@ -72,7 +72,7 @@ while !Jeu.getJoueur(idjoueur: 1).estGagnant() && !Jeu.getJoueur(jeu: Jeu, idjou
 
           //On affiche les déplacement disponibles pour le Yokai.
           print("Deplacement disponibles:")
-          var IteratorDeplacement = yokai.makeItDeplacement()
+          var IteratorDeplacement = yokai.makeIterator()
           while let deplacement = IteratorDeplacement.next(){
             print("Deplacement:",deplacement)
           }
@@ -125,7 +125,7 @@ while !Jeu.getJoueur(idjoueur: 1).estGagnant() && !Jeu.getJoueur(jeu: Jeu, idjou
           }
 
           //On affiche les cases libre du jeu
-          var IteratorPlateau = Jeu.makeItPlateau()
+          var IteratorPlateau = Jeu.makeIterator()
           while let position = IteratorPlateau.next(){
             if !position.est_Occupe(){
               print("Position: x=",position.get_CoordX(),"y=",position.get_CoordY())

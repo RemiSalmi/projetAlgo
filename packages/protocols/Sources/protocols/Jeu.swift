@@ -30,7 +30,7 @@ public protocol JeuProtocol : Sequence{
   func getJoueurSuivant(joueur: Joueur)->Joueur
 
   //Crée un Iterator sur les positions de l'attribut plateau
-  func makeItPlateau()->PositionPlateauIterator
+  func makeIterator()->PositionPlateauIterator
 
   //getPositionJeu : Jeu x Int x Int -> Position?
   //Renvoie la position qui corresopnd au x et y passé en parametre renvoie Vide si le jeu ne comporte pas cette case
