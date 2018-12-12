@@ -9,7 +9,7 @@ var joueur : JoueurProtocol = Jeu.getJoueur(idjoueur: pile_face) //Retourne un e
 var autoriseDeplacer : Bool
 var autoriseParachuter : Bool
 
-while !Jeu.getJoueur(idjoueur: 1).estGagnant() or !Jeu.getJoueur(jeu: Jeu, idjoueur: 2).estGagnant(){
+while !Jeu.getJoueur(idjoueur: 1).estGagnant() && !Jeu.getJoueur(jeu: Jeu, idjoueur: 2).estGagnant(){
 
   var autoriseDeplacer : Bool = false
   var autoriseParachuter : Bool = false
@@ -28,7 +28,7 @@ while !Jeu.getJoueur(idjoueur: 1).estGagnant() or !Jeu.getJoueur(jeu: Jeu, idjou
   print("Faites votre choix:")
   if let read = readLine() {
     if let num = Int(read) {
-        if num==1 and autoriseDeplacer{ //Si le joueur choisit de déplacer un Yokai
+        if num==1 && autoriseDeplacer{ //Si le joueur choisit de déplacer un Yokai
 
           //Affichage des Yokais de l'adversaire
           var adversaire : JoueurProtocol = Jeu.getJoueurSuivant(joueur: joueur)
@@ -51,7 +51,7 @@ while !Jeu.getJoueur(idjoueur: 1).estGagnant() or !Jeu.getJoueur(jeu: Jeu, idjou
           //On recupère le yokai choisit par le joueur
           var yokai : YokaiProtocol? = nil
           var yokaiEnMain : Bool = false
-          while yokai == nil or !yokaiEnMain{
+          while yokai == nil || !yokaiEnMain{
             print("Entrer l'id du Yokai de votre choix:")
             if let read = readLine() {
                 if let idyokai = Int(read) {
@@ -81,11 +81,11 @@ while !Jeu.getJoueur(idjoueur: 1).estGagnant() or !Jeu.getJoueur(jeu: Jeu, idjou
           while !deplacementAutorise{ //On verifie que l'action choisit correspond bien aux actions disponibles du Yokai en question
             print("Entrer votre choix:")//On recupère le choix du joueur
             if let read = readLine() {
-                if let deplacement = String(read) {
+                if let deplacement = Int(read) {
                     print("Votre choix :",deplacement)
                 }
                 else{
-                  print("Attention votre choix n'est pas une chaîne de caractères.")
+                  print("Attention votre choix n'est pas un entier.")
                 }
             }
             deplacementAutorise = yokai.peutAller(d: deplacement) //On vérifie que le déplacement est autorisée (voir les specs)
@@ -95,7 +95,7 @@ while !Jeu.getJoueur(idjoueur: 1).estGagnant() or !Jeu.getJoueur(jeu: Jeu, idjou
 
 
         }
-        else if num==2 and autoriseParachuter{ //Si le joueur choisit de parachuter un Yokai
+        else if num==2 && autoriseParachuter{ //Si le joueur choisit de parachuter un Yokai
 
           //On affiche les Yokais disponibles dans la réserve du joueur
           var IteratorReserve = joueur.makeItReserve()
@@ -105,7 +105,7 @@ while !Jeu.getJoueur(idjoueur: 1).estGagnant() or !Jeu.getJoueur(jeu: Jeu, idjou
 
           var yokai : YokaiProtocol? = nil
           var yokaiEnReserve : Bool = false
-          while yokai == nil or !yokaiEnReserve{
+          while yokai == nil || !yokaiEnReserve{
             print("Entrer l'id du Yokai de votre choix:")//On recupère le choix du joueur
             if let read = readLine() {
                 if let idyokai = Int(read) {
@@ -136,7 +136,7 @@ while !Jeu.getJoueur(idjoueur: 1).estGagnant() or !Jeu.getJoueur(jeu: Jeu, idjou
           var position : PositionProtocol? = nil
           var positionLibre : Bool = false
 
-          while position == nil or !positionLibre{ //Tant que qu'aucune positon n'a été trouvé ou que la position est occupé, on demande à l'utilisateur de choisir une position conforme.
+          while position == nil || !positionLibre{ //Tant que qu'aucune positon n'a été trouvé ou que la position est occupé, on demande à l'utilisateur de choisir une position conforme.
 
             //On recupère la coordonnée x de la case vide souhaitée, on vérifie que le readLine est conforme.
             var coordXConforme : Bool = false
