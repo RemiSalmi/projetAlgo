@@ -34,18 +34,21 @@ public protocol YokaiProtocol : Sequence{
   //Pre: Le yokai passé en paramètre est un Kodama (qui a été parachuter dans la zone de l'adversaire)
   //Post: Modifie le yokai courant et renvoie un KodamaLocked qui ne peut pas se transformer en Kodama Samourai
   //La fonction modifie le nom et les déplacements du yokai, pour qu'il corresponde à un KodamaLocked
+  @discardableResult
   mutating func setKodamaLocked()->Self
 
   //setSamourai : Yokai -> Yokai
   //Pre : Le yokai passé en paramètre est un Kodama
   //Post : Modifie le yokai courant et renvoie un Kodama Samourai
   //La fonction modifie le nom et les déplacements du yokai, pour qu'il corresponde à un Kodama Samourai
+  @discardableResult
   mutating func setSamourai()->Self
 
   //setKodama : Yokai -> Yokai
   //Pre: Le yokai passé en paramètre est soit un Kodama Samourai, soit un KodamaLocked
   //Post: Modifie le yokai courant et renvoie un Kodama
   //La fonction modifie le nom et les déplacements du yokai, pour qu'il corresponde à un Kodama
+  @discardableResult
   mutating func setKodama()->Self
 
   //deplacer : Yokai x Position -> Yokai
@@ -53,11 +56,13 @@ public protocol YokaiProtocol : Sequence{
   //Pré : La position passé en paramètre est une position valide (le yokai peut se deplacer sur cette position)
   //      La position passé en paramètre est une des positions de l'attribut terrain du type Jeu
   //Post: Libère la position précedement occupé.La position passé en paramètre devient occupé
+  @discardableResult
   mutating func deplacer(p: Position)->Self
 
   //deplacerReserve : Yokai -> Yokai
   //Deplace le yokai qui était dans la main du joueur dans la réserve
   //Post : L'attribut positon du yokai == nil
+  @discardableResult
   mutating func deplacerReserve()->Self
 
   //peutAller : Yokai x String -> Bool
@@ -70,9 +75,10 @@ public protocol YokaiProtocol : Sequence{
   //Crée un Iterator sur les déplacement du Yokai passé en paramètre
   func makeItDeplacement()->DeplacementIterator
 
-  //futurPosition : Yokai x String -> Position
+  //futurPosition : Yokai x Int -> Position
   //Pre: peutAller(d: deplacement) -> retourne true
   //Post: Retourne la future position du yokai correspondant au déplacement souhaitée
   //Post: La position retourné est une des positions de l'attribut terrain du type Jeu
-  func futurPosition(deplacement: String)->Position
+  // le int correspond au déplcament exemple (1 = avant)
+  func futurPosition(deplacement: Int)->Position
 }

@@ -42,11 +42,13 @@ public protocol JoueurProtocol : Sequence{
 
   //ajoutReserve : joueur x Yokais -> joueur
   //ajoute le Yokai passé en paramètre dans la reserve du joueur passé en paramètre le Yokai ne dois pas deja etre dans la reserve
+  @discardableResult
   mutating func ajoutReserve(y :Yokai)->Self
 
   //enleverReserve : joueur x Yokai -> Joueur
   //enleve le yokai passe en parametre de la reserve du joueur passe en parametre
   //Pré: le yokai doit être present dans la reserve du joueur
+  @discardableResult
   mutating func enleverReserve(y: Yokai)->Self
 
   //estEnReserve : joueur x Yokai -> Bool
@@ -66,6 +68,7 @@ public protocol JoueurProtocol : Sequence{
   //Post : enleve le Yokai de la reserve du joueur et le met dans sa main
   //Si le Yokai donnée en paramètre est un Kodama :
   //  Si le parachutage à lieu dans la zone de l'adversaire, le Yokai Kodama se transforme en Kodama Locked
+  @discardableResult
   mutating func parachuter(y: Yokai, p: Position)-> Self
 
   //manger : joueur x Yokai -> joueur
@@ -73,15 +76,18 @@ public protocol JoueurProtocol : Sequence{
   //Post si le Yokai était samourai il ne l'ai plus
   //Supprime le Yokai de la main de l'autre joueur
   // Pré : Le yokai devait être dans la main du joueur adverse
+  @discardableResult
   mutating func manger(y :Yokai)->Self
 
   //ajouterMain joueur x Yokai -> joueur
   //Ajouter le yokai passé en parametre à la main du joueur passé en paramètre le Yokai ne doit pas deja etre dans la main du joueur
+  @discardableResult
   mutating func ajoutMain(y : Yokai)->Self
 
   //enleverMain joueur x Yokai -> joueur
   //Enleve le yokai passe en parametre de la main du joueur
   //Pré : le yokai doit être dans la main du joueur
+  @discardableResult
   mutating func enleverMain(y: Yokai)->Self
 
   //tailleMain : Joueur -> Int
