@@ -14,7 +14,7 @@ while !Jeu.getJoueur(idjoueur: 1).estGagnant() && !Jeu.getJoueur(jeu: Jeu, idjou
   var autoriseDeplacer : Bool = false
   var autoriseParachuter : Bool = false
 
-  //On vérifie que la main du joueur n'est pas vide afin de l'autoriser à déplcaer un yokai
+  //On vérifie que la main du joueur n'est pas vide afin de l'autoriser à déplacer un yokai
   if(!joueur.mainEstVide()){
     print("Pour déplacer un yokai taper: 1")
     autoriseDeplacer = true
