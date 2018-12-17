@@ -113,13 +113,13 @@ public struct pioche : piocheProtocol {
       switch type {
       case 0 :
         self.archer = self.archer - 1
-        return Carte(Type : "archer" )
+        return Carte(type : "archer" )
       case 1 :
         self.soldat = self.soldat - 1
-        return Carte(Type : "soldat" )
+        return Carte(type : "soldat" )
       case 2 :
         self.garde = self.garde - 1
-        return Carte(Type : "garde" )
+        return Carte(type : "garde" )
       default :
         break;
       }
