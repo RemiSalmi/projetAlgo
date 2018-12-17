@@ -1,3 +1,4 @@
+//Guillaume
 // le champBataille est une collection de Carte ou vide
 // Cette collection peut être parcourue par un itérateur.
 

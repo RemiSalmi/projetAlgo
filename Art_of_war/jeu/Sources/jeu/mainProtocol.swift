@@ -1,3 +1,4 @@
+//Guillaume
 // la main est une collection de Carte
 // Cette collection peut être parcourue par un itérateur.
 
