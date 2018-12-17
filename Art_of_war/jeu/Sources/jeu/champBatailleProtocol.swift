@@ -1,6 +1,7 @@
 // le champBataille est une collection de Carte ou vide
 // Cette collection peut être parcourue par un itérateur.
 
+//Tableau de 6 cases de type : Carte?
 public protocol champBatailleProtocol : Sequence{
   associatedtype IteratorChampBataille : IteratorProtocol where IteratorChampBataille.Element == Carte
   associatedtype ChampBataille : champBatailleProtocol

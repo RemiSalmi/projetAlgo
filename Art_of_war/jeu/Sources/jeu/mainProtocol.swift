@@ -1,6 +1,7 @@
 // la main est une collection de Carte
 // Cette collection peut être parcourue par un itérateur.
 
+//La main est une liste
 public protocol mainProtocol : Sequence{
   associatedtype IteratorMain : IteratorProtocol where IteratorMain.Element == Carte
   associatedtype Carte : carteProtocol
