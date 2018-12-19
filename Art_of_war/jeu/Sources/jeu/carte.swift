@@ -21,7 +21,10 @@ public struct Carte : carteProtocol {
   // si c'est un archer (attaque : 1, position défensive : 2, position offensive : 1)
   // si c'est un garde (attaque : 1, position défensive : 3, position offensive : 2)
   // les dégats sont initialisés à 0
-  init(type: String){
+  init?(type: String){
+
+    self.degats = 0
+    self.estOffensif = false
 
     switch type {
 
@@ -51,10 +54,10 @@ public struct Carte : carteProtocol {
       self.defensif = 5
       self.offensif = 4
     default:
-    //Un cas par défaut doit être définis mais il ne sera jamais utilisé
+    //Si la chaîne de caractère n'est pas conforme
+        return nil
     }
-    self.degats = 0
-    self.estOffensif = false
+
   }
 
 
