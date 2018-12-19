@@ -4,7 +4,7 @@ enum TypeCarte : String {
   case soldat="soldat", archer="archer", garde="garde", roi1="roi1", roi2="roi2"
 }
 
-public struct Carte : carteProtocol {
+public struct carte : carteProtocol {
 
   var nom : TypeCarte
   var attaque : Int
