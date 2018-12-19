@@ -20,16 +20,23 @@ public struct joueur : joueurProtocol{
     // indique si le roi est capturé ou pas
     func roiCapture()->Bool{
       var compteurRoi : Int = 0
-      var itMain = self.main.makeIt()
-      while let carte = itMain.next() {
-          if (carte.estDuType() == "roi1" || carte.estDuType() == "roi2"){
+      var itMain = self.mainJoueur().makeIt()
+      var itCb = self.champBatailleJoueur().makeIt()
+      while let carteM = itMain.next() {
+          if (carteM.estDuType() == "roi1" || carteM.estDuType() == "roi2"){
             compteurRoi = compteurRoi + 1
           }
       }
+      while let carteC = itCb.next() {
+          if (carteC.estDuType() == "roi1" || carteC.estDuType() == "roi2"){
+            compteurRoi = compteurRoi + 1
+          }
+      }
+
       return compteurRoi == 0
     }
 
-    // aGagne : Joueur-> Bool
+    // aGagne : Joueur x Joueur -> Bool
     // indique si un joueur a gagné la partie ou pas
     // pour qu'un joueur gagne il faut :
     // - avoir capturé le roi adverse
@@ -37,7 +44,28 @@ public struct joueur : joueurProtocol{
     // - etre celui qui a le plus gros royaume
     // ou si le joueur n'a plus d'unités sur son champs de bataille et qu'il ne peut pas en mobiliser d'autres
     // alors il perd la partie
-    func aGagne()->Bool
+    func aGagne(j : Joueur)->Bool{
+      var res : Bool = true
+
+      if self.roiCapture(){
+        res = false
+      }
+
+      if (self.piocheJoueur().piocheVide() && j.piocheJoueur().piocheVide()){
+        if (self.royaumeJoueur().tailleRoyaume() < j.royaumeJoueur().tailleRoyaume()){
+          res = false
+        }
+      }
+
+      if (self.champBatailleJoueur().estVide() && self.mainJoueur().mainVide() && self.royaumeJoueur().royaumeVide()){
+        res = false
+      }
+
+
+      return res
+
+
+    }
 
     // roiCapture :  Joueur ->
     // met roiCapturé à True
@@ -46,19 +74,27 @@ public struct joueur : joueurProtocol{
 
     // mainJoueur :  Joueur -> Main
     // Main du joueur
-    func mainJoueur()->Main
+    func mainJoueur()->Main{
+      return self.main
+    }
 
     // royaumeJoueur :  Joueur -> Royaume
     // Royaume du joueur
-    func royaumeJoueur()->Royaume
+    func royaumeJoueur()->Royaume{
+      return self.royaume
+    }
 
     // piocheJoueur :  Joueur -> Pioche
     // Pioche du joueur
-    func piocheJoueur()->Pioche
+    func piocheJoueur()->Pioche{
+      return self.pioche
+    }
 
     // champBatailleJoueur :  Joueur -> ChampBataille
     // champ de bataille du joueur
-    func champBatailleJoueur()->ChampBataille
+    func champBatailleJoueur()->ChampBataille{
+      return self.champBataille
+    }
 
     // attaquer : Joueur x String x String x ChampBataille
     // Attaque une carte adverse à partir de sa position posCarteAd sur le champ de bataille adverse cbAd

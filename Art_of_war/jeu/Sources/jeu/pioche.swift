@@ -69,15 +69,15 @@ public struct pioche : piocheProtocol {
   }
 
 
-  // piocher : Pioche -> Carte?
+  // piocher : Pioche -> carte?
   // prend une carte sur le dessus de la pioche
   // Pre : la pioche n'est pas vide
   // Post : si la precondition n'est pas respectée renvoyer vide
-  // Note 1 : piocher revient à créer une nouvelle Carte dont on choisit le type aléatoirement
+  // Note 1 : piocher revient à créer une nouvelle carte dont on choisit le type aléatoirement
   //          en fonction du nombre de chaque type restant
   // penser à incrementer le nombre de carte piochées en fonction du type
   @discardableResult
-  mutating func piocher()->Carte?{
+  mutating func piocher()->carte?{
     if (self.piocheVide()){
       return nil
     }else{
@@ -113,13 +113,13 @@ public struct pioche : piocheProtocol {
       switch type {
       case 0 :
         self.archer = self.archer - 1
-        return Carte(type : "archer" )
+        return carte(type : "archer" )
       case 1 :
         self.soldat = self.soldat - 1
-        return Carte(type : "soldat" )
+        return carte(type : "soldat" )
       case 2 :
         self.garde = self.garde - 1
-        return Carte(type : "garde" )
+        return carte(type : "garde" )
       default :
         break;
       }

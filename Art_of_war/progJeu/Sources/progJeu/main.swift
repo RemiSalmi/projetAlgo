@@ -178,7 +178,7 @@ while !j1.roiCapture() && !j2.roiCapture() && !joueurCourant.piocheJoueur().pioc
 
 }
 
-if j1.aGagne() {
+if j1.aGagne(j2) {
   print("bravo j1 vous avez gagné !")
 }else {
   print("bravo j2 vous avez gagné !")
