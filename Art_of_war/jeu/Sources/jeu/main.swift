@@ -1,13 +1,14 @@
 
 
 public struct main : mainProtocol {
-  var main = [Carte]()
+  var main: [Carte]
 
   // init : Int -> Main
   // création d'une main, initialisée avec un Roi n
   // Pre : n doit être 1 ou 2
   // Post : on crée une carte "roi1" ou "roi2"
   init(n:Int){
+    self.main = [Carte]()
     let typeRoi = "roi"+String(n)
     let roi = Carte(type: typeRoi)
     if let roi = roi {
