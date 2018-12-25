@@ -61,4 +61,27 @@ public struct main : mainProtocol {
     self.main.remove(at: pos)
     return carte
   }
+
+  func makeIt()->IteratorMain{
+    return IteratorMain(self)
+  }
+}
+
+public struct IteratorMain : IteratorProtocol{
+  private let main : main
+  private var courant : Int = 0
+  fileprivate init(_ m: main){
+    self.main = m
+  }
+
+  public mutating func next()->Carte?{
+   let carte : Carte
+   guard self.courant < self.main.main.count else {
+     return nil
+   }
+   carte = self.main.main[self.courant]
+   self.courant = self.courant + 1
+   return carte
+
+  }
 }
