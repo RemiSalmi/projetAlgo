@@ -16,6 +16,7 @@ public struct champBataille : champBatailleProtocol {
  	// Renvoie faux sinon
   func estVide()->Bool{
     return self.caseVide(pos:"A1") && self.caseVide(pos:"A2") && self.caseVide(pos:"A3") && self.caseVide(pos:"F1") && self.caseVide(pos:"F2") && self.caseVide(pos:"F3")
+
   }
 
   // caseVide : champBataille x String -> Bool
@@ -51,7 +52,37 @@ public struct champBataille : champBatailleProtocol {
   // positionCarte : champBataille x Carte -> String
   // Renvoie la position de la carte sur le champ de bataille
   // renvoie vide si la carte n'est pas présente sur le champ de bataille
-  func positionCarte(c:Carte)->String?
+  func positionCarte(c:Carte)->String?{
+    var id_position : Int = -1
+    var position : String? = nil
+    var courant : Int = 0
+    var iterateurChamp = self.makeIt()
+    while let carte = iterateurChamp.next(){
+      if c.estDuType() == carte.estDuType(){
+        id_position = courant
+      }
+      courant = courant + 1
+    }
+    if id_position < 0 {
+      switch id_position{
+      case 0:
+        position = "A1"
+      case 1:
+        position = "A2"
+      case 2:
+        position = "A3"
+      case 3:
+        position = "F1"
+      case 4:
+        position = "F2"
+      case 5:
+        position = "F3"
+      default:
+        break;
+      }
+    }
+    return position
+  }
 
   // CartePosition : champBataille x String -> Carte
   // Renvoie la carte de la position sur le champ de bataille
@@ -78,6 +109,68 @@ public struct champBataille : champBatailleProtocol {
     }
     return carte
   }
+
+  // peutAttaquer : ChampBataille x Carte x String ->Bool
+  // indique si une carte peut attaquer une certaine position du champs de bataille adverse
+  // True si peut attaquer False sinon
+  //Note developpeurs : C'est le champ de bataille adverse qui est le Self
+  func peutAttaquer(c:Carte,pos:String)->Bool{
+    return (!self.caseVide(pos: pos)) //Retourne true si la case n'est pas vide
+  }
+
+
+  // placerCarte : ChampBataille x Carte x String ->
+  // la fonction verifie si le front est plein met la carte en arriere
+  // sinon ajoute au front sur la colonne "pos"
+  //Note developpeurs : Pas assez de specifs ici. Quels sont les cas qui engendre des erreurs.
+  @discardableResult
+  mutating func placerCarte(c:Carte,pos:String){
+    var indice : Int = 3
+    switch pos{ //On verifie uniquement les positions front, car la position en paramètres est une position front
+    case "F1":
+      indice = 3
+    case "F2":
+      indice = 4
+    case "F3":
+      indice = 5
+    default:
+      indice = 3
+    }
+
+    if self.caseVide(pos: pos){ //Si la position en front est libre
+      self.champ[indice] = c
+    }
+    else{                 //Si elle est pas libre alors on ajoute sur la case arrière
+      indice = indice - 3
+      self.champ[indice] = c
+    }
+  }
+
+  // supprimerCarte : ChampBataille x Carte ->
+  // supprimer une carte du champ de bataille
+  @discardableResult
+  mutating func supprimerCarte(c:Carte){
+    var positon = self.positionCarte(c: c)
+    if let position = posiiton {
+      switch position{
+      case "A1":
+        self.champ[0]=nil
+      case "A2":
+        self.champ[1]=nil
+      case "A3":
+        self.champ[2]=nil
+      case "F1":
+        self.champ[3]=nil
+      case "F2":
+        self.champ[4]=nil
+      case "F3":
+        self.champ[5]=nil
+      default:
+        break;
+      }
+    }
+  }
+
 
   func makeIt()->IteratorChampBataille{
     return IteratorChampBataille(self)
