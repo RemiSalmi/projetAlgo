@@ -101,8 +101,28 @@ public struct joueur : joueurProtocol{
     // la carte du joueur courant est donnée par sa position sur son champ de bataille
     //prendre en compte le cas du roi capturé
     // si l'attaque termine par la capture de la carte adverse return -1
-    // si l'attaque termine par la destruction de la carte du joueur courant return -2
-    // si l'attaque termine par la destruction de la carte du joueur courant return le nombre de dégats causés
+    // si l'attaque termine par la destruction de la carte du joueur adverse return -2
+    // si l'attaque termine par endommager de la carte du joueur adverse return le nombre de dégats causés
     @discardableResult
-    mutating func attaquer(posCarte:String,posCarteAd:String,cbAd:ChampBataille)->Int
+    mutating func attaquer(posCarte:String,posCarteAd:String,cbAd:ChampBataille)->Int{
+      let carteJoueur = self.champBatailleJoueur().CartePosition(pos : posCarte)
+      let carteJoueurAd = cbAd.CartePosition(pos : posCarteAd)
+      if(self.champBatailleJoueur().peutAttaquer(c:carteJoueur,pos:posCarteAd)){
+        self.champBatailleJoueur().CartePosition(pos : posCarte).changerPosition()
+        if(carteJoueur.valeurAttaque() = carteJoueurAd.valeurDefenseD()){
+          self.royaume.ajouterCarte(c:carteJoueurAd)
+          cbAd.supprimerCarte(c:carteJoueurAd)
+          return -1
+        }
+        if(carteJoueur.valeurAttaque() > carteJoueurAd.valeurDefenseD()){
+          cbAd.supprimerCarte(c:carteJoueurAd)
+          return -2
+        }
+        if (carteJoueur.valeurAttaque() < carteJoueurAd.valeurDefenseD()){
+          cbAd.CartePosition(pos : posCarteAd).changerDegat(nb : carteJoueur.valeurAttaque())
+          return carteJoueur.valeurAttaque()
+        }
+
+      }
+    }
 }

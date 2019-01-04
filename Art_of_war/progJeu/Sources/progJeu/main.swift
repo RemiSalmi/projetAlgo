@@ -111,14 +111,14 @@ while !j1.roiCapture() && !j2.roiCapture() && !joueurCourant.piocheJoueur().pioc
       // le joueur entre une position correspondant a la place de la carte dans le champs de bataille
       posCarteAd = demanderPosChampsBatailleJoueur(joueurAdverse.champBatailleJoueur())
       var res : Int
-      res=joueurCourant.attaquer(posCarte,posCarteAd,joueurCourant.champBatailleJoueur())
+      res=joueurCourant.attaquer(posCarte,posCarteAd,joueurAdverse.champBatailleJoueur())
       if res == -1 {
         print("vous avez capturé la carte adverse")
       }else if res == -2{
-        print("votre carte a été détruite")
+        print("la carte a été détruite")
 
       }else{
-        print("votre carte a été endommagé")
+        print("la carte a été endommagé")
         print("nombre de dégats : \(res)")
       }
 
