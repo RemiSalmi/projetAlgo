@@ -30,7 +30,7 @@ public struct carte : carteProtocol {
 
     case "soldat" :
       self.nom = TypeCarte.soldat
-      self.attaque = 21
+      self.attaque = 1
       self.defensif = 2
       self.offensif = 1
     case "archer" :
@@ -49,7 +49,7 @@ public struct carte : carteProtocol {
       self.defensif = 4
       self.offensif = 4
     case "roi2" :
-      self.nom = TypeCarte.roi1
+      self.nom = TypeCarte.roi2
       self.attaque = 1
       self.defensif = 5
       self.offensif = 4

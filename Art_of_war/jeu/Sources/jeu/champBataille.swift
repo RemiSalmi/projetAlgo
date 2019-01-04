@@ -150,8 +150,8 @@ public struct champBataille : champBatailleProtocol {
   // supprimer une carte du champ de bataille
   @discardableResult
   mutating func supprimerCarte(c:Carte){
-    var positon = self.positionCarte(c: c)
-    if let position = posiiton {
+    var position = self.positionCarte(c: c)
+    if let position = position {
       switch position{
       case "A1":
         self.champ[0]=nil
