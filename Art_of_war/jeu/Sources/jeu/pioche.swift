@@ -110,6 +110,7 @@ public struct pioche : piocheProtocol {
         type = 0
       }
 
+      //** La compilation dit que la variable "type" est utilisé avant d'être initialisé (psk ça passe par plein de if, mais à aucun moment le compilateur est sûr que "type" est initialisé)
       switch type {
       case 0 :
         self.archer = self.archer - 1
@@ -121,7 +122,7 @@ public struct pioche : piocheProtocol {
         self.garde = self.garde - 1
         return carte(type : "garde" )
       default :
-        break;
+        break; //** A la compilation, il dit qu'il manque un return pour cette fonction, cela doit être dû au "default" qui fait simplement un break, il faudrait retourner une carte de base ou nil (a voir avec les specs)
       }
     }
   }

@@ -94,7 +94,7 @@ func testValeurDefenseD(){
 func testValeurDefenseO(){
 	var carte1 : Carte
 	carte1 = Carte("Garde")
-	if carte1.valeurDefenseD() == 2{
+	if carte1.valeurDefenseO() == 2{
 		print("le test :'testValeurDefenseOGarde' est reussi")
 	}
 	else{
@@ -102,7 +102,7 @@ func testValeurDefenseO(){
 	}
 	var carte2 : Carte
 	carte2 = Carte("Soldat")
-	if carte2.valeurDefenseD() == 1{
+	if carte2.valeurDefenseO() == 1{
 		print("le test :'testValeurDefenseOSoldat' est reussi")
 	}
 	else{
@@ -110,7 +110,7 @@ func testValeurDefenseO(){
 	}
 	var carte3 : Carte
 	carte3 = Carte("Archer")
-	if carte3.valeurDefenseD() == 1{
+	if carte3.valeurDefenseO() == 1{
 		print("le test :'testValeurDefenseOArcher' est reussi")
 	}
 	else{
@@ -118,7 +118,7 @@ func testValeurDefenseO(){
 	}
 	var carte4 : Carte
 	carte4 = Carte("Roi1")
-	if carte4.valeurDefenseD() == 4{
+	if carte4.valeurDefenseO() == 4{
 		print("le test :'testValeurDefenseORoi1' est reussi")
 	}
 	else{
@@ -126,7 +126,7 @@ func testValeurDefenseO(){
 	}
 	var carte5 : Carte
 	carte5 = Carte("Roi2")
-	if carte5.valeurDefenseD() == 4{
+	if carte5.valeurDefenseO() == 4{
 		print("le test :'testValeurDefenseORoi2' est reussi")
 	}
 	else{

@@ -1,6 +1,6 @@
-public protocol royaumeProtocol {
+public struct royaume : royaumeProtocol {
 
-  var royaume = [carte]()
+  var royaume : [carte]
 
 
   // init :  -> Royaume
@@ -22,11 +22,12 @@ public protocol royaumeProtocol {
  	 // Retirer une carte du royaume la premiere de la file
    @discardableResult
   mutating func recupererCarte()->Carte{
-    if !royaumeVide{
+    if !royaumeVide(){
       var c = self.royaume[0]
       self.royaume.removeFirst()
       return c
     }
+    //** Il manque un return pour cette fonction, lorsque l'on ne rentre pas dans le if
   }
 
   // tailleRoyaume : Royaume -> Int
