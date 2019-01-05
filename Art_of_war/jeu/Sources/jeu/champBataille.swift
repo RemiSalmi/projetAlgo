@@ -113,9 +113,62 @@ public struct champBataille : champBatailleProtocol {
   // peutAttaquer : ChampBataille x Carte x String ->Bool
   // indique si une carte peut attaquer une certaine position du champs de bataille adverse
   // True si peut attaquer False sinon
-  //Note developpeurs : C'est le champ de bataille adverse qui est le Self
-  func peutAttaquer(c:Carte,pos:String)->Bool{
-    return (!self.caseVide(pos: pos)) //Retourne true si la case n'est pas vide
+  //Note developpeurs : C'est le champ de bataille adverse qui est le Self, ajout d'un paramètre "cdb" qui est le champ de bataille du joueur qui attaque
+  func peutAttaquer(c:Carte,pos:String,cdb:champBataille)->Bool{
+    var reponse : Bool = false
+    if(!self.caseVide(pos: pos)){ //Retourne true si la case n'est pas vide
+      var type_carte : String = c.estDuType()
+      var position_carte cdb.positionCarte(c:c)
+      if let position_carte = position_carte {
+        switch type_carte{
+
+        case "soldat","garde": //Le soldat ou le garde peut attaquer la position devant lui, il doit donc être positionné en F* et doit attaquer une position F* équivalente
+          if (position_carte=="F1" && pos=="F3") || (position_carte=="F2" && pos=="F2") || (position_carte=="F3" && pos=="F1"){
+            reponse = true
+          }
+
+        case "archer": //L'archer peut attaquer les 4 posiitons devant lui, comme pour un cavalier
+          if ((position_carte=="F1" || position_carte=="F3") && (pos=="A2" || pos=="F2")){
+            reponse=true
+          }
+          if ((position_carte=="A1" || position_carte=="A3") && pos=="F2"){
+            reponse=true
+          }
+          if position_carte=="F2" && (pos=="A3" || pos=="F3" || pos=="A1" || pos=="F1"){
+            reponse=true
+          }
+          if position_carte=="A2" && (pos=="F3" || pos=="F1"){
+            reponse=true
+          }
+
+        case "roi1"://Le roi peut attaquer toute la ligne devant lui, il peut aussi attaquer la position à une distance 2 de lui. Le roi1 est donc positionné en F* ou A*
+          if position_carte=="F1" || position_carte=="F2" || position_carte=="F3"{ //Si le roi 1 est en F*, il peut attaquer toute la ligne avant adverse
+            if pos=="F2" || pos=="F2" || pos=="F3"{
+              reponse = true
+            }
+          }
+
+          if (position_carte=="A1" && pos=="F3") || (position_carte=="A2" && pos=="F2") || (position_carte=="A3" && pos=="F1"){ //Si le roi1 est sur une des positions arrière (A*), il peut attaquer une position à distance 2 sur la ligne F* adverse
+            reponse=true
+          }
+
+          if (position_carte=="F1" && pos=="A3") || (position_carte=="F2" && pos=="A2") || (position_carte=="F3" && pos=="A1"){ //Si le roi1 est sur une des positions avant (F*), il peut attaquer une position à distance 2 sur la ligne A* adverse
+            reponse=true
+          }
+
+        case "roi2": //Le roi2 peut attaquer toute la ligne devant lui, il doit donc être en F*
+          if position_carte=="F1" || position_carte=="F2" || position_carte=="F3"{
+            if pos=="F2" || pos=="F2" || pos=="F3"{
+              reponse = true
+            }
+          }
+        default:
+          break;
+        }
+      }
+
+    }
+    return reponse
   }
 
 
