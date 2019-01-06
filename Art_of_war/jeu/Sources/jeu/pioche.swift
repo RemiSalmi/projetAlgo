@@ -81,7 +81,7 @@ public struct pioche : piocheProtocol {
     if (self.piocheVide()){
       return nil
     }else{
-      var type : Int
+      var type : Int = -1
 
       if (self.nbArchers() == 0){
         type = Int.random(in: 1 ... 2)
@@ -110,19 +110,19 @@ public struct pioche : piocheProtocol {
         type = 0
       }
 
-      //** La compilation dit que la variable "type" est utilisé avant d'être initialisé (psk ça passe par plein de if, mais à aucun moment le compilateur est sûr que "type" est initialisé)
-      switch type {
-      case 0 :
+
+
+      if(type == 0){
         self.archer = self.archer - 1
         return carte(type : "archer" )
-      case 1 :
+      }
+      if(type == 1){
         self.soldat = self.soldat - 1
         return carte(type : "soldat" )
-      case 2 :
+      }
+      if(type == 2){
         self.garde = self.garde - 1
         return carte(type : "garde" )
-      default :
-        break; //** A la compilation, il dit qu'il manque un return pour cette fonction, cela doit être dû au "default" qui fait simplement un break, il faudrait retourner une carte de base ou nil (a voir avec les specs)
       }
     }
   }
