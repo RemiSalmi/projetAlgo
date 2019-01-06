@@ -53,32 +53,14 @@ public struct champBataille : champBatailleProtocol {
   // Renvoie la position de la carte sur le champ de bataille
   // renvoie vide si la carte n'est pas présente sur le champ de bataille
   func positionCarte(c:Carte)->String?{
-    var id_position : Int = -1
     var position : String? = nil
-    var courant : Int = 0
-    var iterateurChamp = self.makeIt()
-    while let carte = iterateurChamp.next(){
-      if c.estDuType() == carte.estDuType(){
-        id_position = courant
-      }
-      courant = courant + 1
-    }
-    if id_position < 0 {
-      switch id_position{
-      case 0:
-        position = "A1"
-      case 1:
-        position = "A2"
-      case 2:
-        position = "A3"
-      case 3:
-        position = "F1"
-      case 4:
-        position = "F2"
-      case 5:
-        position = "F3"
-      default:
-        break;
+    let positions = ["A1", "A2", "A3","F1", "F2", "F3"]
+    for pos in positions {
+      var carte = self.CartePosition(pos:pos)
+      if let carte = carte{
+        if c.estDuType() == carte.estDuType(){
+          position = pos
+        }
       }
     }
     return position
@@ -118,7 +100,7 @@ public struct champBataille : champBatailleProtocol {
     var reponse : Bool = false
     if(!self.caseVide(pos: pos)){ //Retourne true si la case n'est pas vide
       var type_carte : String = c.estDuType()
-      var position_carte cdb.positionCarte(c:c)
+      var position_carte = cdb.positionCarte(c:c)
       if let position_carte = position_carte {
         switch type_carte{
 
@@ -143,7 +125,7 @@ public struct champBataille : champBatailleProtocol {
 
         case "roi1"://Le roi peut attaquer toute la ligne devant lui, il peut aussi attaquer la position à une distance 2 de lui. Le roi1 est donc positionné en F* ou A*
           if position_carte=="F1" || position_carte=="F2" || position_carte=="F3"{ //Si le roi 1 est en F*, il peut attaquer toute la ligne avant adverse
-            if pos=="F2" || pos=="F2" || pos=="F3"{
+            if pos=="F1" || pos=="F2" || pos=="F3"{
               reponse = true
             }
           }
@@ -158,7 +140,7 @@ public struct champBataille : champBatailleProtocol {
 
         case "roi2": //Le roi2 peut attaquer toute la ligne devant lui, il doit donc être en F*
           if position_carte=="F1" || position_carte=="F2" || position_carte=="F3"{
-            if pos=="F2" || pos=="F2" || pos=="F3"{
+            if pos=="F1" || pos=="F2" || pos=="F3"{
               reponse = true
             }
           }
