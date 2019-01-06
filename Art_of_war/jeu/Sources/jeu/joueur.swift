@@ -105,24 +105,29 @@ public struct joueur : joueurProtocol{
     // si l'attaque termine par endommager de la carte du joueur adverse return le nombre de dégats causés
     @discardableResult
     mutating func attaquer(posCarte:String,posCarteAd:String,cbAd:ChampBataille)->Int{
+
       let carteJoueur = self.champBatailleJoueur().CartePosition(pos : posCarte)
       let carteJoueurAd = cbAd.CartePosition(pos : posCarteAd)
-      if(self.champBatailleJoueur().peutAttaquer(c:carteJoueur,pos:posCarteAd)){
-        self.champBatailleJoueur().CartePosition(pos : posCarte).changerPosition()
-        if(carteJoueur.valeurAttaque() = carteJoueurAd.valeurDefenseD()){
-          self.royaume.ajouterCarte(c:carteJoueurAd)
-          cbAd.supprimerCarte(c:carteJoueurAd)
-          return -1
-        }
-        if(carteJoueur.valeurAttaque() > carteJoueurAd.valeurDefenseD()){
-          cbAd.supprimerCarte(c:carteJoueurAd)
-          return -2
-        }
-        if (carteJoueur.valeurAttaque() < carteJoueurAd.valeurDefenseD()){
-          cbAd.CartePosition(pos : posCarteAd).changerDegat(nb : carteJoueur.valeurAttaque())
-          return carteJoueur.valeurAttaque()
-        }
+      if let carteJoueur = carteJoueur{
+        if let carteJoueurAd = carteJoueurAd{
+          if(self.champBatailleJoueur().peutAttaquer(c:carteJoueur,pos:posCarteAd)){
+            if(carteJoueur.valeurAttaque() = carteJoueurAd.valeurDefenseD()){
+              self.royaume.ajouterCarte(c:carteJoueurAd)
+              cbAd.supprimerCarte(c:carteJoueurAd)
+              return -1
+            }
+            if(carteJoueur.valeurAttaque() > carteJoueurAd.valeurDefenseD()){
+              cbAd.supprimerCarte(c:carteJoueurAd)
+              return -2
+            }
+            if (carteJoueur.valeurAttaque() < carteJoueurAd.valeurDefenseD()){
+              cbAd.CartePosition(pos : posCarteAd).changerDegat(nb : carteJoueur.valeurAttaque())
+              return carteJoueur.valeurAttaque()
+            }
 
+          }
+        }
       }
+
     }
 }
