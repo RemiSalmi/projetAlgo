@@ -14,14 +14,14 @@ public struct royaume : royaumeProtocol {
   // Ajout d'une carte dans le royaume
   // Note : la carte est ajoutée à la fin du royaume (FILE)
   @discardableResult
-  mutating func ajouterCarte(c:Carte){
+  mutating func ajouterCarte(c:carte){
     self.royaume.append(c)
   }
 
   // recupererCarte : Royaume -> Carte
  	 // Retirer une carte du royaume la premiere de la file
    @discardableResult
-  mutating func recupererCarte()->Carte{
+  mutating func recupererCarte()->carte{
       var c = self.royaume[0]
       self.royaume.removeFirst()
       return c

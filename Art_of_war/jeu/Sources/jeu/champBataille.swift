@@ -1,7 +1,7 @@
 
 
 public struct champBataille : champBatailleProtocol {
-
+  //typealias Carte = carte
   var champ : [Carte?]
   //champ = [A1,A2,A3,F1,F2,F3]
 
