@@ -1,3 +1,4 @@
+import jeu
 //fonction d'interaction avec le joueur (input)
 
 // demanderCarteMainJoueur :  -> Int
@@ -55,12 +56,12 @@ public func demanderJoueurAction()->Int{
 // demande sur quelle position le joueur veut mettre sa carte
 // Post :le joueur doit indiquer la place de la carte dans sa main
 // Post : tant que le joueur n'a pas donné un chiffre et une lettre correcte on lui redemande
-public func demanderPosChampsBatailleJoueur(cb:ChampBataille)->String{
+public func demanderPosChampsBatailleJoueur(cb:champBataille)->String{
   print("entrez la position de la carte que vous souhaitez ")
   print("votre réponse doit être de la forme F1 F2 F3 A1 A2 A3")
   if let pos = try readLine(){
     if (pos=="F1" || pos=="F2" || pos=="F3" || pos=="A1" || pos=="A2" || pos=="A3"){
-      if cb.caseVide(pos){
+      if cb.caseVide(pos:pos){
         print("la case est vide Réessayez avec une autre position")
         return demanderPosChampsBatailleJoueur(cb:cb)
       }

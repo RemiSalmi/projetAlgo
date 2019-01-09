@@ -1,6 +1,8 @@
+import jeu
+
 // afficherCarte : Carte ->
 // affichage d'une Carte, ses propriétés
-public func afficherCarte(c:Carte){
+public func afficherCarte(c:carte){
   print("type : \(c.estDuType())")
   print("dégats : \(c.estDuType())")
   if c.estOffensive(){
@@ -14,17 +16,17 @@ public func afficherCarte(c:Carte){
 
 // afficherMain : Main ->
 // affichage d'une Main, sa collection de Carte
-public func afficherMain(m:Main){
+public func afficherMain(m:main){
   for carte in m {
-    afficherCarte(carte)
+    afficherCarte(c:carte)
   }
 }
 
 // afficherChampBataille : ChampBataille ->
 // affichage d'un ChampBataille, sa collection de Carte
-public func afficherChampBataille(cb:ChampBataille){
+public func afficherChampBataille(cb:champBataille){
   for carte in cb {
-    print("position de la carte : \(cb.positionCarte(carte))")
-    afficherCarte(carte)
+    print("position de la carte : \(cb.positionCarte(c:carte))")
+    afficherCarte(c:carte)
   }
 }
