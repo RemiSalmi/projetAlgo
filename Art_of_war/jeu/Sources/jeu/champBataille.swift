@@ -160,7 +160,6 @@ public struct champBataille : champBatailleProtocol {
   // la fonction verifie si le front est plein met la carte en arriere
   // sinon ajoute au front sur la colonne "pos"
   //Note developpeurs : Pas assez de specifs ici. Quels sont les cas qui engendre des erreurs.
-  @discardableResult
   public mutating func placerCarte(c:Carte,pos:String){
     var indice : Int = 3
     switch pos{ //On verifie uniquement les positions front, car la position en paramètres est une position front
@@ -185,7 +184,7 @@ public struct champBataille : champBatailleProtocol {
 
   // supprimerCarte : ChampBataille x Carte ->
   // supprimer une carte du champ de bataille
-  @discardableResult
+
   public mutating func supprimerCarte(c:Carte){
     let position = self.positionCarte(c: c)
     if let position = position {

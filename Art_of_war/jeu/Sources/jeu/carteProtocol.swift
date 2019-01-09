@@ -23,7 +23,7 @@ public protocol carteProtocol {
 
   // changerDegat :  Carte x Int ->
   // modifie les degats d'une carte
-  @discardableResult
+
   mutating func changerDegat(nb:Int)
 
   // valeurDefenseD :  Carte -> Int
@@ -44,6 +44,6 @@ public protocol carteProtocol {
 
   // changerPosition : Carte ->
   // met la carte en position offensive (horizontale) ou defensive (vertical)
-  @discardableResult
+  
   mutating func changerPosition()
 }

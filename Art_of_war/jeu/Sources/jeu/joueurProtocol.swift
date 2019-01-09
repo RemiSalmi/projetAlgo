@@ -30,7 +30,7 @@ public protocol joueurProtocol{
 
   // roiCapture :  Joueur ->
   // met roiCapturé à True
-  @discardableResult
+  
   mutating func leRoiEstCapture()
 
   // mainJoueur :  Joueur -> Main

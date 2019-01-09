@@ -14,7 +14,7 @@ public struct royaume : royaumeProtocol {
   // ajouterCarte : Royaume x Carte -> Royaume
   // Ajout d'une carte dans le royaume
   // Note : la carte est ajoutée à la fin du royaume (FILE)
-  @discardableResult
+  
   public mutating func ajouterCarte(c:Carte){
     self.royaume.append(c)
   }

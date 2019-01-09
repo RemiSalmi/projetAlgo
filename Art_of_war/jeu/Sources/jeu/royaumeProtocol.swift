@@ -10,7 +10,7 @@ public protocol royaumeProtocol {
   // ajouterCarte : Royaume x Carte -> Royaume
   // Ajout d'une carte dans le royaume
   // Note : la carte est ajoutée à la fin du royaume (FILE)
-  @discardableResult
+  
   mutating func ajouterCarte(c:Carte)
 
   // recupererCarte : Royaume -> Carte

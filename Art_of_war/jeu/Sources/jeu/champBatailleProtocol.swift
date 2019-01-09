@@ -40,12 +40,12 @@ public protocol champBatailleProtocol : Sequence{
   // placerCarte : ChampBataille x Carte x String ->
   // la fonction verifie si le front est plein met la carte en arriere
   // sinon ajoute au front sur la colonne "pos"
-  @discardableResult
+
   mutating func placerCarte(c:Carte,pos:String)
 
   // supprimerCarte : ChampBataille x Carte ->
   // supprimer une carte du champ de bataille
-  @discardableResult
+  
   mutating func supprimerCarte(c:Carte)
 
   func makeIterator()-> IteratorChampBatailleProtocol

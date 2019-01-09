@@ -75,7 +75,7 @@ public struct carte : carteProtocol {
 
   // changerDegat :  Carte x Int ->
   // modifie les degats d'une carte
-  @discardableResult
+
   public mutating func changerDegat(nb:Int){
     self.degats = nb
   }
@@ -106,7 +106,7 @@ public struct carte : carteProtocol {
 
   // changerPosition : Carte ->
   // met la carte en position offensive (horizontale) ou defensive (vertical)
-  @discardableResult
+  
   public mutating func changerPosition(){
     if self.estOffensif{
       self.estOffensif = false
