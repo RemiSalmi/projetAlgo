@@ -7,6 +7,7 @@ import jeu
 // Post : tant que le joueur n'a pas donné un chiffre correct on lui redemande
 // Note : cette fonction convertie la chaine de caractere entrée par le joueur en entier
 public func demanderCarteMainJoueur(tailleMain:Int)->Int{
+  var Erreur : Int = -100 //Code erreur
   print("entrez le numero de la carte 1,2,...,\(tailleMain)")
   if let num = try readLine(){
     if let n=Int(num){
@@ -22,6 +23,7 @@ public func demanderCarteMainJoueur(tailleMain:Int)->Int{
     print("vous devez entrez le numero de la carte 1,2,...,\(tailleMain) Réessayez")
     return demanderCarteMainJoueur(tailleMain:tailleMain)
   }
+  return Erreur
 }
 
 // demanderJoueurAction :  -> Int
@@ -32,6 +34,7 @@ public func demanderCarteMainJoueur(tailleMain:Int)->Int{
 // Post : tant que le joueur n'a pas donné un chiffre correct on lui redemande
 // Note : cette fonction convertie la chaine de caractere entrée par le joueur en entier
 public func demanderJoueurAction()->Int{
+  var Erreur : Int = -100 //Code erreur
   print("entrez le numero de l'action a effectuer")
   print("entrez 0 pour ne rien faire")
   print("entrez 1 pour attaquer")
@@ -50,6 +53,7 @@ public func demanderJoueurAction()->Int{
     print("vous devez entrez un numero 0, 1 ou 2 Réessayez")
     return demanderJoueurAction()
   }
+  return Erreur
 }
 
 // demanderPosChampsBatailleJoueur :  -> String
@@ -87,6 +91,7 @@ public func demanderPosChampsBatailleJoueur(cb:champBataille)->String{
 // Post : tant que le joueur n'a pas donné un chiffre correct on lui redemande
 // Note : cette fonction convertie la chaine de caractere entrée par le joueur en entier
 public func demanderJoueurDevelopper()->Int{
+  var Erreur : Int = -100 //Code erreur
   print("si vous souhaitez developper (deposer une carte de votre main votre royaume) ")
   print("tapez 0")
   print("si vous ne voulez pas developper")
@@ -105,6 +110,7 @@ public func demanderJoueurDevelopper()->Int{
     print("erreur Réessayez")
     return demanderJoueurDevelopper()
   }
+  return Erreur
 }
 
 // demanderJoueurFinAttaque :  -> Bool
