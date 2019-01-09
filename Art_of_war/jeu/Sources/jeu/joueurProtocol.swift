@@ -57,5 +57,5 @@ public protocol joueurProtocol{
     // si l'attaque termine par la destruction de la carte du joueur courant return -2
     // si l'attaque termine par la destruction de la carte du joueur courant return le nombre de dégats causés
     @discardableResult
-    mutating func attaquer(posCarte:String,posCarteAd:String,cbAd:ChampBataille)->Int
+    mutating func attaquer(posCarte:String,posCarteAd:String,cbAd: inout ChampBataille)->Int
 }

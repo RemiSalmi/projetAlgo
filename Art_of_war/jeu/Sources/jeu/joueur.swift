@@ -115,14 +115,14 @@ public struct joueur : joueurProtocol{
   // si l'attaque termine par la destruction de la carte du joueur adverse return -2
   // si l'attaque termine par endommager de la carte du joueur adverse return le nombre de dégats causés
   @discardableResult
-  public mutating func attaquer(posCarte:String,posCarteAd:String,cbAd:ChampBataille)->Int{
+  public mutating func attaquer(posCarte:String,posCarteAd:String,cbAd: inout ChampBataille)->Int{
 
     let carteJoueur = self.champBatailleJoueur().CartePosition(pos : posCarte)
     let carteJoueurAd = cbAd.CartePosition(pos : posCarteAd)
     if let carteJoueur = carteJoueur{
       if let carteJoueurAd = carteJoueurAd{
-        if(self.champBatailleJoueur().peutAttaquer(c:carteJoueur,pos:posCarteAd)){
-          if(carteJoueur.valeurAttaque() = carteJoueurAd.valeurDefenseD()){
+        if(self.champBatailleJoueur().peutAttaquer(c:carteJoueur,pos:posCarteAd,cdb :self.champBatailleJoueur() )){
+          if(carteJoueur.valeurAttaque() == carteJoueurAd.valeurDefenseD()){
             self.royaume.ajouterCarte(c:carteJoueurAd)
             cbAd.supprimerCarte(c:carteJoueurAd)
             return -1
