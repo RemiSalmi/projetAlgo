@@ -4,7 +4,7 @@
 
 //Tableau de 6 cases de type : Carte?
 public protocol champBatailleProtocol : Sequence{
-  associatedtype IteratorChampBataille : IteratorProtocol where IteratorChampBataille.Element == Carte
+  associatedtype IteratorChampBatailleProtocol : IteratorProtocol where IteratorChampBataille.Element == Carte
   associatedtype ChampBataille : champBatailleProtocol
   associatedtype Carte : carteProtocol
 
@@ -47,7 +47,11 @@ public protocol champBatailleProtocol : Sequence{
   // supprimer une carte du champ de bataille
   @discardableResult
   mutating func supprimerCarte(c:Carte)
+
+  func makeIt()-> IteratorChampBatailleProtocol
 }
+
+
 
 protocol IteratorChampBatailleProtocol : IteratorProtocol{
   associatedtype Carte : carteProtocol

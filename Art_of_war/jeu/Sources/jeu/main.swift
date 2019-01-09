@@ -1,6 +1,7 @@
 
 
 public struct main : mainProtocol {
+  
   public typealias Carte = carte
   public typealias Main = main
   var main: [Carte]

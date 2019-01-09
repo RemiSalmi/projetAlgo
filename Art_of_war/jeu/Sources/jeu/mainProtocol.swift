@@ -4,7 +4,7 @@
 
 //La main est une liste
 public protocol mainProtocol : Sequence{
-  associatedtype IteratorMain : IteratorProtocol where IteratorMain.Element == Carte
+  associatedtype IteratorMain : IteratorMainProtocol where IteratorMain.Element == Carte
   associatedtype Carte : carteProtocol
   associatedtype Main : mainProtocol
 
@@ -41,6 +41,8 @@ public protocol mainProtocol : Sequence{
   // Pre : la position doit etre entre 1 et tailleMain()
   @discardableResult
   mutating func supprimerCarte(pos:Int) -> Carte
+
+  func makeIt()->IteratorMainProtocol
 }
 
 protocol IteratorMainProtocol : IteratorProtocol{
