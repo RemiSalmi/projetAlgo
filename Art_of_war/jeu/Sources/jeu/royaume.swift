@@ -42,4 +42,32 @@ public class royaume : royaumeProtocol {
     return self.royaume.count == 0
   }
 
+  public func makeIterator()->IteratorRoyaume{
+    return IteratorRoyaume(self)
+  }
+
+}
+
+
+
+// Note dev : Création d'un Iterateur sur le royaume pour parcourir les cartes dans le main
+public struct IteratorRoyaume : IteratorRoyaumeProtocol{
+  public typealias Carte = carte
+  public typealias Royaume = royaume
+  private let royaume : Royaume
+  private var courant : Int = 0
+  fileprivate init(_ r: Royaume){
+    self.royaume = r
+  }
+
+  public mutating func next()->Carte?{
+    let carte : Carte
+    guard self.courant < self.royaume.royaume.count else {
+      return nil
+    }
+    carte = self.royaume.royaume[self.courant]
+    self.courant = self.courant + 1
+    return carte
+
+  }
 }

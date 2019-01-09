@@ -1,4 +1,5 @@
-public protocol royaumeProtocol {
+public protocol royaumeProtocol : Sequence {
+  associatedtype IteratorRoyaumeProtocol : IteratorProtocol
   associatedtype Royaume : royaumeProtocol
   associatedtype Carte : carteProtocol
 
@@ -10,7 +11,7 @@ public protocol royaumeProtocol {
   // ajouterCarte : Royaume x Carte -> Royaume
   // Ajout d'une carte dans le royaume
   // Note : la carte est ajoutée à la fin du royaume (FILE)
-  
+
   mutating func ajouterCarte(c:Carte)
 
   // recupererCarte : Royaume -> Carte
@@ -28,4 +29,14 @@ public protocol royaumeProtocol {
   // faux sinon
   func royaumeVide()->Bool
 
+  func makeIterator()->IteratorRoyaumeProtocol
+
+}
+
+
+// Note dev : Création d'un Iterateur sur le royaume pour parcourir les cartes dans le main
+protocol IteratorRoyaumeProtocol : IteratorProtocol{
+  associatedtype Carte = carte
+
+  mutating func next()->Carte?
 }
