@@ -8,9 +8,9 @@ var j2 = joueur(n:2)
 // mise en place du joueur 1
 
 // le joueur 1 pioche 3 cartes
-j1.mainJoueur().ajouterCarte(j1.piocheJoueur().piocher())
-j1.mainJoueur().ajouterCarte(j1.piocheJoueur().piocher())
-j1.mainJoueur().ajouterCarte(j1.piocheJoueur().piocher())
+j1.mainJoueur().ajouterCarteMain(j1.piocheJoueur().piocher())
+j1.mainJoueur().ajouterCarteMain(j1.piocheJoueur().piocher())
+j1.mainJoueur().ajouterCarteMain(j1.piocheJoueur().piocher())
 
 // le joueur 1 pioche une carte qui va directement dans son royaume
 j1.royaumeJoueur().ajouterCarte(j1.piocheJoueur().piocher())
@@ -29,7 +29,7 @@ afficherChampBataille(cb:j1.champBatailleJoueur())
 let pos : String
 
 // le joueur entre une position correspondant à F1 F2 F3 A1 A2 A3
-pos = demanderPosChampsBatailleJoueur(cb:j1.champBatailleJoueur)
+pos = demanderPosChampsBatailleJoueur(cb:j1.champBatailleJoueur())
 
 // la carte est placée sur le champ de bataille du joueur 1
 j1.champBatailleJoueur().placerCarte(j1.mainJoueur().setCarte(carte),pos)
@@ -99,19 +99,19 @@ while !j1.roiCapture() && !j2.roiCapture() && !joueurCourant.piocheJoueur().pioc
     while !fin {
 
       // aficher le champs de bataille du joueur courant
-      afficherChampBataille(joueurCourant.champBatailleJoueur())
+      afficherChampBataille(cb : joueurCourant.champBatailleJoueur())
 
       let posCarte : String
       // le joueur entre une position correspondant a la place de la carte dans le champs de bataille
-      posCarte = demanderPosChampsBatailleJoueur(joueurCourant.champBatailleJoueur())
+      posCarte = demanderPosChampsBatailleJoueur(cb : joueurCourant.champBatailleJoueur())
       // afficher le champs de bataille du joueur adverse
-      afficherChampBataille(joueurAdverse.champBatailleJoueur())
+      afficherChampBataille(cb : joueurAdverse.champBatailleJoueur())
 
       let posCarteAd : Int
       // le joueur entre une position correspondant a la place de la carte dans le champs de bataille
-      posCarteAd = demanderPosChampsBatailleJoueur(joueurAdverse.champBatailleJoueur())
+      posCarteAd = demanderPosChampsBatailleJoueur(cb : joueurAdverse.champBatailleJoueur())
       var res : Int
-      res=joueurCourant.attaquer(posCarte,posCarteAd,joueurAdverse.champBatailleJoueur())
+      res=joueurCourant.attaquer(posCarte : posCarte,posCarteAd : posCarteAd,cbAd : joueurAdverse.champBatailleJoueur())
       if res == -1 {
         print("vous avez capturé la carte adverse")
       }else if res == -2{
@@ -127,21 +127,21 @@ while !j1.roiCapture() && !j2.roiCapture() && !joueurCourant.piocheJoueur().pioc
 
     // si joueur decide de deployer une unité (une carte sur le champs de bataille)
   }else if choix == 2 {
-    afficherMain(joueurCourant.mainJoueur())
+    afficherMain(m : joueurCourant.mainJoueur())
     // le joueur choisi une carte de sa main à placer sur le champs de ChampBataille
 
     // le joueur entre un nombre correspondant a la place de la carte dans la main
-    carte = demanderCarteMainJoueur(joueurCourant.mainJoueur().tailleMain())
+    carte = demanderCarteMainJoueur(tailleMain : joueurCourant.mainJoueur().tailleMain())
 
     // le joueur indique à quel endroit il veut placer sa carte sur le champ de bataille
 
     // le joueur entre une position correspondant à la place sur le champs le bataille
-    pos = demanderPosChampsBatailleJoueur()
+    pos = demanderPosChampsBatailleJoueur(cb : joueurCourant.champBatailleJoueur())
 
     // la carte est placée sur le champ de bataille du joueur
     joueurCourant.champBatailleJoueur().placerCarte(pos,joueurCourant.mainJoueur().setCarte(carte))
 
-    afficherChampBataille(joueurCourant.champBatailleJoueur())
+    afficherChampBataille(cb : joueurCourant.champBatailleJoueur())
   }
   // sinon  ne rien faire
 
@@ -158,11 +158,11 @@ while !j1.roiCapture() && !j2.roiCapture() && !joueurCourant.piocheJoueur().pioc
   // tant que le joueur a 6 cartes ou plus dans sa main il doit en enlever
   // sinon tant qu'il veut on continue jusqu'à n'avoir plus qu'une carte dans sa main
   while joueurCourant.mainJoueur().tailleMain()>=6 || choix==0 || joueurCourant.mainJoueur().tailleMain()>1{
-    afficherMain(joueurCourant.mainJoueur())
+    afficherMain(m : joueurCourant.mainJoueur())
     // le joueur choisi une carte de sa main à placer dans le royaume
 
     // le joueur entre un nombre correspondant a la place de la carte dans la main
-    carte = demanderCarteMainJoueur(joueurCourant.mainJoueur().tailleMain())
+    carte = demanderCarteMainJoueur(tailleMain : joueurCourant.mainJoueur().tailleMain())
     // la carte est ajoutée au royaume
     joueurCourant.royaumeJoueur().ajouterCarte(carte)
 
@@ -171,14 +171,14 @@ while !j1.roiCapture() && !j2.roiCapture() && !joueurCourant.piocheJoueur().pioc
   }
 
   // inverse les roles de joueurs
-  var j : Joueur
+  var j : joueur
   j=joueurCourant
   joueurCourant=joueurAdverse
   joueurAdverse=j
 
 }
 
-if j1.aGagne(j2) {
+if j1.aGagne(j : j2) {
   print("bravo j1 vous avez gagné !")
 }else {
   print("bravo j2 vous avez gagné !")
