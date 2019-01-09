@@ -42,7 +42,7 @@ public struct main : mainProtocol {
   // Pre : la carte doit provenir de la pioche ???
   // Post :tailleMain=tailleMain+1
   @discardableResult
-  public mutating func ajouterCarteMain(c:Carte)->main{
+  public mutating func ajouterCarteMain(c:Carte)->Main{
     self.main.append(c)
     return self
   }
@@ -71,9 +71,9 @@ public struct main : mainProtocol {
 }
 
 public struct IteratorMain : IteratorMainProtocol{
-  private let main : main
+  private let main : Main
   private var courant : Int = 0
-  fileprivate init(_ m: main){
+  fileprivate init(_ m: Main){
     self.main = m
   }
 
