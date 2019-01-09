@@ -1,7 +1,7 @@
 
 
 public struct main : mainProtocol {
-  
+
   public typealias Carte = carte
   public typealias Main = main
   var main: [Carte]
@@ -71,6 +71,7 @@ public struct main : mainProtocol {
 }
 
 public struct IteratorMain : IteratorMainProtocol{
+  
   private let main : Main
   private var courant : Int = 0
   fileprivate init(_ m: Main){

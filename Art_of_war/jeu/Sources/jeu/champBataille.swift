@@ -45,7 +45,7 @@ public struct champBataille : champBatailleProtocol {
       break;
     }
 
-    if let carte = carte{
+    if carte != nil{
       reponse = false
     }
     return reponse
@@ -215,8 +215,6 @@ public struct champBataille : champBatailleProtocol {
 }
 
 public struct IteratorChampBataille : IteratorChampBatailleProtocol{
-  public typealias IteratorChampBataille = IteratorChampBatailleProtocol
-  public typealias ChampBataille = champBataille
   public typealias Carte = carte
 
   private let champ_bataille : ChampBataille

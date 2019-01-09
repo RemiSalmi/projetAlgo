@@ -4,7 +4,7 @@
 
 //La main est une liste
 public protocol mainProtocol : Sequence{
-  associatedtype IteratorMain : IteratorMainProtocol where IteratorMain.Element == Carte
+  associatedtype IteratorMainProtocol : IteratorProtocol where IteratorMain.Element == Carte
   associatedtype Carte : carteProtocol
   associatedtype Main : mainProtocol
 
@@ -46,7 +46,7 @@ public protocol mainProtocol : Sequence{
 }
 
 protocol IteratorMainProtocol : IteratorProtocol{
-  associatedtype Carte : carteProtocol
+  
 
   func IteratorMain()->Self
   func next()->Carte?
