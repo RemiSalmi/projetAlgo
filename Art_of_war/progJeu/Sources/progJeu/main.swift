@@ -2,8 +2,8 @@
 import jeu
 
 // initialisation : création des joueurs
-var j1 = joueur(1)
-var j2 = joueur(2)
+var j1 = joueur(n:1)
+var j2 = joueur(n:2)
 
 // mise en place du joueur 1
 
@@ -15,21 +15,21 @@ j1.mainJoueur().ajouterCarte(j1.piocheJoueur().piocher())
 // le joueur 1 pioche une carte qui va directement dans son royaume
 j1.royaumeJoueur().ajouterCarte(j1.piocheJoueur().piocher())
 
-afficherMain(j1.mainJoueur())
+afficherMain(m:j1.mainJoueur())
 
 // le joueur 1 choisi une carte de sa main à placer sur son champs de ChampBataille
 let carte : Int
 
 // le joueur entre un nombre correspondant a la place de la carte dans la main
-carte = demanderCarteMainJoueur(j1.mainJoueur().tailleMain())
+carte = demanderCarteMainJoueur(tailleMain:j1.mainJoueur().tailleMain())
 
-afficherChampBataille(j1.champBatailleJoueur())
+afficherChampBataille(cb:j1.champBatailleJoueur())
 
 // le joueur indique à quel endroit il veut placer sa carte sur son champ de bataille
 let pos : String
 
 // le joueur entre une position correspondant à F1 F2 F3 A1 A2 A3
-pos = demanderPosChampsBatailleJoueur(j1.champBatailleJoueur)
+pos = demanderPosChampsBatailleJoueur(cb:j1.champBatailleJoueur)
 
 // la carte est placée sur le champ de bataille du joueur 1
 j1.champBatailleJoueur().placerCarte(j1.mainJoueur().setCarte(carte),pos)
@@ -44,29 +44,29 @@ j2.mainJoueur().ajouterCarte(j2.piocheJoueur().piocher())
 // le joueur 2 pioche une carte qui va directement dans son royaume
 j2.royaumeJoueur().ajouterCarte(j2.piocheJoueur().piocher())
 
-afficherMain(j2.mainJoueur())
+afficherMain(m:j2.mainJoueur())
 // le joueur 2 choisi une carte de sa main à placer sur son champs de ChampBataille
 
 // le joueur entre un nombre correspondant a la place de la carte dans la main
-carte = demanderCarteMainJoueur(j2.mainJoueur().tailleMain())
+carte = demanderCarteMainJoueur(tailleMain:j2.mainJoueur().tailleMain())
 
-afficherChampBataille(j2.champBatailleJoueur())
+afficherChampBataille(cb:j2.champBatailleJoueur())
 
 // le joueur indique à quel endroit il veut placer sa carte sur le champ de bataille
 
 // le joueur entre une position correspondant à F1 F2 F3 A1 A2 A3
-pos = demanderPosChampsBatailleJoueur(j2.champBatailleJoueur())
+pos = demanderPosChampsBatailleJoueur(cb:j2.champBatailleJoueur())
 
 // la carte est placée sur le champ de bataille du joueur
 j2.champBatailleJoueur().placerCarte(j2.mainJoueur().setCarte(carte),pos)
 
 // commencer partie
 // on initialise le joueur qui est en train de jouer (ici joueur courant)
-var joueurCourant : Joueur
+var joueurCourant : joueur
 joueurCourant = j1
 
 // on initialise le joueur qui ne joue pas (ici joueur adverse)
-var joueurAdverse : Joueur
+var joueurAdverse : joueur
 joueurAdverse = j2
 
 // tant qu'un roi n'est pas capturé ou que la pioche du joueur courant n'est pas vide ou (champ de bataille vide et main vide et royaume vide)
