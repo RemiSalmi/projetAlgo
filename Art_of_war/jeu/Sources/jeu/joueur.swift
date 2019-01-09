@@ -78,7 +78,7 @@ public struct joueur : joueurProtocol{
 
   // roiCapture :  Joueur ->
   // met roiCapturé à True
-  
+
   public mutating func leRoiEstCapture(){
     self.roiCapturé = true
   }

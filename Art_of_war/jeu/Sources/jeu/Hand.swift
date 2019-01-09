@@ -1,6 +1,6 @@
 
 
-public struct main : mainProtocol {
+public class main : mainProtocol {
 
   public typealias Carte = carte
   public typealias Main = main
@@ -10,7 +10,7 @@ public struct main : mainProtocol {
   // création d'une main, initialisée avec un Roi n
   // Pre : n doit être 1 ou 2
   // Post : on crée une carte "roi1" ou "roi2"
-  public init(n:Int){
+  public required init(n:Int){
     self.main = [Carte]()
     let typeRoi = "roi"+String(n)
     let roi = Carte(type: typeRoi)
@@ -42,7 +42,7 @@ public struct main : mainProtocol {
   // Pre : la carte doit provenir de la pioche ???
   // Post :tailleMain=tailleMain+1
   @discardableResult
-  public mutating func ajouterCarteMain(c:Carte)->Main{
+  public func ajouterCarteMain(c:Carte)->Main{
     self.main.append(c)
     return self
   }
@@ -59,7 +59,7 @@ public struct main : mainProtocol {
   // renvoie la carte de la main à la position pos et la supprime de la main
   // Pre : la position doit etre entre 1 et tailleMain()
   @discardableResult
-  public mutating func supprimerCarte(pos:Int)->Carte{
+  public func supprimerCarte(pos:Int)->Carte{
     let carte = self.setCarte(pos: pos)
     self.main.remove(at: pos)
     return carte
@@ -79,7 +79,7 @@ public struct IteratorMain : IteratorMainProtocol{
     self.main = m
   }
 
-  public mutating func next()->Carte?{
+  public func next()->Carte?{
     let carte : Carte
     guard self.courant < self.main.main.count else {
       return nil
