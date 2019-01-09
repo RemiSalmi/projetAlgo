@@ -228,7 +228,7 @@ public struct IteratorChampBataille : IteratorChampBatailleProtocol{
   // Si c'est une carte , c'est bon
   // Si c'est vide, on passe au next
   // Si on est a la fin, on retourne nil
-  public func next()->Carte?{
+  public mutating func next()->Carte?{
     guard self.courant < 6 else { return nil }
 
     guard let carte = self.champ_bataille.champ[self.courant] else {
