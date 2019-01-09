@@ -22,7 +22,7 @@ public struct joueur : joueurProtocol{
     self.royaume = Royaume()
     self.main = Main(n : n)
     self.pioche = Pioche()
-    self.roiCapture = false
+    self.roiCapturé = false
   }
 
   // roiCapture :  Joueur -> Bool

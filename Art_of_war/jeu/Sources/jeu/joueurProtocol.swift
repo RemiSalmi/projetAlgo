@@ -25,8 +25,8 @@ public protocol joueurProtocol{
     // ou si les 2 joueurs n'ont plus de pioche
     // - etre celui qui a le plus gros royaume
     // ou si le joueur n'a plus d'unités sur son champs de bataille et qu'il ne peut pas en mobiliser d'autres
-    // alors il perd la partie 
-    func aGagne()->Bool
+    // alors il perd la partie
+    func aGagne(j : Joueur)->Bool
 
     // roiCapture :  Joueur ->
     // met roiCapturé à True
