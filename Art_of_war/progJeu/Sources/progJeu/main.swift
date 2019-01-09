@@ -25,7 +25,7 @@ if let cartePiocheJ1  = cartePiocheJ1{
 afficherMain(m:j1.mainJoueur())
 
 // le joueur 1 choisi une carte de sa main à placer sur son champs de ChampBataille
-let carte : Int
+var carte : Int
 
 // le joueur entre un nombre correspondant a la place de la carte dans la main
 carte = demanderCarteMainJoueur(tailleMain:j1.mainJoueur().tailleMain())
@@ -33,7 +33,7 @@ carte = demanderCarteMainJoueur(tailleMain:j1.mainJoueur().tailleMain())
 afficherChampBataille(cb:j1.champBatailleJoueur())
 
 // le joueur indique à quel endroit il veut placer sa carte sur son champ de bataille
-let pos : String
+var pos : String
 
 // le joueur entre une position correspondant à F1 F2 F3 A1 A2 A3
 pos = demanderPosChampsBatailleJoueur(cb:j1.champBatailleJoueur())
@@ -159,7 +159,16 @@ while !j1.roiCapture() && !j2.roiCapture() && !joueurCourant.piocheJoueur().pioc
 
     // la carte est placée sur le champ de bataille du joueur
     //* Note dev : il faut récupérer la carte avec son numéro dans la main avant
-    joueurCourant.champBatailleJoueur().placerCarte(c : carte, pos : pos)
+    var IteratorChampBataille = joueurCourant.champBatailleJoueur().makeIterator()
+    var carte_choisie : carte?
+    var compteur_carte : Int = 0
+    while compteur_carte < carte{
+      carte_choisie = IteratorChampBataille.next()
+      compteur_carte = compteur_carte + 1
+    }
+    if let carte_choisie = carte_choisie{
+      joueurCourant.champBatailleJoueur().placerCarte(c : carte_choisie, pos : pos)
+    }
 
     afficherChampBataille(cb : joueurCourant.champBatailleJoueur())
   }
@@ -185,7 +194,17 @@ while !j1.roiCapture() && !j2.roiCapture() && !joueurCourant.piocheJoueur().pioc
     carte = demanderCarteMainJoueur(tailleMain : joueurCourant.mainJoueur().tailleMain())
     // la carte est ajoutée au royaume
     //* Note dev : il faut récupérer la carte avec son numéro dans la main avant
-    joueurCourant.royaumeJoueur().ajouterCarte(c : carte)
+    //* Note dev : Il faudrait un Iterateur sur le royaume pour parcourir les cartes mais ce n'est pas dans les specifications de base
+    var IteratorRoyaume = joueurCourant.royaumeJoueur().makeIterator()
+    var carte_choisie : carte?
+    var compteur_carte : Int = 0
+    while compteur_carte < carte{
+      carte_choisie = IteratorRoyaume.next()
+      compteur_carte = compteur_carte + 1
+    }
+    if let carte_choisie = carte_choisie {
+      joueurCourant.royaumeJoueur().ajouterCarte(c : carte_choisie)
+    }
 
     choix = demanderJoueurDevelopper()
 
