@@ -70,14 +70,14 @@ public struct main : mainProtocol {
   }
 }
 
-public public struct IteratorMain : IteratorProtocol{
+public struct IteratorMain : IteratorProtocol{
   private let main : main
   private var courant : Int = 0
   fileprivate init(_ m: main){
     self.main = m
   }
 
-  public public mutating func next()->Carte?{
+  public mutating func next()->Carte?{
     let carte : Carte
     guard self.courant < self.main.main.count else {
       return nil

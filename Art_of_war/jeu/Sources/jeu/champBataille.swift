@@ -214,7 +214,7 @@ public struct champBataille : champBatailleProtocol {
   }
 }
 
-public public struct IteratorChampBataille : IteratorChampBatailleProtocol{
+public struct IteratorChampBataille : IteratorChampBatailleProtocol{
   private let champ_bataille : champBataille
   private var courant : Int = 0
   fileprivate init(_ cb: champBataille){
@@ -227,7 +227,7 @@ public public struct IteratorChampBataille : IteratorChampBatailleProtocol{
   // Si c'est une carte , c'est bon
   // Si c'est vide, on passe au next
   // Si on est a la fin, on retourne nil
-  public public mutating func next()->Carte?{
+  public mutating func next()->Carte?{
     guard self.courant < 6 else { return nil }
 
     guard let carte = self.champ_bataille.champ[self.courant] else {
