@@ -54,5 +54,5 @@ public protocol piocheProtocol {
   //          en fonction du nombre de chaque type restant
   // penser à incrementer le nombre de carte piochées en fonction du type
   @discardableResult
-  mutating func piocher()->Carte
+  mutating func piocher()->Carte?
 }
