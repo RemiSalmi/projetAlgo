@@ -1,7 +1,7 @@
 
 
 public struct main : mainProtocol {
-  public typealias IteratorMain = Iterator where IteratorMain.Element == Carte
+  public typealias IteratorMain = Iterator 
   public typealias Carte = carte
   public typealias Main = main
   var main: [Carte]
