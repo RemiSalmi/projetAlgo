@@ -1,4 +1,4 @@
-public struct pioche : piocheProtocol {
+public class pioche : piocheProtocol {
   public typealias Carte = carte
   public typealias Pioche = pioche
   var archer : Int
@@ -8,7 +8,7 @@ public struct pioche : piocheProtocol {
   // init : -> Pioche
   // création d’une pioche, initialisée avec 9 Soldats, 6 Gardes et 5 Archers
   //la pile pioche est vide
-  public init(){
+  public required init(){
     self.archer = 5
     self.soldat = 9
     self.garde = 6
@@ -78,7 +78,7 @@ public struct pioche : piocheProtocol {
   //          en fonction du nombre de chaque type restant
   // penser à incrementer le nombre de carte piochées en fonction du type
   @discardableResult
-  public mutating func piocher()->Carte?{
+  public func piocher()->Carte?{
     if (self.piocheVide()){
       return nil
     }else{

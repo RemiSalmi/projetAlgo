@@ -4,7 +4,7 @@ enum TypeCarte : String {
 case soldat="soldat", archer="archer", garde="garde", roi1="roi1", roi2="roi2"
 }
 
-public struct carte : carteProtocol {
+public class carte : carteProtocol {
   public typealias Carte = carte
   var nom : TypeCarte
   var attaque : Int
@@ -21,7 +21,7 @@ public struct carte : carteProtocol {
   // si c'est un archer (attaque : 1, position défensive : 2, position offensive : 1)
   // si c'est un garde (attaque : 1, position défensive : 3, position offensive : 2)
   // les dégats sont initialisés à 0
-  public init?(type: String){
+  public required init?(type: String){
 
     self.degats = 0
     self.estOffensif = false
@@ -76,7 +76,7 @@ public struct carte : carteProtocol {
   // changerDegat :  Carte x Int ->
   // modifie les degats d'une carte
 
-  public mutating func changerDegat(nb:Int){
+  public func changerDegat(nb:Int){
     self.degats = nb
   }
 
@@ -106,8 +106,8 @@ public struct carte : carteProtocol {
 
   // changerPosition : Carte ->
   // met la carte en position offensive (horizontale) ou defensive (vertical)
-  
-  public mutating func changerPosition(){
+
+  public func changerPosition(){
     if self.estOffensif{
       self.estOffensif = false
     }

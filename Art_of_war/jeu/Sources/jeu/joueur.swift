@@ -1,4 +1,4 @@
-public struct joueur : joueurProtocol{
+public class joueur : joueurProtocol{
 
   public typealias Joueur = joueur
   public typealias Carte = carte
@@ -17,7 +17,7 @@ public struct joueur : joueurProtocol{
   // lorsqu'on crée un joueur on crée sa main (initailisée avec un roi n)
   // on crée un champs de bataille Vide
   // on crée un royaume vide
-  public init(n:Int){
+  public required init(n:Int){
     self.champBataille = ChampBataille()
     self.royaume = Royaume()
     self.main = Main(n : n)
@@ -79,7 +79,7 @@ public struct joueur : joueurProtocol{
   // roiCapture :  Joueur ->
   // met roiCapturé à True
 
-  public mutating func leRoiEstCapture(){
+  public func leRoiEstCapture(){
     self.roiCapturé = true
   }
 
@@ -114,8 +114,8 @@ public struct joueur : joueurProtocol{
   // si l'attaque termine par la capture de la carte adverse return -1
   // si l'attaque termine par la destruction de la carte du joueur adverse return -2
   // si l'attaque termine par endommager de la carte du joueur adverse return le nombre de dégats causés
-  @discardableResult
-  public mutating func attaquer(posCarte:String,posCarteAd:String,cbAd: inout ChampBataille)->Int{
+  
+  public func attaquer(posCarte:String,posCarteAd:String,cbAd: inout ChampBataille)->Int{
     let erreur = -1000 //Code erreur
 
     let carteJoueur = self.champBatailleJoueur().CartePosition(pos : posCarte)

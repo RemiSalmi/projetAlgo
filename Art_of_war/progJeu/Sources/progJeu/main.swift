@@ -7,13 +7,20 @@ var j2 = joueur(n:2)
 
 // mise en place du joueur 1
 
-// le joueur 1 pioche 3 cartes
-j1.mainJoueur().ajouterCarteMain(j1.piocheJoueur().piocher())
-j1.mainJoueur().ajouterCarteMain(j1.piocheJoueur().piocher())
-j1.mainJoueur().ajouterCarteMain(j1.piocheJoueur().piocher())
 
-// le joueur 1 pioche une carte qui va directement dans son royaume
-j1.royaumeJoueur().ajouterCarte(j1.piocheJoueur().piocher())
+var cartePiocheJ1 = j1.piocheJoueur().piocher()
+if let cartePiocheJ1  = cartePiocheJ1{
+
+  // le joueur 1 pioche 3 cartes
+  j1.mainJoueur().ajouterCarteMain(c : cartePiocheJ1)
+  j1.mainJoueur().ajouterCarteMain(c : cartePiocheJ1)
+  j1.mainJoueur().ajouterCarteMain(c : cartePiocheJ1)
+
+  // le joueur 1 pioche une carte qui va directement dans son royaume
+  j1.royaumeJoueur().ajouterCarte( c : cartePiocheJ1)
+}
+
+
 
 afficherMain(m:j1.mainJoueur())
 
@@ -32,17 +39,25 @@ let pos : String
 pos = demanderPosChampsBatailleJoueur(cb:j1.champBatailleJoueur())
 
 // la carte est placée sur le champ de bataille du joueur 1
-j1.champBatailleJoueur().placerCarte(j1.mainJoueur().setCarte(carte),pos)
+j1.champBatailleJoueur().placerCarte(c : j1.mainJoueur().setCarte( pos : carte), pos : pos)
 
 // mise en place du joueur 2
 
-// le joueur 2 pioche 3 cartes
-j2.mainJoueur().ajouterCarteMain(j2.piocheJoueur().piocher())
-j2.mainJoueur().ajouterCarteMain(j2.piocheJoueur().piocher())
-j2.mainJoueur().ajouterCarteMain(j2.piocheJoueur().piocher())
 
-// le joueur 2 pioche une carte qui va directement dans son royaume
-j2.royaumeJoueur().ajouterCarte(j2.piocheJoueur().piocher())
+var cartePiocheJ2 = j2.piocheJoueur().piocher()
+if let cartePiocheJ2 = cartePiocheJ2{
+
+  // le joueur 2 pioche 3 cartes
+  j2.mainJoueur().ajouterCarteMain(c : cartePiocheJ2)
+  j2.mainJoueur().ajouterCarteMain(c : cartePiocheJ2)
+  j2.mainJoueur().ajouterCarteMain(c : cartePiocheJ2)
+
+  // le joueur 2 pioche une carte qui va directement dans son royaume
+  j2.royaumeJoueur().ajouterCarte(c : cartePiocheJ2)
+}
+
+
+
 
 afficherMain(m:j2.mainJoueur())
 // le joueur 2 choisi une carte de sa main à placer sur son champs de ChampBataille
@@ -58,7 +73,7 @@ afficherChampBataille(cb:j2.champBatailleJoueur())
 pos = demanderPosChampsBatailleJoueur(cb:j2.champBatailleJoueur())
 
 // la carte est placée sur le champ de bataille du joueur
-j2.champBatailleJoueur().placerCarte(j2.mainJoueur().setCarte(carte),pos)
+j2.champBatailleJoueur().placerCarte(c : j2.mainJoueur().setCarte( pos : carte), pos : pos)
 
 // commencer partie
 // on initialise le joueur qui est en train de jouer (ici joueur courant)
@@ -75,7 +90,11 @@ while !j1.roiCapture() && !j2.roiCapture() && !joueurCourant.piocheJoueur().pioc
   // phase de préparation
 
   // pioche une carte et l'ajoute à la main du joueur courant
-  joueurCourant.mainJoueur().ajouterCarteMain(joueurCourant.piocheJoueur().piocher())
+  var piocheCourant = joueurCourant.piocheJoueur().piocher()
+  if let piocheCourant = piocheCourant{
+    joueurCourant.mainJoueur().ajouterCarteMain( c : piocheCourant)
+  }
+
 
   // redresser toutes les cartes du champs de bataille du joueur courant
   for carte in joueurCourant.champBatailleJoueur(){
@@ -139,7 +158,8 @@ while !j1.roiCapture() && !j2.roiCapture() && !joueurCourant.piocheJoueur().pioc
     pos = demanderPosChampsBatailleJoueur(cb : joueurCourant.champBatailleJoueur())
 
     // la carte est placée sur le champ de bataille du joueur
-    joueurCourant.champBatailleJoueur().placerCarte(pos,joueurCourant.mainJoueur().setCarte(carte))
+    //* Note dev : il faut récupérer la carte avec son numéro dans la main avant
+    joueurCourant.champBatailleJoueur().placerCarte(c : carte, pos : pos)
 
     afficherChampBataille(cb : joueurCourant.champBatailleJoueur())
   }
@@ -147,7 +167,7 @@ while !j1.roiCapture() && !j2.roiCapture() && !joueurCourant.piocheJoueur().pioc
 
   // remise à 0 des dégats
   for carte in joueurCourant.champBatailleJoueur(){
-      carte.changerDegat(0)
+    carte.changerDegat(nb : 0)
   }
 
   // phase de developpement
@@ -164,7 +184,8 @@ while !j1.roiCapture() && !j2.roiCapture() && !joueurCourant.piocheJoueur().pioc
     // le joueur entre un nombre correspondant a la place de la carte dans la main
     carte = demanderCarteMainJoueur(tailleMain : joueurCourant.mainJoueur().tailleMain())
     // la carte est ajoutée au royaume
-    joueurCourant.royaumeJoueur().ajouterCarte(carte)
+    //* Note dev : il faut récupérer la carte avec son numéro dans la main avant
+    joueurCourant.royaumeJoueur().ajouterCarte(c : carte)
 
     choix = demanderJoueurDevelopper()
 
