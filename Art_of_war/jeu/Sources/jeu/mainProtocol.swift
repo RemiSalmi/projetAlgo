@@ -46,7 +46,7 @@ public protocol mainProtocol : Sequence{
 }
 
 protocol IteratorMainProtocol : IteratorProtocol{
-  
+  associatedtype Carte = carte
 
   func IteratorMain()->Self
   func next()->Carte?
