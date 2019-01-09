@@ -114,8 +114,8 @@ public class joueur : joueurProtocol{
   // si l'attaque termine par la capture de la carte adverse return -1
   // si l'attaque termine par la destruction de la carte du joueur adverse return -2
   // si l'attaque termine par endommager de la carte du joueur adverse return le nombre de dégats causés
-  
-  public func attaquer(posCarte:String,posCarteAd:String,cbAd: inout ChampBataille)->Int{
+
+  public func attaquer(posCarte:String,posCarteAd:String,cbAd: ChampBataille)->Int{
     let erreur = -1000 //Code erreur
 
     let carteJoueur = self.champBatailleJoueur().CartePosition(pos : posCarte)
