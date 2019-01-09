@@ -7,10 +7,10 @@ public struct joueur : joueurProtocol{
   public typealias ChampBataille = champBataille
   public typealias Royaume = royaume
 
-  var champBataille : champBataille
-  var main : main
-  var royaume : royaume
-  var pioche : pioche
+  var champBataille : ChampBataille
+  var main : Main
+  var royaume : Royaume
+  var pioche : Pioche
   var roiCapturé : Bool
   // init : Int -> Joueur
   // Création d'un joueur
@@ -18,10 +18,10 @@ public struct joueur : joueurProtocol{
   // on crée un champs de bataille Vide
   // on crée un royaume vide
   public init(n:Int){
-    self.champBataille = champBataille()
-    self.royaume = royaume()
-    self.main = main(n : n)
-    self.pioche = pioche()
+    self.champBataille = ChampBataille()
+    self.royaume = Royaume()
+    self.main = Main(n : n)
+    self.pioche = Pioche()
     self.roiCapture = false
   }
 

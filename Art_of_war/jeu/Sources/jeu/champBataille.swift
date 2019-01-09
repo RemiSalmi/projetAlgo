@@ -98,7 +98,7 @@ public struct champBataille : champBatailleProtocol {
   // indique si une carte peut attaquer une certaine position du champs de bataille adverse
   // True si peut attaquer False sinon
   //Note developpeurs : C'est le champ de bataille adverse qui est le Self, ajout d'un paramètre "cdb" qui est le champ de bataille du joueur qui attaque
-  public func peutAttaquer(c:Carte,pos:String,cdb:champBataille)->Bool{
+  public func peutAttaquer(c:Carte,pos:String,cdb:ChampBataille)->Bool{
     var reponse : Bool = false
     if(!self.caseVide(pos: pos)){ //Retourne true si la case n'est pas vide
       var type_carte : String = c.estDuType()
@@ -215,9 +215,9 @@ public struct champBataille : champBatailleProtocol {
 }
 
 public struct IteratorChampBataille : IteratorChampBatailleProtocol{
-  private let champ_bataille : champBataille
+  private let champ_bataille : ChampBataille
   private var courant : Int = 0
-  fileprivate init(_ cb: champBataille){
+  fileprivate init(_ cb: ChampBataille){
     self.champ_bataille = cb
   }
 
