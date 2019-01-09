@@ -53,5 +53,5 @@ protocol IteratorChampBatailleProtocol : IteratorProtocol{
   associatedtype Carte : carteProtocol
 
     func IteratorChampBataille()->Self
-    func next()->Carte
+    func next()->Carte?
 }
