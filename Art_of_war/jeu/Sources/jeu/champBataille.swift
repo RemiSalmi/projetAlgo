@@ -1,6 +1,6 @@
 
 
-public struct champBataille : champBatailleProtocol {
+public class champBataille : champBatailleProtocol {
   public typealias ChampBataille = champBataille
   public typealias Carte = carte
   //typealias Carte = carte
@@ -9,7 +9,7 @@ public struct champBataille : champBatailleProtocol {
 
   // init :  -> ChampBataille
   // création d’un ChampBataille vide
-  public init(){
+  public required init(){
     self.champ = [Carte?](repeating: nil, count: 6)
   }
 
@@ -160,7 +160,7 @@ public struct champBataille : champBatailleProtocol {
   // la fonction verifie si le front est plein met la carte en arriere
   // sinon ajoute au front sur la colonne "pos"
   //Note developpeurs : Pas assez de specifs ici. Quels sont les cas qui engendre des erreurs.
-  public mutating func placerCarte(c:Carte,pos:String){
+  public func placerCarte(c:Carte,pos:String){
     var indice : Int = 3
     switch pos{ //On verifie uniquement les positions front, car la position en paramètres est une position front
     case "F1":
@@ -185,7 +185,7 @@ public struct champBataille : champBatailleProtocol {
   // supprimerCarte : ChampBataille x Carte ->
   // supprimer une carte du champ de bataille
 
-  public mutating func supprimerCarte(c:Carte){
+  public func supprimerCarte(c:Carte){
     let position = self.positionCarte(c: c)
     if let position = position {
       switch position{
@@ -228,7 +228,7 @@ public struct IteratorChampBataille : IteratorChampBatailleProtocol{
   // Si c'est une carte , c'est bon
   // Si c'est vide, on passe au next
   // Si on est a la fin, on retourne nil
-  public mutating func next()->Carte?{
+  public func next()->Carte?{
     guard self.courant < 6 else { return nil }
 
     guard let carte = self.champ_bataille.champ[self.courant] else {
