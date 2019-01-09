@@ -1,20 +1,22 @@
 
 
 public struct champBataille : champBatailleProtocol {
+  public typealias ChampBataille = champBataille
+  public typealias Carte = carte
   //typealias Carte = carte
   var champ : [Carte?]
   //champ = [A1,A2,A3,F1,F2,F3]
 
   // init :  -> ChampBataille
   // création d’un ChampBataille vide
-  init(){
+  public init(){
     self.champ = [Carte?](repeating: nil, count: 6)
   }
 
   // estVide : champBataille -> Bool
   // Renvoie vrai si le champ de bataille ne contient aucune cartes
  	// Renvoie faux sinon
-  func estVide()->Bool{
+  public func estVide()->Bool{
     return self.caseVide(pos:"A1") && self.caseVide(pos:"A2") && self.caseVide(pos:"A3") && self.caseVide(pos:"F1") && self.caseVide(pos:"F2") && self.caseVide(pos:"F3")
 
   }
@@ -22,7 +24,7 @@ public struct champBataille : champBatailleProtocol {
   // caseVide : champBataille x String -> Bool
   // Renvoie vrai si une position du CB est vide
  	// Renvoie faux sinon
-  func caseVide(pos:String)->Bool{
+  public func caseVide(pos:String)->Bool{
     var carte : Carte?
     var reponse : Bool = true
     switch pos{
@@ -52,7 +54,7 @@ public struct champBataille : champBatailleProtocol {
   // positionCarte : champBataille x Carte -> String
   // Renvoie la position de la carte sur le champ de bataille
   // renvoie vide si la carte n'est pas présente sur le champ de bataille
-  func positionCarte(c:Carte)->String?{
+  public func positionCarte(c:Carte)->String?{
     var position : String? = nil
     let positions = ["A1", "A2", "A3","F1", "F2", "F3"]
     for pos in positions {
@@ -69,7 +71,7 @@ public struct champBataille : champBatailleProtocol {
   // CartePosition : champBataille x String -> Carte
   // Renvoie la carte de la position sur le champ de bataille
   // renvoie vide si pas de carte
-  func CartePosition(pos:String)->Carte?{
+  public func CartePosition(pos:String)->Carte?{
     var carte : Carte?
     var reponse : Bool = true
     switch pos{
@@ -96,7 +98,7 @@ public struct champBataille : champBatailleProtocol {
   // indique si une carte peut attaquer une certaine position du champs de bataille adverse
   // True si peut attaquer False sinon
   //Note developpeurs : C'est le champ de bataille adverse qui est le Self, ajout d'un paramètre "cdb" qui est le champ de bataille du joueur qui attaque
-  func peutAttaquer(c:Carte,pos:String,cdb:champBataille)->Bool{
+  public func peutAttaquer(c:Carte,pos:String,cdb:champBataille)->Bool{
     var reponse : Bool = false
     if(!self.caseVide(pos: pos)){ //Retourne true si la case n'est pas vide
       var type_carte : String = c.estDuType()
@@ -159,7 +161,7 @@ public struct champBataille : champBatailleProtocol {
   // sinon ajoute au front sur la colonne "pos"
   //Note developpeurs : Pas assez de specifs ici. Quels sont les cas qui engendre des erreurs.
   @discardableResult
-  mutating func placerCarte(c:Carte,pos:String){
+  public mutating func placerCarte(c:Carte,pos:String){
     var indice : Int = 3
     switch pos{ //On verifie uniquement les positions front, car la position en paramètres est une position front
     case "F1":
@@ -184,7 +186,7 @@ public struct champBataille : champBatailleProtocol {
   // supprimerCarte : ChampBataille x Carte ->
   // supprimer une carte du champ de bataille
   @discardableResult
-  mutating func supprimerCarte(c:Carte){
+  public mutating func supprimerCarte(c:Carte){
     var position = self.positionCarte(c: c)
     if let position = position {
       switch position{
@@ -207,12 +209,12 @@ public struct champBataille : champBatailleProtocol {
   }
 
 
-  func makeIt()->IteratorChampBataille{
+  public func makeIt()->IteratorChampBataille{
     return IteratorChampBataille(self)
   }
 }
 
-public struct IteratorChampBataille : IteratorChampBatailleProtocol{
+public public struct IteratorChampBataille : IteratorChampBatailleProtocol{
   private let champ_bataille : champBataille
   private var courant : Int = 0
   fileprivate init(_ cb: champBataille){
@@ -225,7 +227,7 @@ public struct IteratorChampBataille : IteratorChampBatailleProtocol{
   // Si c'est une carte , c'est bon
   // Si c'est vide, on passe au next
   // Si on est a la fin, on retourne nil
-  public mutating func next()->Carte?{
+  public public mutating func next()->Carte?{
     guard self.courant < 6 else { return nil }
 
     guard let carte = self.champ_bataille.champ[self.courant] else {

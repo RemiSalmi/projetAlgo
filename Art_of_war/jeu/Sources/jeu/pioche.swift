@@ -1,13 +1,14 @@
 public struct pioche : piocheProtocol {
-
-    var archer : Int
-    var soldat : Int
-    var garde : Int
+  public typealias Carte : carte
+  public typealias Pioche : pioche
+  var archer : Int
+  var soldat : Int
+  var garde : Int
 
   // init : -> Pioche
   // création d’une pioche, initialisée avec 9 Soldats, 6 Gardes et 5 Archers
   //la pile pioche est vide
-  init(){
+  public init(){
     self.archer = 5
     self.soldat = 9
     self.garde = 6
@@ -16,7 +17,7 @@ public struct pioche : piocheProtocol {
   // piocheVide : Pioche-> Bool
   // Vrai si piocheVide Faux sinon
   //si on ne peut plus créer de carte
-  func piocheVide()->Bool{
+  public func piocheVide()->Bool{
     return self.taillePioche() == 0
   }
 
@@ -27,44 +28,44 @@ public struct pioche : piocheProtocol {
   // qu&& nbArcherPioche()==nbArchers() ou
   // qu&& nbSoldatPioche()==nbSoldats() ou
   // qu&& nbGuerrierPioche()==nbGuerriers()
-  func taillePioche()->Int{
+  public func taillePioche()->Int{
     return self.nbArchers() + self.nbSoldats() + self.nbGardes()
   }
 
   // nbArcher : Pioche -> Int
   // nombre total de carte archer que l'on peut créer
-   func nbArchers()->Int{
-     return self.archer
-   }
+  public func nbArchers()->Int{
+    return self.archer
+  }
 
 
   // nbSoldat : Pioche -> Int
   // nombre total de carte soldat que l'on peut créer
-  func nbSoldats()->Int{
+  public func nbSoldats()->Int{
     return self.soldat
   }
 
   // nbGarde : Pioche -> Int
   // nombre total de carte garde que l'on peut créer
-  func nbGardes()->Int{
+  public func nbGardes()->Int{
     return self.garde
   }
 
   // nbArcherPioche : Pioche -> Int
   // nombre de carte archer déjà piochés
-  func nbArcherPioche()->Int{
+  public func nbArcherPioche()->Int{
     return 5 - self.nbArchers()
   }
 
   // nbSoldatPioche : Pioche -> Int
   // nombre de carte soldat déjà piochés
-  func nbSoldatPioche()->Int{
+  public func nbSoldatPioche()->Int{
     return 9 - self.nbSoldats()
   }
 
   // nbGardePioche : Pioche -> Int
   // nombre de carte garde déjà piochés
-  func nbGardePioche()->Int{
+  public func nbGardePioche()->Int{
     return 6 - self.nbGardes()
   }
 
@@ -77,7 +78,7 @@ public struct pioche : piocheProtocol {
   //          en fonction du nombre de chaque type restant
   // penser à incrementer le nombre de carte piochées en fonction du type
   @discardableResult
-  mutating func piocher()->carte?{
+  public mutating func piocher()->carte?{
     if (self.piocheVide()){
       return nil
     }else{

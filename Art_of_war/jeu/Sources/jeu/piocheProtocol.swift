@@ -24,7 +24,7 @@ public protocol piocheProtocol {
 
   // nbArcher : Pioche -> Int
   // nombre total de carte archer que l'on peut créer
-   func nbArchers()->Int
+  func nbArchers()->Int
 
   // nbSoldat : Pioche -> Int
   // nombre total de carte soldat que l'on peut créer
