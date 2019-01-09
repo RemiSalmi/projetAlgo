@@ -115,6 +115,8 @@ public struct pioche : piocheProtocol {
       if(type == 0){
         self.archer = self.archer - 1
         return carte(type : "archer" )
+      }else{
+
       }
       if(type == 1){
         self.soldat = self.soldat - 1
@@ -124,6 +126,7 @@ public struct pioche : piocheProtocol {
         self.garde = self.garde - 1
         return carte(type : "garde" )
       }
+      return nil
     }
   }
 }
