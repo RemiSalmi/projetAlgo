@@ -23,7 +23,7 @@ public struct royaume : royaumeProtocol {
  	// Retirer une carte du royaume la premiere de la file
   @discardableResult
   public mutating func recupererCarte()->Carte{
-      var c = self.royaume[0]
+      let c = self.royaume[0]
       self.royaume.removeFirst()
       return c
   }

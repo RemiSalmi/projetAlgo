@@ -29,8 +29,8 @@ public struct joueur : joueurProtocol{
   // indique si le roi est capturé ou pas
   public func roiCapture()->Bool{
     var compteurRoi : Int = 0
-    var itMain = self.mainJoueur().makeIt()
-    var itCb = self.champBatailleJoueur().makeIt()
+    let itMain = self.mainJoueur().makeIt()
+    let itCb = self.champBatailleJoueur().makeIt()
     while let carteM = itMain.next() {
       if (carteM.estDuType() == "roi1" || carteM.estDuType() == "roi2"){
         compteurRoi = compteurRoi + 1

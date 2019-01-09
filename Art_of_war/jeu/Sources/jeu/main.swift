@@ -60,7 +60,7 @@ public struct main : mainProtocol {
   // Pre : la position doit etre entre 1 et tailleMain()
   @discardableResult
   public mutating func supprimerCarte(pos:Int)->Carte{
-    var carte = self.setCarte(pos: pos)
+    let carte = self.setCarte(pos: pos)
     self.main.remove(at: pos)
     return carte
   }
@@ -78,7 +78,7 @@ public struct IteratorMain : IteratorMainProtocol{
     self.main = m
   }
 
-  public mutating func next()->Carte?{
+  public func next()->Carte?{
     let carte : Carte
     guard self.courant < self.main.main.count else {
       return nil

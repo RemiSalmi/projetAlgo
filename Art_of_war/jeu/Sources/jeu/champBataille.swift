@@ -58,7 +58,7 @@ public struct champBataille : champBatailleProtocol {
     var position : String? = nil
     let positions = ["A1", "A2", "A3","F1", "F2", "F3"]
     for pos in positions {
-      var carte = self.CartePosition(pos:pos)
+      let carte = self.CartePosition(pos:pos)
       if let carte = carte{
         if c.estDuType() == carte.estDuType(){
           position = pos
@@ -101,8 +101,8 @@ public struct champBataille : champBatailleProtocol {
   public func peutAttaquer(c:Carte,pos:String,cdb:ChampBataille)->Bool{
     var reponse : Bool = false
     if(!self.caseVide(pos: pos)){ //Retourne true si la case n'est pas vide
-      var type_carte : String = c.estDuType()
-      var position_carte = cdb.positionCarte(c:c)
+      let type_carte : String = c.estDuType()
+      let position_carte = cdb.positionCarte(c:c)
       if let position_carte = position_carte {
         switch type_carte{
 
@@ -187,7 +187,7 @@ public struct champBataille : champBatailleProtocol {
   // supprimer une carte du champ de bataille
   @discardableResult
   public mutating func supprimerCarte(c:Carte){
-    var position = self.positionCarte(c: c)
+    let position = self.positionCarte(c: c)
     if let position = position {
       switch position{
       case "A1":
@@ -229,7 +229,7 @@ public struct IteratorChampBataille : IteratorChampBatailleProtocol{
   // Si c'est une carte , c'est bon
   // Si c'est vide, on passe au next
   // Si on est a la fin, on retourne nil
-  public mutating func next()->Carte?{
+  public func next()->Carte?{
     guard self.courant < 6 else { return nil }
 
     guard let carte = self.champ_bataille.champ[self.courant] else {
