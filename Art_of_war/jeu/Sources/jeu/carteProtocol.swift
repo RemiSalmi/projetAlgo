@@ -11,7 +11,7 @@ associatedtype Carte : carteProtocol
     // si c'est un archer (attaque : 1, position défensive : 2, position offensive : 1)
     // si c'est un garde (attaque : 1, position défensive : 3, position offensive : 2)
     // les dégats sont initialisés à 0
-    init(type:String)
+    init?(type:String)
 
     // valeurAttaque :  Carte -> Int
     // indique la valeur d'attaque d’une carte en fonction de son type

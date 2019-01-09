@@ -5,7 +5,7 @@ enum TypeCarte : String {
 }
 
 public struct carte : carteProtocol {
-
+  public typealias Carte = carte
   var nom : TypeCarte
   var attaque : Int
   var defensif : Int
@@ -21,7 +21,7 @@ public struct carte : carteProtocol {
   // si c'est un archer (attaque : 1, position défensive : 2, position offensive : 1)
   // si c'est un garde (attaque : 1, position défensive : 3, position offensive : 2)
   // les dégats sont initialisés à 0
-  init?(type: String){
+  public init?(type: String){
 
     self.degats = 0
     self.estOffensif = false
@@ -94,20 +94,20 @@ public struct carte : carteProtocol {
 
   // estDuType :  Carte -> String
   // indique le type d'une carte (soldat,archer,garde,roi)
-  func estDuType()->String{
+  public func estDuType()->String{
     return self.nom.rawValue
   }
 
   // estOffensive :  Carte -> Bool
   // indique si une carte est tournée en position offensive (horizontale)
-  func estOffensive()->Bool{
+  public func estOffensive()->Bool{
     return self.estOffensif
   }
 
   // changerPosition : Carte ->
   // met la carte en position offensive (horizontale) ou defensive (vertical)
   @discardableResult
-  mutating func changerPosition(){
+  public mutating func changerPosition(){
     if self.estOffensif{
       self.estOffensif = false
     }
