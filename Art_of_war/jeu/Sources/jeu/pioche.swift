@@ -1,6 +1,6 @@
 public struct pioche : piocheProtocol {
-  public typealias Carte : carte
-  public typealias Pioche : pioche
+  public typealias Carte = carte
+  public typealias Pioche = pioche
   var archer : Int
   var soldat : Int
   var garde : Int

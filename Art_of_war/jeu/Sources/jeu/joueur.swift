@@ -1,11 +1,11 @@
 public struct joueur : joueurProtocol{
 
-  public typealias Joueur : joueur
-  public typealias Carte : carte
-  public typealias Main : main
-  public typealias Pioche : pioche
-  public typealias ChampBataille : champBataille
-  public typealias Royaume : royaume
+  public typealias Joueur = joueur
+  public typealias Carte = carte
+  public typealias Main = main
+  public typealias Pioche = pioche
+  public typealias ChampBataille = champBataille
+  public typealias Royaume = royaume
 
   var champBataille : champBataille
   var main : main
