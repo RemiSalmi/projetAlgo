@@ -35,7 +35,7 @@ public protocol champBatailleProtocol : Sequence{
   // peutAttaquer : ChampBataille x Carte x String ->Bool
   // indique si une carte peut attaquer une certaine position du champs de bataille adverse
   // True si peut attaquer False sinon
-  func peutAttaquer(c:Carte,pos:String)->Bool
+  func peutAttaquer(c:Carte,pos:String,cdb:ChampBataille)->Bool
 
   // placerCarte : ChampBataille x Carte x String ->
   // la fonction verifie si le front est plein met la carte en arriere
