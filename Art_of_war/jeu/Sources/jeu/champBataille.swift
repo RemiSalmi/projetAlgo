@@ -73,7 +73,7 @@ public struct champBataille : champBatailleProtocol {
   // renvoie vide si pas de carte
   public func CartePosition(pos:String)->Carte?{
     var carte : Carte?
-    var reponse : Bool = true
+
     switch pos{
 
     case "A1":
