@@ -14,12 +14,12 @@ public protocol champBatailleProtocol : Sequence{
 
   // estVide : champBataille -> Bool
   // Renvoie vrai si le champ de bataille ne contient aucune cartes
- 	// Renvoie faux sinon
+  // Renvoie faux sinon
   func estVide()->Bool
 
   // caseVide : champBataille x String -> Bool
   // Renvoie vrai si une position du CB est vide
- 	// Renvoie faux sinon
+  // Renvoie faux sinon
   func caseVide(pos:String)->Bool
 
   // positionCarte : champBataille x Carte -> String
@@ -56,6 +56,6 @@ public protocol champBatailleProtocol : Sequence{
 protocol IteratorChampBatailleProtocol : IteratorProtocol{
   associatedtype Carte : carteProtocol
 
-    func IteratorChampBataille()->Self
-    mutating func next()->Carte?
+  func IteratorChampBataille()->Self
+  mutating func next()->Carte?
 }

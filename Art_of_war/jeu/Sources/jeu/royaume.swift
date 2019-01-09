@@ -20,16 +20,16 @@ public struct royaume : royaumeProtocol {
   }
 
   // recupererCarte : Royaume -> Carte
- 	// Retirer une carte du royaume la premiere de la file
+  // Retirer une carte du royaume la premiere de la file
   @discardableResult
   public mutating func recupererCarte()->Carte{
-      let c = self.royaume[0]
-      self.royaume.removeFirst()
-      return c
+    let c = self.royaume[0]
+    self.royaume.removeFirst()
+    return c
   }
 
   // tailleRoyaume : Royaume -> Int
- 	// Renvoie de la taille d'un royaume nombre de cartes
+  // Renvoie de la taille d'un royaume nombre de cartes
   // si royaume vide renvoyer 0
   public func tailleRoyaume()->Int{
     return self.royaume.count

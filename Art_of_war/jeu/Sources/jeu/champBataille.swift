@@ -15,7 +15,7 @@ public struct champBataille : champBatailleProtocol {
 
   // estVide : champBataille -> Bool
   // Renvoie vrai si le champ de bataille ne contient aucune cartes
- 	// Renvoie faux sinon
+  // Renvoie faux sinon
   public func estVide()->Bool{
     return self.caseVide(pos:"A1") && self.caseVide(pos:"A2") && self.caseVide(pos:"A3") && self.caseVide(pos:"F1") && self.caseVide(pos:"F2") && self.caseVide(pos:"F3")
 
@@ -23,7 +23,7 @@ public struct champBataille : champBatailleProtocol {
 
   // caseVide : champBataille x String -> Bool
   // Renvoie vrai si une position du CB est vide
- 	// Renvoie faux sinon
+  // Renvoie faux sinon
   public func caseVide(pos:String)->Bool{
     var carte : Carte?
     var reponse : Bool = true

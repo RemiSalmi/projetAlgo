@@ -14,12 +14,12 @@ public protocol royaumeProtocol {
   mutating func ajouterCarte(c:Carte)
 
   // recupererCarte : Royaume -> Carte
- 	 // Retirer une carte du royaume la premiere de la file
-   @discardableResult
+  // Retirer une carte du royaume la premiere de la file
+  @discardableResult
   mutating func recupererCarte()->Carte
 
   // tailleRoyaume : Royaume -> Int
- 	// Renvoie de la taille d'un royaume nombre de cartes
+  // Renvoie de la taille d'un royaume nombre de cartes
   // si royaume vide renvoyer 0
   func tailleRoyaume()->Int
 

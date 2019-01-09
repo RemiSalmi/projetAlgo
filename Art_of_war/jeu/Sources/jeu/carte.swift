@@ -1,7 +1,7 @@
 
 //Utilisation de Enum pour les différents types de cartes
 enum TypeCarte : String {
-  case soldat="soldat", archer="archer", garde="garde", roi1="roi1", roi2="roi2"
+case soldat="soldat", archer="archer", garde="garde", roi1="roi1", roi2="roi2"
 }
 
 public struct carte : carteProtocol {
@@ -54,8 +54,8 @@ public struct carte : carteProtocol {
       self.defensif = 5
       self.offensif = 4
     default:
-    //Si la chaîne de caractère n'est pas conforme
-        return nil
+      //Si la chaîne de caractère n'est pas conforme
+      return nil
     }
 
   }
@@ -77,7 +77,7 @@ public struct carte : carteProtocol {
   // modifie les degats d'une carte
   @discardableResult
   public mutating func changerDegat(nb:Int){
-      self.degats = nb
+    self.degats = nb
   }
 
   // valeurDefenseD :  Carte -> Int
