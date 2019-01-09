@@ -4,7 +4,7 @@ public struct joueur : joueurProtocol{
     var main : main
     var royaume : royaume
     var pioche : pioche
-    var roiCapture : Bool
+    var roiCapturé : Bool
     // init : Int -> Joueur
     // Création d'un joueur
     // lorsqu'on crée un joueur on crée sa main (initailisée avec un roi n)
@@ -73,7 +73,7 @@ public struct joueur : joueurProtocol{
     // met roiCapturé à True
     @discardableResult
     mutating func leRoiEstCapture(){
-      self.roiCapture = true
+      self.roiCapturé = true
     }
 
     // mainJoueur :  Joueur -> Main

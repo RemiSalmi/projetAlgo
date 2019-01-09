@@ -49,7 +49,7 @@ public protocol champBatailleProtocol : Sequence{
   mutating func supprimerCarte(c:Carte)
 }
 
-protocol IteratorChampBataille : IteratorProtocol{
+protocol IteratorChampBatailleProtocol : IteratorProtocol{
   associatedtype Carte : carteProtocol
 
     func IteratorChampBataille()->Self

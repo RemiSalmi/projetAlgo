@@ -212,7 +212,7 @@ public struct champBataille : champBatailleProtocol {
   }
 }
 
-public struct IteratorChampBataille : IteratorProtocol{
+public struct IteratorChampBataille : IteratorChampBatailleProtocol{
   private let champ_bataille : champBataille
   private var courant : Int = 0
   fileprivate init(_ cb: champBataille){
