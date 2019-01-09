@@ -43,7 +43,7 @@ public protocol mainProtocol : Sequence{
   mutating func supprimerCarte(pos:Int) -> Carte
 }
 
-protocol IteratorMain : IteratorProtocol{
+protocol IteratorMainProtocol : IteratorProtocol{
   associatedtype Carte : carteProtocol
 
   func IteratorMain()->Self
