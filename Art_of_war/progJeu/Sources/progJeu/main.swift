@@ -8,7 +8,7 @@ var j2 = joueur(n:2)
 // mise en place du joueur 1
 
 
-var cartePiocheJ1 = j1.piocheJoueur().piocher()
+var cartePiocheJ1 = j1.piocheJoueur().piocher() //Note dev : la fonction piocher() renvoi nil ici
 if let cartePiocheJ1  = cartePiocheJ1{
 
   // le joueur 1 pioche 3 cartes
@@ -39,8 +39,10 @@ var pos : String
 pos = demanderPosChampsBatailleJoueur(cb:j1.champBatailleJoueur())
 
 // la carte est placée sur le champ de bataille du joueur 1
+//Note dev : index out ouf range avec setCarte
 j1.champBatailleJoueur().placerCarte(c : j1.mainJoueur().setCarte( pos : carte), pos : pos)
 
+print("Mise en place du joueur 2 : ")
 // mise en place du joueur 2
 
 

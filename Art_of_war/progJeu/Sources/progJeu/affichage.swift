@@ -4,7 +4,7 @@ import jeu
 // affichage d'une Carte, ses propriétés
 public func afficherCarte(c:carte){
   print("type : \(c.estDuType())")
-  print("dégats : \(c.estDuType())")
+  print("dégats : \(c.degat())")
   if c.estOffensive(){
     print("défense offensive : \(c.valeurDefenseO())")
   }
