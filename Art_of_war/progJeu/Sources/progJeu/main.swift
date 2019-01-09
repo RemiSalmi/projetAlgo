@@ -37,9 +37,9 @@ j1.champBatailleJoueur().placerCarte(j1.mainJoueur().setCarte(carte),pos)
 // mise en place du joueur 2
 
 // le joueur 2 pioche 3 cartes
-j2.mainJoueur().ajouterCarte(j2.piocheJoueur().piocher())
-j2.mainJoueur().ajouterCarte(j2.piocheJoueur().piocher())
-j2.mainJoueur().ajouterCarte(j2.piocheJoueur().piocher())
+j2.mainJoueur().ajouterCarteMain(j2.piocheJoueur().piocher())
+j2.mainJoueur().ajouterCarteMain(j2.piocheJoueur().piocher())
+j2.mainJoueur().ajouterCarteMain(j2.piocheJoueur().piocher())
 
 // le joueur 2 pioche une carte qui va directement dans son royaume
 j2.royaumeJoueur().ajouterCarte(j2.piocheJoueur().piocher())
@@ -107,7 +107,7 @@ while !j1.roiCapture() && !j2.roiCapture() && !joueurCourant.piocheJoueur().pioc
       // afficher le champs de bataille du joueur adverse
       afficherChampBataille(cb : joueurAdverse.champBatailleJoueur())
 
-      let posCarteAd : Int
+      let posCarteAd : String
       // le joueur entre une position correspondant a la place de la carte dans le champs de bataille
       posCarteAd = demanderPosChampsBatailleJoueur(cb : joueurAdverse.champBatailleJoueur())
       var res : Int
