@@ -70,7 +70,7 @@ public struct main : mainProtocol {
   }
 }
 
-public struct IteratorMain : IteratorProtocol{
+public struct IteratorMain : IteratorMainProtocol{
   private let main : main
   private var courant : Int = 0
   fileprivate init(_ m: main){

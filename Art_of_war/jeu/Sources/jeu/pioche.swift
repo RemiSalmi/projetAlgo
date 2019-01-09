@@ -78,7 +78,7 @@ public struct pioche : piocheProtocol {
   //          en fonction du nombre de chaque type restant
   // penser à incrementer le nombre de carte piochées en fonction du type
   @discardableResult
-  public mutating func piocher()->carte?{
+  public mutating func piocher()->Carte?{
     if (self.piocheVide()){
       return nil
     }else{
