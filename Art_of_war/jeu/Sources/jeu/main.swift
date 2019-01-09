@@ -79,7 +79,7 @@ public struct IteratorMain : IteratorMainProtocol{
     self.main = m
   }
 
-  public func next()->Carte?{
+  public mutating func next()->Carte?{
     let carte : Carte
     guard self.courant < self.main.main.count else {
       return nil

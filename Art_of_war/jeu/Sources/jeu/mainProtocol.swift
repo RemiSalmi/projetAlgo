@@ -49,5 +49,5 @@ protocol IteratorMainProtocol : IteratorProtocol{
   associatedtype Carte = carte
 
   func IteratorMain()->Self
-  func next()->Carte?
+  mutating func next()->Carte?
 }
