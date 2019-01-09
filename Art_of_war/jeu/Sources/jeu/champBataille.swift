@@ -216,7 +216,7 @@ public struct champBataille : champBatailleProtocol {
 
 public struct IteratorChampBataille : IteratorChampBatailleProtocol{
   public typealias Carte = carte
-
+  public typealias ChampBataille = champBataille
   private let champ_bataille : ChampBataille
   private var courant : Int = 0
   fileprivate init(_ cb: ChampBataille){

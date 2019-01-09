@@ -72,6 +72,7 @@ public struct main : mainProtocol {
 
 public struct IteratorMain : IteratorMainProtocol{
   public typealias Carte = carte
+  public typealias Main = main
   private let main : Main
   private var courant : Int = 0
   fileprivate init(_ m: Main){
