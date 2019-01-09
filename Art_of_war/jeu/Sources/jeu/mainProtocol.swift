@@ -48,6 +48,6 @@ public protocol mainProtocol : Sequence{
 protocol IteratorMainProtocol : IteratorProtocol{
   associatedtype Carte = carte
 
-  func IteratorMain()->Self
+
   mutating func next()->Carte?
 }

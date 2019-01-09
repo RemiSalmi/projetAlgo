@@ -56,6 +56,6 @@ public protocol champBatailleProtocol : Sequence{
 protocol IteratorChampBatailleProtocol : IteratorProtocol{
   associatedtype Carte : carteProtocol
 
-  func IteratorChampBataille()->Self
+  //func IteratorChampBataille()->Self
   mutating func next()->Carte?
 }

@@ -116,6 +116,7 @@ public struct joueur : joueurProtocol{
   // si l'attaque termine par endommager de la carte du joueur adverse return le nombre de dégats causés
   @discardableResult
   public mutating func attaquer(posCarte:String,posCarteAd:String,cbAd: inout ChampBataille)->Int{
+    let erreur = -1000 //Code erreur
 
     let carteJoueur = self.champBatailleJoueur().CartePosition(pos : posCarte)
     var carteJoueurAd = cbAd.CartePosition(pos : posCarteAd)
@@ -139,6 +140,7 @@ public struct joueur : joueurProtocol{
         }
       }
     }
-
+    return erreur //Comme il  n'y a pas de gestion des erreurs on doit renvoyer un code erreur en cas d'erreur.
   }
+
 }
