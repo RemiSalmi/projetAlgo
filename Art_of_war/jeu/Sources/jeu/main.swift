@@ -65,7 +65,7 @@ public struct main : mainProtocol {
     return carte
   }
 
-  public func makeIt()->IteratorMain{
+  public func makeIterator()->IteratorMain{
     return IteratorMain(self)
   }
 }

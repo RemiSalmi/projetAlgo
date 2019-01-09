@@ -209,7 +209,7 @@ public struct champBataille : champBatailleProtocol {
   }
 
 
-  public func makeIt()->IteratorChampBataille{
+  public func makeIterator()->IteratorChampBataille{
     return IteratorChampBataille(self)
   }
 }

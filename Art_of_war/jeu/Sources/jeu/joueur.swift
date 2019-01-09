@@ -29,8 +29,8 @@ public struct joueur : joueurProtocol{
   // indique si le roi est capturé ou pas
   public func roiCapture()->Bool{
     var compteurRoi : Int = 0
-    let itMain = self.mainJoueur().makeIt()
-    let itCb = self.champBatailleJoueur().makeIt()
+    var itMain = self.mainJoueur().makeIterator()
+    var itCb = self.champBatailleJoueur().makeIterator()
     while let carteM = itMain.next() {
       if (carteM.estDuType() == "roi1" || carteM.estDuType() == "roi2"){
         compteurRoi = compteurRoi + 1
@@ -118,9 +118,9 @@ public struct joueur : joueurProtocol{
   public mutating func attaquer(posCarte:String,posCarteAd:String,cbAd: inout ChampBataille)->Int{
 
     let carteJoueur = self.champBatailleJoueur().CartePosition(pos : posCarte)
-    let carteJoueurAd = cbAd.CartePosition(pos : posCarteAd)
+    var carteJoueurAd = cbAd.CartePosition(pos : posCarteAd)
     if let carteJoueur = carteJoueur{
-      if let carteJoueurAd = carteJoueurAd{
+      if var carteJoueurAd = carteJoueurAd{
         if(self.champBatailleJoueur().peutAttaquer(c:carteJoueur,pos:posCarteAd,cdb :self.champBatailleJoueur() )){
           if(carteJoueur.valeurAttaque() == carteJoueurAd.valeurDefenseD()){
             self.royaume.ajouterCarte(c:carteJoueurAd)
@@ -132,7 +132,7 @@ public struct joueur : joueurProtocol{
             return -2
           }
           if (carteJoueur.valeurAttaque() < carteJoueurAd.valeurDefenseD()){
-            cbAd.CartePosition(pos : posCarteAd).changerDegat(nb : carteJoueur.valeurAttaque())
+            carteJoueurAd.changerDegat(nb : carteJoueur.valeurAttaque())
             return carteJoueur.valeurAttaque()
           }
 

@@ -42,7 +42,7 @@ public protocol mainProtocol : Sequence{
   @discardableResult
   mutating func supprimerCarte(pos:Int) -> Carte
 
-  func makeIt()->IteratorMainProtocol
+  func makeIterator()->IteratorMainProtocol
 }
 
 protocol IteratorMainProtocol : IteratorProtocol{

@@ -48,7 +48,7 @@ public protocol champBatailleProtocol : Sequence{
   @discardableResult
   mutating func supprimerCarte(c:Carte)
 
-  func makeIt()-> IteratorChampBatailleProtocol
+  func makeIterator()-> IteratorChampBatailleProtocol
 }
 
 
