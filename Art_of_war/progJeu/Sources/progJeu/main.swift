@@ -135,14 +135,16 @@ while !j1.roiCapture() && !j2.roiCapture() && !joueurCourant.piocheJoueur().pioc
 
       let posCarte : String
       // le joueur entre une position correspondant a la place de la carte dans le champs de bataille
-      posCarte = demanderPosChampsBatailleJoueur(cb : joueurCourant.champBatailleJoueur())
+      print("Entrez la position de la carte que vous souhaitez utiliser pour attaquer sur le champ de bataille adverse")
+      posCarte = demanderPosAttaqueChampsBatailleJoueur(cb : joueurCourant.champBatailleJoueur())
       // afficher le champs de bataille du joueur adverse
       print(" --- Affichage du champ de bataille adverse ---")
       afficherChampBataille(cb : joueurAdverse.champBatailleJoueur())
 
       let posCarteAd : String
       // le joueur entre une position correspondant a la place de la carte dans le champs de bataille
-      posCarteAd = demanderPosChampsBatailleJoueur(cb : joueurAdverse.champBatailleJoueur())
+      print("Entrez la position de la carte que vous souhaitez attaquer sur le champ de bataille adverse")
+      posCarteAd = demanderPosAttaqueChampsBatailleJoueur(cb : joueurAdverse.champBatailleJoueur())
       var res : Int
       res=joueurCourant.attaquer(posCarte : posCarte,posCarteAd : posCarteAd,cbAd : joueurAdverse.champBatailleJoueur())
       if res == -1 {

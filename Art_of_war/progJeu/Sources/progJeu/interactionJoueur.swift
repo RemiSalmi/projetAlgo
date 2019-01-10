@@ -61,8 +61,8 @@ public func demanderJoueurAction()->Int{
 // Post :le joueur doit indiquer la place de la carte dans sa main
 // Post : tant que le joueur n'a pas donné un chiffre et une lettre correcte on lui redemande
 public func demanderPosChampsBatailleJoueur(cb:champBataille)->String{
-  print("entrez la position de la carte que vous souhaitez ")
-  print("votre réponse doit être de la forme F1 F2 F3")
+  print("Entrez la position de la carte que vous souhaitez sur votre champ de bataille")
+  print("Votre réponse doit être de la forme F1 F2 F3")
   if let pos = try readLine(){
     if (pos=="F1" || pos=="F2" || pos=="F3"){
       return pos
@@ -74,6 +74,30 @@ public func demanderPosChampsBatailleJoueur(cb:champBataille)->String{
   else{
     print("erreur entrée Réessayez")
     return demanderPosChampsBatailleJoueur(cb:cb)
+  }
+}
+
+// Note dev : Ajout de cette fonction
+// demanderPosAttaqueChampsBatailleJoueur :  -> String
+// Post :le joueur doit indiquer la place de la carte avec laquelle il souhaite attaquer et celle qu'il veut attaquer
+// Post : tant que le joueur n'a pas donné un chiffre et une lettre correcte on lui redemande
+public func demanderPosAttaqueChampsBatailleJoueur(cb:champBataille)->String{
+  print("Votre réponse doit être de la forme F1 F2 F3 A1 A2 A3")
+  if let pos = try readLine(){
+    if (pos=="F1" || pos=="F2" || pos=="F3" || pos=="A1" || pos=="A2" || pos=="A3"){
+      if cb.caseVide(pos:pos){
+        print("La case de votre choix est vide")
+        return demanderPosAttaqueChampsBatailleJoueur(cb:cb)
+      }
+      return pos
+    }
+    else{
+      return demanderPosAttaqueChampsBatailleJoueur(cb:cb)
+    }
+  }
+  else{
+    print("erreur entrée Réessayez")
+    return demanderPosAttaqueChampsBatailleJoueur(cb:cb)
   }
 }
 
