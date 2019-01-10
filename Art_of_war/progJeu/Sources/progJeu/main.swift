@@ -6,7 +6,8 @@ var j1 = joueur(n:1)
 var j2 = joueur(n:2)
 
 // mise en place du joueur 1
-
+print(" --- INITIALISATION DE LA PARTIE ---  ")
+print("Mise en place du joueur 1 : ")
 
 var cartePiocheJ1 = j1.piocheJoueur().piocher() //Note dev : la fonction piocher() renvoi nil ici
 if let cartePiocheJ1  = cartePiocheJ1{
@@ -30,7 +31,8 @@ var carte : Int
 // le joueur entre un nombre correspondant a la place de la carte dans la main
 carte = demanderCarteMainJoueur(tailleMain:j1.mainJoueur().tailleMain())
 
-afficherChampBataille(cb:j1.champBatailleJoueur())
+//Note dev : Inutile d'afficher le champ de bataille ici car il est encore vide
+//afficherChampBataille(cb:j1.champBatailleJoueur())
 
 // le joueur indique à quel endroit il veut placer sa carte sur son champ de bataille
 var pos : String
@@ -39,10 +41,12 @@ var pos : String
 pos = demanderPosChampsBatailleJoueur(cb:j1.champBatailleJoueur())
 
 // la carte est placée sur le champ de bataille du joueur 1
-//Note dev : index out ouf range avec setCarte
 j1.champBatailleJoueur().placerCarte(c : j1.mainJoueur().setCarte( pos : carte), pos : pos)
 
-print("Mise en place du joueur 2 : ")
+print(" --- Affichage de votre champ de bataille ---")
+afficherChampBataille(cb:j1.champBatailleJoueur())
+
+print("Mise en place du joueur 2 :")
 // mise en place du joueur 2
 
 
@@ -67,7 +71,8 @@ afficherMain(m:j2.mainJoueur())
 // le joueur entre un nombre correspondant a la place de la carte dans la main
 carte = demanderCarteMainJoueur(tailleMain:j2.mainJoueur().tailleMain())
 
-afficherChampBataille(cb:j2.champBatailleJoueur())
+//Note dev : Inutile d'afficher le champ de bataille ici car il est encore vide
+//afficherChampBataille(cb:j2.champBatailleJoueur())
 
 // le joueur indique à quel endroit il veut placer sa carte sur le champ de bataille
 
@@ -77,10 +82,15 @@ pos = demanderPosChampsBatailleJoueur(cb:j2.champBatailleJoueur())
 // la carte est placée sur le champ de bataille du joueur
 j2.champBatailleJoueur().placerCarte(c : j2.mainJoueur().setCarte( pos : carte), pos : pos)
 
+print(" --- Affichage de votre champ de bataille ---")
+afficherChampBataille(cb:j2.champBatailleJoueur())
+
+print(" --- LA PARTIE COMMENCE ---")
 // commencer partie
 // on initialise le joueur qui est en train de jouer (ici joueur courant)
 var joueurCourant : joueur
 joueurCourant = j1
+print("Le joueur 1 commence.")
 
 // on initialise le joueur qui ne joue pas (ici joueur adverse)
 var joueurAdverse : joueur
@@ -120,12 +130,14 @@ while !j1.roiCapture() && !j2.roiCapture() && !joueurCourant.piocheJoueur().pioc
     while !fin {
 
       // aficher le champs de bataille du joueur courant
+      print(" --- Affichage de votre champ de bataille ---")
       afficherChampBataille(cb : joueurCourant.champBatailleJoueur())
 
       let posCarte : String
       // le joueur entre une position correspondant a la place de la carte dans le champs de bataille
       posCarte = demanderPosChampsBatailleJoueur(cb : joueurCourant.champBatailleJoueur())
       // afficher le champs de bataille du joueur adverse
+      print(" --- Affichage du champ de bataille adverse ---")
       afficherChampBataille(cb : joueurAdverse.champBatailleJoueur())
 
       let posCarteAd : String
@@ -161,11 +173,11 @@ while !j1.roiCapture() && !j2.roiCapture() && !joueurCourant.piocheJoueur().pioc
 
     // la carte est placée sur le champ de bataille du joueur
     //* Note dev : il faut récupérer la carte avec son numéro dans la main avant
-    var IteratorChampBataille = joueurCourant.champBatailleJoueur().makeIterator()
+    var IteratorMain = joueurCourant.mainJoueur().makeIterator()
     var carte_choisie : carte?
     var compteur_carte : Int = 0
     while compteur_carte < carte{
-      carte_choisie = IteratorChampBataille.next()
+      carte_choisie = IteratorMain.next()
       compteur_carte = compteur_carte + 1
     }
     if let carte_choisie = carte_choisie{
@@ -196,12 +208,11 @@ while !j1.roiCapture() && !j2.roiCapture() && !joueurCourant.piocheJoueur().pioc
     carte = demanderCarteMainJoueur(tailleMain : joueurCourant.mainJoueur().tailleMain())
     // la carte est ajoutée au royaume
     //* Note dev : il faut récupérer la carte avec son numéro dans la main avant
-    //* Note dev : Il faudrait un Iterateur sur le royaume pour parcourir les cartes mais ce n'est pas dans les specifications de base
-    var IteratorRoyaume = joueurCourant.royaumeJoueur().makeIterator()
+    var IteratorMain = joueurCourant.mainJoueur().makeIterator()
     var carte_choisie : carte?
     var compteur_carte : Int = 0
     while compteur_carte < carte{
-      carte_choisie = IteratorRoyaume.next()
+      carte_choisie = IteratorMain.next()
       compteur_carte = compteur_carte + 1
     }
     if let carte_choisie = carte_choisie {
@@ -217,7 +228,9 @@ while !j1.roiCapture() && !j2.roiCapture() && !joueurCourant.piocheJoueur().pioc
   j=joueurCourant
   joueurCourant=joueurAdverse
   joueurAdverse=j
-
+  print(" ")
+  print("Au tour du joueur suivant !")
+  print(" ")
 }
 
 if j1.aGagne(j : j2) {

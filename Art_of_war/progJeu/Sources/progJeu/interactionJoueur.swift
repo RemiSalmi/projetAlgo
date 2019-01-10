@@ -62,16 +62,10 @@ public func demanderJoueurAction()->Int{
 // Post : tant que le joueur n'a pas donné un chiffre et une lettre correcte on lui redemande
 public func demanderPosChampsBatailleJoueur(cb:champBataille)->String{
   print("entrez la position de la carte que vous souhaitez ")
-  print("votre réponse doit être de la forme F1 F2 F3 A1 A2 A3")
+  print("votre réponse doit être de la forme F1 F2 F3")
   if let pos = try readLine(){
-    if (pos=="F1" || pos=="F2" || pos=="F3" || pos=="A1" || pos=="A2" || pos=="A3"){
-      if cb.caseVide(pos:pos){
-        print("la case est vide Réessayez avec une autre position")
-        return demanderPosChampsBatailleJoueur(cb:cb)
-      }
-      else{
-        return pos
-      }
+    if (pos=="F1" || pos=="F2" || pos=="F3"){
+      return pos
     }
     else{
       return demanderPosChampsBatailleJoueur(cb:cb)

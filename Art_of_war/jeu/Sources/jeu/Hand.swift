@@ -52,7 +52,7 @@ public class main : mainProtocol {
   // Pre : la position doit etre entre 1 et tailleMain()
   //** Que faire si la pre condition n'est pas respectée ? **
   public func setCarte(pos:Int)->Carte{
-    return self.main[pos]
+    return self.main[pos-1]
   }
 
   // supprimerCarte :  Main x Int -> Carte

@@ -1,5 +1,4 @@
-public protocol royaumeProtocol : Sequence {
-  associatedtype IteratorRoyaumeProtocol : IteratorProtocol
+public protocol royaumeProtocol {
   associatedtype Royaume : royaumeProtocol
   associatedtype Carte : carteProtocol
 
@@ -29,14 +28,4 @@ public protocol royaumeProtocol : Sequence {
   // faux sinon
   func royaumeVide()->Bool
 
-  func makeIterator()->IteratorRoyaumeProtocol
-
-}
-
-
-// Note dev : Création d'un Iterateur sur le royaume pour parcourir les cartes dans le main
-protocol IteratorRoyaumeProtocol : IteratorProtocol{
-  associatedtype Carte = carte
-
-  mutating func next()->Carte?
 }
