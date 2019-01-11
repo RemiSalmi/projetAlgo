@@ -117,12 +117,11 @@ public class joueur : joueurProtocol{
 
   public func attaquer(posCarte:String,posCarteAd:String,cbAd: ChampBataille)->Int{
     let erreur = -1000 //Code erreur
-
     let carteJoueur = self.champBatailleJoueur().CartePosition(pos : posCarte)
     var carteJoueurAd = cbAd.CartePosition(pos : posCarteAd)
     if let carteJoueur = carteJoueur{
-      if var carteJoueurAd = carteJoueurAd{
-        if(self.champBatailleJoueur().peutAttaquer(c:carteJoueur,pos:posCarteAd,cdb :self.champBatailleJoueur() )){
+      if let carteJoueurAd = carteJoueurAd{
+        if(cbAd.peutAttaquer(c:carteJoueur,pos:posCarteAd,cdb :self.champBatailleJoueur() )){
           if(carteJoueur.valeurAttaque() == carteJoueurAd.valeurDefenseD()){
             self.royaume.ajouterCarte(c:carteJoueurAd)
             cbAd.supprimerCarte(c:carteJoueurAd)
@@ -133,7 +132,7 @@ public class joueur : joueurProtocol{
             return -2
           }
           if (carteJoueur.valeurAttaque() < carteJoueurAd.valeurDefenseD()){
-            carteJoueurAd.changerDegat(nb : carteJoueur.valeurAttaque())
+            carteJoueurAd.changerDegat(nb : carteJoueurAd.degat()+carteJoueur.valeurAttaque())//On somme les anciens degats + les nouveau, car changerDegat modifie uniquement 
             return carteJoueur.valeurAttaque()
           }
 
