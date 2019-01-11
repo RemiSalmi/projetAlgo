@@ -37,7 +37,7 @@ carte = demanderCarteMainJoueur(tailleMain:j1.mainJoueur().tailleMain())
 // le joueur indique à quel endroit il veut placer sa carte sur son champ de bataille
 var pos : String
 
-// le joueur entre une position correspondant à F1 F2 F3 A1 A2 A3
+// le joueur entre une position correspondant à F1 F2 F3
 pos = demanderPosChampsBatailleJoueur(cb:j1.champBatailleJoueur())
 
 // la carte est placée sur le champ de bataille du joueur 1
@@ -76,7 +76,7 @@ carte = demanderCarteMainJoueur(tailleMain:j2.mainJoueur().tailleMain())
 
 // le joueur indique à quel endroit il veut placer sa carte sur le champ de bataille
 
-// le joueur entre une position correspondant à F1 F2 F3 A1 A2 A3
+// le joueur entre une position correspondant à F1 F2 F3
 pos = demanderPosChampsBatailleJoueur(cb:j2.champBatailleJoueur())
 
 // la carte est placée sur le champ de bataille du joueur
@@ -191,6 +191,7 @@ while !j1.roiCapture() && !j2.roiCapture() && !joueurCourant.piocheJoueur().pioc
   // sinon  ne rien faire
 
   // remise à 0 des dégats
+  //Note dev : Pourquoi remmettre à zéro les dégats des cartes du champ de bataille du joueur courant.
   for carte in joueurCourant.champBatailleJoueur(){
     carte.changerDegat(nb : 0)
   }

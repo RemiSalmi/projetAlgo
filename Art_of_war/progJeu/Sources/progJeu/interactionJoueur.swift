@@ -137,10 +137,9 @@ public func demanderJoueurDevelopper()->Int{
 // choix == 0 le joueur a fini
 // choix == 1 le joueur veux attaquer
 func demanderJoueurFinAttaque()->Bool{
-  print("si vous souhaitez attaquer ")
-  print("tapez 1")
-  print("si vous ne voulez pas attaquer")
-  print("tapez 0")
+  print("- Si vous ne voulez pas attaquer : tapez 0")
+  print("- Si vous souhaitez attaquer : tapez 1")
+
   if let pos = try readLine(){
     if (pos=="0" || pos=="1"){
       if pos=="0"{
