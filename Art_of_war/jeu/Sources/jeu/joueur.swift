@@ -132,7 +132,16 @@ public class joueur : joueurProtocol{
             return -2
           }
           if (carteJoueur.valeurAttaque() < carteJoueurAd.valeurDefenseD()){
-            carteJoueurAd.changerDegat(nb : carteJoueurAd.degat()+carteJoueur.valeurAttaque())//On somme les anciens degats + les nouveau, car changerDegat modifie uniquement 
+            carteJoueurAd.changerDegat(nb : carteJoueurAd.degat()+carteJoueur.valeurAttaque())//On somme les anciens degats + les nouveau, car changerDegat modifie uniquement
+            if (carteJoueurAd.valeurDefenseD() == carteJoueurAd.degat()){
+              self.royaume.ajouterCarte(c:carteJoueurAd)
+              cbAd.supprimerCarte(c:carteJoueurAd)
+              return -1
+            }
+            if(carteJoueurAd.degat() > carteJoueurAd.valeurDefenseD()){
+              cbAd.supprimerCarte(c:carteJoueurAd)
+              return -2
+            }
             return carteJoueur.valeurAttaque()
           }
 
