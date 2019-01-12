@@ -59,16 +59,23 @@ print("Mise en place du joueur 2 :")
 // mise en place du joueur 2
 
 
-var cartePiocheJ2 = j2.piocheJoueur().piocher()
-if let cartePiocheJ2 = cartePiocheJ2{
-
-  // le joueur 2 pioche 3 cartes
+// le joueur 2 pioche 3 cartes
+var cartePiocheJ2 = j2.piocheJoueur().piocher() //Note dev : la fonction piocher() renvoi nil ici
+if let cartePiocheJ2  = cartePiocheJ2{
   j2.mainJoueur().ajouterCarteMain(c : cartePiocheJ2)
+}
+cartePiocheJ2 = j2.piocheJoueur().piocher()
+if let cartePiocheJ2  = cartePiocheJ2{
   j2.mainJoueur().ajouterCarteMain(c : cartePiocheJ2)
+}
+cartePiocheJ2 = j2.piocheJoueur().piocher()
+if let cartePiocheJ2  = cartePiocheJ2{
   j2.mainJoueur().ajouterCarteMain(c : cartePiocheJ2)
-
-  // le joueur 2 pioche une carte qui va directement dans son royaume
-  j2.royaumeJoueur().ajouterCarte(c : cartePiocheJ2)
+}
+// le joueur 2 pioche une carte qui va directement dans son royaume
+cartePiocheJ2 = j2.piocheJoueur().piocher()
+if let cartePiocheJ2  = cartePiocheJ2{
+  j2.royaumeJoueur().ajouterCarte( c : cartePiocheJ2)
 }
 
 
