@@ -61,7 +61,7 @@ public class main : mainProtocol {
   @discardableResult
   public func supprimerCarte(pos:Int)->Carte{
     let carte = self.setCarte(pos: pos)
-    self.main.remove(at: pos)
+    self.main.remove(at: pos-1)
     return carte
   }
 
