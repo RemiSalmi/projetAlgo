@@ -9,19 +9,24 @@ var j2 = joueur(n:2)
 print(" --- INITIALISATION DE LA PARTIE ---  ")
 print("Mise en place du joueur 1 : ")
 
+// le joueur 1 pioche 3 cartes
 var cartePiocheJ1 = j1.piocheJoueur().piocher() //Note dev : la fonction piocher() renvoi nil ici
 if let cartePiocheJ1  = cartePiocheJ1{
-
-  // le joueur 1 pioche 3 cartes
   j1.mainJoueur().ajouterCarteMain(c : cartePiocheJ1)
-  j1.mainJoueur().ajouterCarteMain(c : cartePiocheJ1)
-  j1.mainJoueur().ajouterCarteMain(c : cartePiocheJ1)
-
-  // le joueur 1 pioche une carte qui va directement dans son royaume
-  j1.royaumeJoueur().ajouterCarte( c : cartePiocheJ1)
-
 }
-
+cartePiocheJ1 = j1.piocheJoueur().piocher()
+if let cartePiocheJ1  = cartePiocheJ1{
+  j1.mainJoueur().ajouterCarteMain(c : cartePiocheJ1)
+}
+cartePiocheJ1 = j1.piocheJoueur().piocher()
+if let cartePiocheJ1  = cartePiocheJ1{
+  j1.mainJoueur().ajouterCarteMain(c : cartePiocheJ1)
+}
+// le joueur 1 pioche une carte qui va directement dans son royaume
+cartePiocheJ1 = j1.piocheJoueur().piocher()
+if let cartePiocheJ1  = cartePiocheJ1{
+  j1.royaumeJoueur().ajouterCarte( c : cartePiocheJ1)
+}
 
 
 afficherMain(m:j1.mainJoueur())

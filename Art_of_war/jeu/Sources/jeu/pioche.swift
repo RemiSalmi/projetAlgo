@@ -84,6 +84,10 @@ public class pioche : piocheProtocol {
     }else{
       var type : Int = -1
 
+      if (self.nbArchers() > 0 && self.nbSoldats() > 0 && self.nbGardes() > 0){
+        type = Int.random(in: 0 ... 2)
+      }
+
       if (self.nbArchers() == 0){
         type = Int.random(in: 1 ... 2)
       }
@@ -110,7 +114,6 @@ public class pioche : piocheProtocol {
       if (self.nbGardes() == 0 && self.nbSoldats() == 0){
         type = 0
       }
-
 
 
       if(type == 0){
