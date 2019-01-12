@@ -19,6 +19,7 @@ if let cartePiocheJ1  = cartePiocheJ1{
 
   // le joueur 1 pioche une carte qui va directement dans son royaume
   j1.royaumeJoueur().ajouterCarte( c : cartePiocheJ1)
+
 }
 
 
@@ -42,6 +43,9 @@ pos = demanderPosChampsBatailleJoueur(cb:j1.champBatailleJoueur())
 
 // la carte est placée sur le champ de bataille du joueur 1
 j1.champBatailleJoueur().placerCarte(c : j1.mainJoueur().setCarte( pos : carte), pos : pos)
+
+//Note dev: Il faut maintenant retirer la carte de notre main
+j1.mainJoueur().supprimerCarte(pos:carte)
 
 print(" --- Affichage de votre champ de bataille ---")
 afficherChampBataille(cb:j1.champBatailleJoueur())
@@ -81,6 +85,9 @@ pos = demanderPosChampsBatailleJoueur(cb:j2.champBatailleJoueur())
 
 // la carte est placée sur le champ de bataille du joueur
 j2.champBatailleJoueur().placerCarte(c : j2.mainJoueur().setCarte( pos : carte), pos : pos)
+
+//Note dev: Il faut maintenant retirer la carte de notre main
+j2.mainJoueur().supprimerCarte(pos:carte)
 
 print(" --- Affichage de votre champ de bataille ---")
 afficherChampBataille(cb:j2.champBatailleJoueur())
@@ -141,12 +148,23 @@ while !j1.roiCapture() && !j2.roiCapture() && !joueurCourant.piocheJoueur().pioc
       print(" --- Affichage du champ de bataille adverse ---")
       afficherChampBataille(cb : joueurAdverse.champBatailleJoueur())
 
-      let posCarteAd : String
+      var posCarteAd : String
       // le joueur entre une position correspondant a la place de la carte dans le champs de bataille
       print("Entrez la position de la carte que vous souhaitez attaquer sur le champ de bataille adverse")
       posCarteAd = demanderPosAttaqueChampsBatailleJoueur(cb : joueurAdverse.champBatailleJoueur())
       var res : Int
       res=joueurCourant.attaquer(posCarte : posCarte,posCarteAd : posCarteAd,cbAd : joueurAdverse.champBatailleJoueur())
+      //Note dev: Tant que l'attaque retourne la valeur d'erreur on redemande à l'utilisateur de rentrer un attaque correcte.
+      //Le joueur à 2 tentatives
+      var tentative : Int = 0
+      while (res == -1000) && tentative<2{
+        print("Erreur dans votre choix d'attaque. Votre carte ne peut pas attaquer cette position.")
+        print("Entrez la position de la carte que vous souhaitez attaquer sur le champ de bataille adverse")
+        posCarteAd = demanderPosAttaqueChampsBatailleJoueur(cb : joueurAdverse.champBatailleJoueur())
+        res=joueurCourant.attaquer(posCarte : posCarte,posCarteAd : posCarteAd,cbAd : joueurAdverse.champBatailleJoueur())
+        tentative = tentative + 1
+      }
+
       if res == -1 {
         print("vous avez capturé la carte adverse")
       }else if res == -2{
@@ -175,23 +193,19 @@ while !j1.roiCapture() && !j2.roiCapture() && !joueurCourant.piocheJoueur().pioc
 
     // la carte est placée sur le champ de bataille du joueur
     //* Note dev : il faut récupérer la carte avec son numéro dans la main avant
-    var IteratorMain = joueurCourant.mainJoueur().makeIterator()
-    var carte_choisie : carte?
-    var compteur_carte : Int = 0
-    while compteur_carte < carte{
-      carte_choisie = IteratorMain.next()
-      compteur_carte = compteur_carte + 1
-    }
-    if let carte_choisie = carte_choisie{
-      joueurCourant.champBatailleJoueur().placerCarte(c : carte_choisie, pos : pos)
-    }
+    var carte_choisie : carte
+    carte_choisie = joueurCourant.mainJoueur().setCarte(pos:carte)
+    joueurCourant.champBatailleJoueur().placerCarte(c : carte_choisie, pos : pos)
+    //Note dev: Il faut maintenant retirer la carte de notre main
+    joueurCourant.mainJoueur().supprimerCarte(pos:carte)
 
+    print(" --- Affichage de votre champ de bataille ---")
     afficherChampBataille(cb : joueurCourant.champBatailleJoueur())
   }
   // sinon  ne rien faire
 
   // remise à 0 des dégats
-  //Note dev : Pourquoi remmettre à zéro les dégats des cartes du champ de bataille du joueur courant.
+  //Note dev : Pourquoi remmettre à zéro les dégats des cartes du champ de bataille du joueur courant ??
   for carte in joueurCourant.champBatailleJoueur(){
     carte.changerDegat(nb : 0)
   }
@@ -203,7 +217,8 @@ while !j1.roiCapture() && !j2.roiCapture() && !joueurCourant.piocheJoueur().pioc
   choix = demanderJoueurDevelopper()
   // tant que le joueur a 6 cartes ou plus dans sa main il doit en enlever
   // sinon tant qu'il veut on continue jusqu'à n'avoir plus qu'une carte dans sa main
-  while joueurCourant.mainJoueur().tailleMain()>=6 || choix==0 || joueurCourant.mainJoueur().tailleMain()>1{
+  //Note dev: Changement des opérateurs logiques pour la condition d'arrêt du while
+  while (joueurCourant.mainJoueur().tailleMain()>=6 ) || ( choix==0 && joueurCourant.mainJoueur().tailleMain()>1 ){
     afficherMain(m : joueurCourant.mainJoueur())
     // le joueur choisi une carte de sa main à placer dans le royaume
 
@@ -211,17 +226,11 @@ while !j1.roiCapture() && !j2.roiCapture() && !joueurCourant.piocheJoueur().pioc
     carte = demanderCarteMainJoueur(tailleMain : joueurCourant.mainJoueur().tailleMain())
     // la carte est ajoutée au royaume
     //* Note dev : il faut récupérer la carte avec son numéro dans la main avant
-    var IteratorMain = joueurCourant.mainJoueur().makeIterator()
-    var carte_choisie : carte?
-    var compteur_carte : Int = 0
-    while compteur_carte < carte{
-      carte_choisie = IteratorMain.next()
-      compteur_carte = compteur_carte + 1
-    }
-    if let carte_choisie = carte_choisie {
-      joueurCourant.royaumeJoueur().ajouterCarte(c : carte_choisie)
-    }
-
+    var carte_choisie : carte
+    carte_choisie = joueurCourant.mainJoueur().setCarte(pos:carte)
+    joueurCourant.royaumeJoueur().ajouterCarte(c : carte_choisie)
+    //Note dev: Il faut maintenant retirer la carte de notre main
+    joueurCourant.mainJoueur().supprimerCarte(pos:carte)
     choix = demanderJoueurDevelopper()
 
   }
