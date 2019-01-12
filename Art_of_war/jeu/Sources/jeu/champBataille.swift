@@ -112,18 +112,22 @@ public class champBataille : champBatailleProtocol {
           }
 
         case "archer": //L'archer peut attaquer les 4 posiitons devant lui, comme pour un cavalier
-          if ((position_carte=="F1" || position_carte=="F3") && (pos=="A2" || pos=="F2")){
-            reponse=true
-          }
           if ((position_carte=="A1" || position_carte=="A3") && pos=="F2"){
-            reponse=true
-          }
-          if position_carte=="F2" && (pos=="A3" || pos=="F3" || pos=="A1" || pos=="F1"){
             reponse=true
           }
           if position_carte=="A2" && (pos=="F3" || pos=="F1"){
             reponse=true
           }
+          if (position_carte=="F1" && (pos=="A2" || pos=="F1" )){
+            reponse=true
+          }
+          if position_carte=="F2" && (pos=="A3" || pos=="A1"){
+            reponse=true
+          }
+          if position_carte=="F3" && (pos=="A2" || pos=="F3"){
+            reponse=true
+          }
+
 
         case "roi1"://Le roi peut attaquer toute la ligne devant lui, il peut aussi attaquer la position à une distance 2 de lui. Le roi1 est donc positionné en F* ou A*
           if position_carte=="F1" || position_carte=="F2" || position_carte=="F3"{ //Si le roi 1 est en F*, il peut attaquer toute la ligne avant adverse
