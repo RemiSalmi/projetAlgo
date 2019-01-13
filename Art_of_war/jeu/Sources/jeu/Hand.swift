@@ -1,21 +1,24 @@
 
-
+//Création d'une class pour implémenter le type main de mainProtocol
 public class main : mainProtocol {
 
   public typealias Carte = carte
   public typealias Main = main
-  var main: [Carte]
+  var main: [Carte] //L'attribut main est une liste de carte
 
   // init : Int -> Main
   // création d'une main, initialisée avec un Roi n
   // Pre : n doit être 1 ou 2
   // Post : on crée une carte "roi1" ou "roi2"
+  //Note developpeurs : Aucune indication sur quoi faire si la pre-condition n'est pas respectée.
+  //Proposition dev: Il faudrait changer la fonction en init?
+  //                Si la pre-condition n'est pas respecté on renvoie vide, la création échoue
   public required init(n:Int){
-    self.main = [Carte]()
-    let typeRoi = "roi"+String(n)
-    let roi = Carte(type: typeRoi)
-    if let roi = roi {
-      self.main.append(roi)
+    self.main = [Carte]() //On initialise notre liste de carte, elle est vide
+    let typeRoi = "roi"+String(n) //Suivant le n passé en paramètre (1 ou 2) on concatène avec "roi" pour la création d'un roi1 ou roi2
+    let roi = Carte(type: typeRoi) //Création d'un roi
+    if let roi = roi {  //On vérifie que ce n'est pas nil, que la création c'est passé correctement
+      self.main.append(roi) //On ajoute notre roi à notre main
     }
   }
 
@@ -50,18 +53,22 @@ public class main : mainProtocol {
   // setCarte :  Main x Int -> Carte
   // renvoie la carte de la main à la position pos
   // Pre : la position doit etre entre 1 et tailleMain()
-  //** Que faire si la pre condition n'est pas respectée ? **
+  //Note developpeurs : Aucune indication sur quoi faire si la pre-condition n'est pas respectée.
+  //Proposition dev: Il faudrait changer la fonction pour renvoyer Carte?
+  //                Si la pre-condition n'est pas respecté on renvoie vide
   public func setCarte(pos:Int)->Carte{
-    return self.main[pos-1]
+    return self.main[pos-1] //La carte qui à pour pos=1 est la carte qui se trouve à l'indice 0 de notre attribut main, il faut donc décrémenter de 1
   }
 
   // supprimerCarte :  Main x Int -> Carte
   // renvoie la carte de la main à la position pos et la supprime de la main
   // Pre : la position doit etre entre 1 et tailleMain()
+  //Note developpeurs : Aucune indication sur quoi faire si la pre-condition n'est pas respectée.
+  //Proposition dev: Il faudrait changer la fonction pour renvoyer Carte? Si la pre-condition n'est pas respecté on renvoie vide
   @discardableResult
   public func supprimerCarte(pos:Int)->Carte{
-    let carte = self.setCarte(pos: pos)
-    self.main.remove(at: pos-1)
+    let carte = self.setCarte(pos: pos) //On récupère la carte que l'on va supprimer
+    self.main.remove(at: pos-1) //La carte qui à pour pos=1 est la carte qui se trouve à l'indice 0 de notre attribut main, il faut donc décrémenter de 1
     return carte
   }
 

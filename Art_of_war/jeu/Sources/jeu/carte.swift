@@ -4,6 +4,7 @@ enum TypeCarte : String {
 case soldat="soldat", archer="archer", garde="garde", roi1="roi1", roi2="roi2"
 }
 
+//Création d'une class pour implémenter le type carte de carteProtocol
 public class carte : carteProtocol {
   public typealias Carte = carte
   var nom : TypeCarte
@@ -23,10 +24,10 @@ public class carte : carteProtocol {
   // les dégats sont initialisés à 0
   public required init?(type: String){
 
-    self.degats = 0
-    self.estOffensif = false
+    self.degats = 0 //Initialise les dégats à 0
+    self.estOffensif = false //Carte créé en position défensive
 
-    switch type {
+    switch type {//On vérifie le type de la carte passé en paramètre du init()
 
     case "soldat" :
       self.nom = TypeCarte.soldat
@@ -54,7 +55,7 @@ public class carte : carteProtocol {
       self.defensif = 5
       self.offensif = 4
     default:
-      //Si la chaîne de caractère n'est pas conforme
+      //Si la chaîne de caractère n'est pas conforme, la carte n'est pas créée
       return nil
     }
 
@@ -108,10 +109,10 @@ public class carte : carteProtocol {
   // met la carte en position offensive (horizontale) ou defensive (vertical)
 
   public func changerPosition(){
-    if self.estOffensif{
+    if self.estOffensif{ //Si la carte est déjà en position offensive, on la met en position défensive
       self.estOffensif = false
     }
-    else{
+    else{ //Sinon, on la met en position offensive
       self.estOffensif = true
     }
   }

@@ -4,13 +4,13 @@ public class champBataille : champBatailleProtocol {
   public typealias ChampBataille = champBataille
   public typealias Carte = carte
   //typealias Carte = carte
-  var champ : [Carte?]
-  //champ = [A1,A2,A3,F1,F2,F3]
+  var champ : [Carte?] //Notre attribut champ est une tableau de Carte?
+  //champ = [A1,A2,A3,F1,F2,F3], cela correspond aux indices [0,1,2,3,4,5]
 
   // init :  -> ChampBataille
   // création d’un ChampBataille vide
   public required init(){
-    self.champ = [Carte?](repeating: nil, count: 6)
+    self.champ = [Carte?](repeating: nil, count: 6) //Création d'un tableau de Carte? de taille 6, initialisé avec toutes les cases à nil
   }
 
   // estVide : champBataille -> Bool
@@ -97,7 +97,8 @@ public class champBataille : champBatailleProtocol {
   // peutAttaquer : ChampBataille x Carte x String ->Bool
   // indique si une carte peut attaquer une certaine position du champs de bataille adverse
   // True si peut attaquer False sinon
-  //Note developpeurs : C'est le champ de bataille adverse qui est le Self, ajout d'un paramètre "cdb" qui est le champ de bataille du joueur qui attaque
+  //Note developpeurs : C'est le champ de bataille adverse qui est le Self
+  //                  Ajout d'un paramètre "cdb" qui est le champ de bataille du joueur qui attaque
   public func peutAttaquer(c:Carte,pos:String,cdb:ChampBataille)->Bool{
     var reponse : Bool = false
     if(!self.caseVide(pos: pos)){ //Retourne true si la case n'est pas vide
@@ -163,7 +164,9 @@ public class champBataille : champBatailleProtocol {
   // placerCarte : ChampBataille x Carte x String ->
   // la fonction verifie si le front est plein met la carte en arriere
   // sinon ajoute au front sur la colonne "pos"
-  //Note developpeurs : Pas assez de specifs ici. Quels sont les cas qui engendre des erreurs.
+  //Note developpeurs : Les cas qui engendrent des erreurs ne sont pas décrits.
+  //                  : Que faire si le champ de bataille est plein ? Actuellement cela remplace la carte en position arrière.
+  //                  : Que faire si la position passé en paramètre est incorrecte? Il faudrait modifier les specifications de la fonction pour renvoyer nil ou lever une erreur.
   public func placerCarte(c:Carte,pos:String){
     var indice : Int = 3
     switch pos{ //On verifie uniquement les positions front, car la position en paramètres est une position front
@@ -183,18 +186,18 @@ public class champBataille : champBatailleProtocol {
     else{                 //Si elle est pas libre alors on ajoute sur la case arrière
       indice = indice - 3
       self.champ[indice] = c
-    }
+    } //Si la positon arrière n'est pas libre, alors cela écrase la carte déjà présente
   }
 
   // supprimerCarte : ChampBataille x Carte ->
   // supprimer une carte du champ de bataille
 
   public func supprimerCarte(c:Carte){
-    let position = self.positionCarte(c: c)
-    if let position = position {
-      switch position{
+    let position = self.positionCarte(c: c) //On récupère la position de la carte, cela nous renvoie nil si la carte n'est pas dans le champ de bataille
+    if let position = position { //On teste bien que la carte est dans notre champ de bataille
+      switch position{ //Suivant la position qui est renvoyé, on accède à différents indice de notre champ de bataille
       case "A1":
-        self.champ[0]=nil
+        self.champ[0]=nil //On remplace simplement notre carte par nil
       case "A2":
         self.champ[1]=nil
       case "A3":
@@ -226,12 +229,10 @@ public struct IteratorChampBataille : IteratorChampBatailleProtocol{
     self.champ_bataille = cb
   }
 
-  //Note developpeurs:
-  //Tant que c'est vide :
-  //  On verifie si c'est une carte ou vide
-  // Si c'est une carte , c'est bon
-  // Si c'est vide, on passe au next
-  // Si on est a la fin, on retourne nil
+  //Note developpeurs: Comme notre champ de bataille est un tableau de Carte?, il faut faire attention à ne pas mettre notre courant à nil.
+  //                  Si on trouve une case du champ de bataille à nil, on passe à la suivante.
+  //                  Sinon (si la case n'est pas vide) c'est un next() normal.
+  //                  Next() renvoie nil si on est à la dernière case du champ de bataille.
   public mutating func next()->Carte?{
     guard self.courant < 6 else { return nil }
 
