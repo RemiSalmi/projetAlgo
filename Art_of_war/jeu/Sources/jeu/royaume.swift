@@ -22,7 +22,7 @@ public class royaume : royaumeProtocol {
   // recupererCarte : Royaume -> Carte
   // Retirer une carte du royaume la premiere de la file
   @discardableResult
-  public func recupererCarte()->Carte{
+  public func recupererCarte()->Carte{// on récupère la premier carte du royaume
     let c = self.royaume[0]
     self.royaume.removeFirst()
     return c

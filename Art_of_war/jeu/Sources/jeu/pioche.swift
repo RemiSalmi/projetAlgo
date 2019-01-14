@@ -79,58 +79,61 @@ public class pioche : piocheProtocol {
   // penser à incrementer le nombre de carte piochées en fonction du type
   @discardableResult
   public func piocher()->Carte?{
-    if (self.piocheVide()){
+    if (self.piocheVide()){ //Si la pioche est vide on ne renvoie rien
       return nil
     }else{
+      //type 0 = archer
+      //type 1 = Soldat
+      //type 2 = garde
       var type : Int = -1
 
-      if (self.nbArchers() > 0 && self.nbSoldats() > 0 && self.nbGardes() > 0){
+      if (self.nbArchers() > 0 && self.nbSoldats() > 0 && self.nbGardes() > 0){//Si toutes les types de carte sont disponibles dans la pioche alors on génère un type aléatoire entre 0 et 2
         type = Int.random(in: 0 ... 2)
       }
 
-      if (self.nbArchers() == 0){
+      if (self.nbArchers() == 0){ //Si il n'y a pas d'archers dans la pioche alors on génère un chiffre aléatoire entre 1 et 2 seulement
         type = Int.random(in: 1 ... 2)
       }
 
-      if (self.nbGardes() == 0){
+      if (self.nbGardes() == 0){ //Si il n'y a pas de garde dans la pioche alors on génère un chiffre aléatoire entre 0 et 1 seulement
         type = Int.random(in: 0 ... 1)
       }
 
-      if (self.nbSoldats() == 0){
+      if (self.nbSoldats() == 0){ //Si il n'y a pas de soldat dans la pioche alors on génère un chiffre aléatoire entre 0 et 1 seulement car il nous faudrait soit le type 0 soit le 2 mais c'est impossible car on peut le faire seulement sur des intervales
         type = Int.random(in: 0 ... 1)
-        if type == 1{
+        if type == 1{//Si le chiffre aléatoire est 1 alors on le converti en 2
           type = 2
         }
       }
 
-      if (self.nbArchers() == 0 && self.nbSoldats() == 0){
+      if (self.nbArchers() == 0 && self.nbSoldats() == 0){//Si on a pas d'archer n'y de soldat alors on fixe le type à 2
         type = 2
       }
 
-      if (self.nbArchers() == 0 && self.nbGardes() == 0){
+      if (self.nbArchers() == 0 && self.nbGardes() == 0){//Si on a pas d'archer n'y de garde alors on fixe le type à 1
         type = 1
       }
 
-      if (self.nbGardes() == 0 && self.nbSoldats() == 0){
+      if (self.nbGardes() == 0 && self.nbSoldats() == 0){//Si on a pas de garde n'y de soldat alors on fixe le type à 0
         type = 0
       }
 
 
-      if(type == 0){
+      if(type == 0){ //Si le type est 0 on décrémente le nombre d'archer dispo dans la pioche et on renvoie une carte archer
         self.archer = self.archer - 1
         return carte(type : "archer" )
       }else{
 
       }
-      if(type == 1){
+      if(type == 1){//Si le type est 1 on décrémente le nombre de soldat dispo dans la pioche et on renvoie une carte soldat
         self.soldat = self.soldat - 1
         return carte(type : "soldat" )
       }
-      if(type == 2){
+      if(type == 2){ //Si le type est 2 on décrémente le nombre de garde dispo dans la pioche et on renvoie une carte garde
         self.garde = self.garde - 1
         return carte(type : "garde" )
       }
-      return nil
+      return nil //Si erreur
     }
   }
 }
