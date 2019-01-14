@@ -61,7 +61,7 @@ public func demanderJoueurAction()->Int{
 // Post :le joueur doit indiquer la place de la carte dans sa main
 // Post : tant que le joueur n'a pas donné un chiffre et une lettre correcte on lui redemande
 public func demanderPosChampsBatailleJoueur(cb:champBataille)->String{
-  print("Entrez la position de la carte que vous souhaitez sur votre champ de bataille")
+  print("Entrez la position de la carte que vous souhaitez mettre sur votre champ de bataille")
   print("Votre réponse doit être de la forme F1 F2 F3")
   if let pos = try readLine(){
     if (pos=="F1" || pos=="F2" || pos=="F3"){

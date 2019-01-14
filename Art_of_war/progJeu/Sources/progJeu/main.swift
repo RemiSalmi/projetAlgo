@@ -7,6 +7,7 @@ var j2 = joueur(n:2)
 
 // mise en place du joueur 1
 print(" --- INITIALISATION DE LA PARTIE ---  ")
+print(" ")
 print("Mise en place du joueur 1 : ")
 
 // le joueur 1 pioche 3 cartes
@@ -56,6 +57,7 @@ print(" --- Affichage de votre champ de bataille ---")
 afficherChampBataille(cb:j1.champBatailleJoueur())
 
 print("Mise en place du joueur 2 :")
+print(" ")
 // mise en place du joueur 2
 
 
@@ -105,6 +107,7 @@ print(" --- Affichage de votre champ de bataille ---")
 afficherChampBataille(cb:j2.champBatailleJoueur())
 
 print(" --- LA PARTIE COMMENCE ---")
+print(" ")
 // commencer partie
 // on initialise le joueur qui est en train de jouer (ici joueur courant)
 var joueurCourant : joueur
@@ -121,7 +124,7 @@ while !j1.roiCapture() && !j2.roiCapture() && !joueurCourant.piocheJoueur().pioc
   // phase de préparation
 
   // pioche une carte et l'ajoute à la main du joueur courant
-  var piocheCourant = joueurCourant.piocheJoueur().piocher()
+  let piocheCourant = joueurCourant.piocheJoueur().piocher()
   if let piocheCourant = piocheCourant{
     joueurCourant.mainJoueur().ajouterCarteMain( c : piocheCourant)
   }
@@ -178,13 +181,13 @@ while !j1.roiCapture() && !j2.roiCapture() && !joueurCourant.piocheJoueur().pioc
       }
 
       if res == -1 {
-        print("vous avez capturé la carte adverse")
+        print("Vous avez capturé la carte adverse")
       }else if res == -2{
-        print("la carte a été détruite")
+        print("La carte a été détruite")
 
       }else{
-        print("la carte a été endommagé")
-        print("nombre de dégats : \(res)")
+        print("La carte a été endommagé")
+        print("Nombre de dégats : \(res)")
       }
 
       fin=demanderJoueurFinAttaque()
@@ -246,6 +249,9 @@ while !j1.roiCapture() && !j2.roiCapture() && !joueurCourant.piocheJoueur().pioc
     choix = demanderJoueurDevelopper()
 
   }
+  if joueurCourant.mainJoueur().tailleMain()==1{
+    print("INFO : Vous avez une seule carte dans votre main, vous ne pouvez plus déployer.")
+  }
 
   // inverse les roles de joueurs
   var j : joueur
@@ -258,9 +264,9 @@ while !j1.roiCapture() && !j2.roiCapture() && !joueurCourant.piocheJoueur().pioc
 }
 
 if j1.aGagne(j : j2) {
-  print("bravo j1 vous avez gagné !")
+  print("Bravo j1 vous avez gagné !")
 }else {
-  print("bravo j2 vous avez gagné !")
+  print("Bravo j2 vous avez gagné !")
 }
 
-print("fin de partie")
+print(" --- Fin de partie --- ")
